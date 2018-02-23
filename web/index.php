@@ -111,9 +111,9 @@ foreach ($client->parseEvents() as $event) {
             )
         )
                     	));	
-			}$m_message = $message['address'];
-                	 else if($m_message!="")
-                	{
+			}
+                	 else if($m_message=="00")
+                	{$m_message = $message['address'];
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
