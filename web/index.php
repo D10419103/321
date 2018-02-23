@@ -29,28 +29,16 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-                case 'text':
-			    
-			    
-			    $response = $bot->getProfile('<userId>');
-if ($response->isSucceeded()) {
-    $profile = $response->getJSONDecodedBody();
-    echo $profile['displayName'];
-    echo $profile['pictureUrl'];
-    echo $profile['statusMessage'];
-}else                 	if($m_message=="安安")
-			    
-			    
-			    
+                case 'text':		   	    
                 	$m_message = $message['text'];
                 	$source=$event['source'];
               	      	$type = $source['type']; 
               	      	$id=$source['userId'];
-			$displayName=$type['displayName'];
+			$displayName=$m_message['displayName'];
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
 			date_default_timezone_set('Asia/Taipei');
-
+			if($m_message=="安安")
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
