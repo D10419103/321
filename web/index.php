@@ -30,6 +30,9 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];
             switch ($message['type']) {
                 case 'text':
+			    
+			    
+			    
                 	$m_message = $message['text'];
                 	$source=$event['source'];
               	      	$type = $source['type']; 
@@ -108,7 +111,19 @@ foreach ($client->parseEvents() as $event) {
             )
         )
                     	));	
-			}
+			}$m_message = $message['address'];
+                	 else if($m_message!="")
+                	{
+                		$client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $m_message
+                            ),
+                        ),
+                    	));
+                	}
                     break;
                     
                     
