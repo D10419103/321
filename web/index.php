@@ -34,7 +34,6 @@ foreach ($client->parseEvents() as $event) {
                 	$source=$event['source'];
               	      	$type = $source['type']; 
               	      	$id=$source['userId'];
-			$displayName=$m_message['displayName'];
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
 			date_default_timezone_set('Asia/Taipei');
