@@ -35,7 +35,6 @@ foreach ($client->parseEvents() as $event) {
               	      	$id=$source['userId'];
 			$UserInfo=$source['UserInfo'];
 			$displayName=$UserInfo['displayName'];
-			    $statusMessage=$message['statusMessage'];
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
 			date_default_timezone_set('Asia/Taipei');
@@ -46,7 +45,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName . $statusMessage
+                                'text' => $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName 
                             )	
                         )
                     	));			
