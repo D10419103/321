@@ -29,12 +29,18 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-                case 'text':	  			 	    
+                case 'text':	  		
+			    
+			    $content = $result['content'];
+			    $meta = $content['contentMetadata'];
+			    $displayName=$meta['displayName'];
+			    
+			    
                 	$m_message = $message['text'];
                 	$source=$event['source'];
               	      	$type = $source['type']; 
               	      	$id=$source['userId'];
-			$displayName=$message['displayName'];
+			//$displayName=$message['displayName'];
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
 			date_default_timezone_set('Asia/Taipei');
