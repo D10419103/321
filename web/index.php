@@ -113,6 +113,12 @@ foreach ($client->parseEvents() as $event) {
                     break;
                         
                     case 'location' :
+			    
+			    $source=$event['source'];
+              	      	$type = $source['type']; 
+              	      	$id=$source['userId'];
+			    
+			    
 			$m_message = $message['address'];
                 	if($m_message!="")
                 	{
@@ -121,7 +127,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $m_message
+                                'text' => $m_message . $id
                             ),
                         ),
                     	));
