@@ -29,21 +29,13 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-                case 'text':	  		
-			    
-			    
-			    $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('<channel access token>');
-$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '<channel secret>']);
-    $profile = $response->getJSONDecodedBody();
-    $displayName= $profile['displayName'];
-
-			    
-			    
+                case 'text':	  				    
                 	$m_message = $message['text'];
                 	$source=$event['source'];
               	      	$id=$source['userId'];
 			//$UserInfo=$source['UserInfo'];
 			//$displayName=$UserInfo['displayName'];
+			    $statusMessage=$source['statusMessage'];
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
 			date_default_timezone_set('Asia/Taipei');
@@ -54,7 +46,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '<channel secret>']);
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName
+                                'text' => $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName . $statusMessage
                             )	
                         )
                     	));			
