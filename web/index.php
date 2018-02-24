@@ -51,7 +51,7 @@ if ($res->isSucceeded()) {
                 	$source=$event['source'];
               	      	$type = $source['type']; 
               	      	$id=$source['userId'];
-			$displayName=$UserInfo['displayName'];
+			//$displayName=$UserInfo['displayName'];
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
 			date_default_timezone_set('Asia/Taipei');
