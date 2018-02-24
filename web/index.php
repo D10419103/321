@@ -129,24 +129,7 @@ foreach ($client->parseEvents() as $event) {
                 	}
                     break;
 			    
-		    case 'image' :
-			  $m_message = $message['originalContentUrl'];
-			    $a=$message['previewImageUrl'];
-                	if($m_message!="")
-                	{
-                		$client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $m_message . $a
-                            ),
-                        ),
-                    	));
-                	}
-                    break;  
-			    
-			    
+
             }
 		    
             break;
