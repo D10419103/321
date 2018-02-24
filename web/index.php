@@ -29,12 +29,15 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-                case 'text':	  				    
+                case 'text':	  	
+			    $receive = json_decode(file_get_contents("php://input"));
+			    $from = $receive->events[0]->source->userId;
+			    global $from;
                 	$m_message = $message['text'];
                 	$source=$event['source'];
               	      	$id=$source['userId'];
-			$UserInfo=$source['UserInfo'];
-			$displayName=$UserInfo['displayName'];
+			$profile = curlUserProfileFromLine($from);
+			$displayName=$profile['displayName'];
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
 			date_default_timezone_set('Asia/Taipei');
