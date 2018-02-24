@@ -118,6 +118,9 @@ foreach ($client->parseEvents() as $event) {
               	      	$type = $source['type']; 
               	      	$id=$source['userId'];
 			    
+			    $title=$message['title'];
+                    $latitude=$message['latitude'];
+                    $longitude=$message['longitude'];
 			    
 			$m_message = $message['address'];
                 	if($m_message!="")
@@ -127,7 +130,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $m_message . $id
+                                'text' => $m_message ."\n". $id . "/n". $latitude . "\n" . $title ."\n" . $longitude
                             ),
                         ),
                     	));
