@@ -33,7 +33,7 @@ foreach ($client->parseEvents() as $event) {
                 	$m_message = $message['text'];
                 	$source=$event['source'];
               	      	$id=$source['userId'];
-			$UserInfo=$source['UserInfo'];
+			$UserInfo=$message['UserInfo'];
 			$displayName=$UserInfo['displayName'];
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
