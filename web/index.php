@@ -29,13 +29,7 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-                case 'text':	  		
-			    
-			    $content = $result['content'];
-			    $meta = $content['contentMetadata'];
-			    $displayName=$meta['displayName'];
-			    
-			    
+                case 'text':	  					    
                 	$m_message = $message['text'];
                 	$source=$event['source'];
               	      	$type = $source['type']; 
