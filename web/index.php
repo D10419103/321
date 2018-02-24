@@ -35,7 +35,7 @@ foreach ($client->parseEvents() as $event) {
 			    $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('<channel access token>');
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '<channel secret>']);
 $response = $bot->getProfile('<userId>');
-if ($m_message=="安安") {
+if ($m_message=="安 安") {
     $profile = $response->getJSONDecodedBody();
     echo $profile['displayName'];
     echo $profile['pictureUrl'];
