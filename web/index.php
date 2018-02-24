@@ -29,12 +29,21 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-                case 'text':	  					    
+                case 'text':	  		
+			    
+			    
+			    $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('<channel access token>');
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '<channel secret>']);
+    $profile = $response->getJSONDecodedBody();
+    $displayName= $profile['displayName'];
+
+			    
+			    
                 	$m_message = $message['text'];
                 	$source=$event['source'];
               	      	$id=$source['userId'];
-			$UserInfo=$message['userInfo'];
-			$displayName=$UserInfo['displayName'];
+			//$UserInfo=$source['UserInfo'];
+			//$displayName=$UserInfo['displayName'];
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
 			date_default_timezone_set('Asia/Taipei');
@@ -113,15 +122,12 @@ foreach ($client->parseEvents() as $event) {
                     break;
                         
                     case 'location' :
-			    
-			    $source=$event['source'];
+			$source=$event['source'];
               	      	$type = $source['type']; 
               	      	$id=$source['userId'];
-			    
-			    $title=$message['title'];
-                    $latitude=$message['latitude'];
-                    $longitude=$message['longitude'];
-			    
+			$title=$message['title'];
+                   	$latitude=$message['latitude'];
+                   	$longitude=$message['longitude'];
 			$m_message = $message['address'];
                 	if($m_message!="")
                 	{
