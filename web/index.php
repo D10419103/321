@@ -32,7 +32,6 @@ foreach ($client->parseEvents() as $event) {
                 case 'text':	  					    
                 	$m_message = $message['text'];
                 	$source=$event['source'];
-              	      	$type = $source['type']; 
               	      	$id=$source['userId'];
 			$displayName=$source['displayName'];
                   	$roomid=$source['roomId'];
