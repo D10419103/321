@@ -29,8 +29,24 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
+			/*    
+
+
+if ($res->isSucceeded()) {
+    
+    $statusMessage = $profile['statusMessage'];
+    $pictureUrl = $profile['pictureUrl'];
+}*/
+                case 'text':	  			 
 			    
-                case 'text':	  			    
+			    $bot = new \LINE\LINEBot(new CurlHTTPClient('your-channel-token'), [
+    'channelSecret' => 'your-channel-secret'
+]);
+			    $res = $bot->getProfile('user-id');
+			    $profile = $res->getJSONDecodedBody();
+    $displayName = $profile['displayName'];
+			    
+			    
                 	$m_message = $message['text'];
                 	$source=$event['source'];
               	      	$type = $source['type']; 
