@@ -130,7 +130,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $m_message . "/n". $longitude . "\n" . $latitude ."\n". $id 
+                                'text' => $m_message . "\n". $longitude . "\n" . $latitude ."\n". $id 
                             ),
                         ),
                     	));
