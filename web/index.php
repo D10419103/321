@@ -30,13 +30,10 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];
             switch ($message['type']) {
                 case 'text':	  	
-			    $receive = json_decode(file_get_contents("php://input"));
-			    $from = $receive->events[0]->source->userId;
-			    global $from;
                 	$m_message = $message['text'];
                 	$source=$event['source'];
               	      	$id=$source['userId'];
-			$profile = curlUserProfileFromLine($from);
+			$profile = curlUserProfileFromLine($id);
 			$displayName=$profile['displayName'];
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
