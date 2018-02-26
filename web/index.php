@@ -144,12 +144,10 @@ foreach ($client->parseEvents() as $event) {
      			   'messages' => array(
        			     array(
         		       'type' => 'sticker',
-			       'sticker' => array(
                                 'stickerId' => $stickerId,
                                 'packageId' => $packageId
-                            ),
-         	   )
- 	       )
+         	   ),
+ 	       ),
 	    ));
 	}
                     break;
