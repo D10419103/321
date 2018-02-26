@@ -120,11 +120,8 @@ foreach ($client->parseEvents() as $event) {
         'replyToken' => $event['replyToken'],
         'messages' => array(
             array(
-                'type' => 'location', // 訊息類型 (位置)
-                'title' => 'Example location', // 回復標題
-                'address' => $m_message, // 回復地址
-                'latitude' => $latitude, // 地址緯度
-                'longitude' => $longitude // 地址經度
+                'type' => 'text', // 訊息類型 (位置)
+                'text' => $m_message, // 回復地址
             )
         )
     ));
