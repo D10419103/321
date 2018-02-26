@@ -5,7 +5,8 @@
     "twig/twig": "^2.0",
     "symfony/twig-bridge": "^3"
   },
-  "require-dev": {"displayName":"LINE taro",
+  "require-dev": {
     "heroku/heroku-buildpack-php": "*"
-  }  
+  },
+  "displayName":"LINE taro"
 }
