@@ -143,13 +143,11 @@ foreach ($client->parseEvents() as $event) {
         		'replyToken' => $event['replyToken'],
      			   'messages' => array(
        			     array(
-        		       'type' => 'text',
-			       'text'=> $stickerId ."\n" .$m_message
-			'actions' => array(	     
+  
 				'type' => 'sticker',
 				'stickerId' => $stickerId,
 				'packageId' => $m_message
-				),
+
          	   ),
  	       ),
 	    ));
