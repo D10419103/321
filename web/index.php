@@ -109,25 +109,7 @@ foreach ($client->parseEvents() as $event) {
             )
         )
                     	));	
-			}else if (strtolower($message['text']) == "location" || $message['text'] == "地址" || $message['text'] == "位置"){
-				
-				
-				$latitude=$message['latitude'];
-                   	$longitude=$message['longitude'];
-			$address = $message['address'];
-    $client->replyMessage(array(
-        'replyToken' => $event['replyToken'],
-        'messages' => array(
-            array(
-                'type' => 'location', // 訊息類型 (位置)
-                'title' => 'Example location', // 回復標題
-                'address' => $address, // 回復地址
-                'latitude' => $longitude, // 地址緯度
-                'longitude' => $latitude // 地址經度
-            )
-        )
-    ));
-}
+			}
                     break;
                         
                     case 'location' :
