@@ -109,27 +109,7 @@ foreach ($client->parseEvents() as $event) {
             )
         )
                     	));	
-			}else if (strtolower($message['text']) == "location" || $message['text'] == "地址" || $message['text'] == "位置"){
-  
-				
-				$latitude=$message['latitude'];
-                   	$longitude=$message['longitude'];
-			$m_message = $message['address'];
-				
-				$client->replyMessage(array(
-        'replyToken' => $event['replyToken'],
-        'messages' => array(
-            array(
-                'type' => 'text', // 訊息類型 (位置)
-                'text' => $m_message, // 回復地址
-            )
-        )
-    ));
-}
-				
-				
-				
-				
+			}	
                     break;
                         
                     case 'location' :
@@ -154,7 +134,7 @@ foreach ($client->parseEvents() as $event) {
                 	}
                     break;
 			
-			    case 'sticker' :
+		    case 'sticker' :
 			$stickerId = $message['stickerId'];
 			$packageId = $message['packageId'];
                 	if($m_message!="")
@@ -166,7 +146,7 @@ foreach ($client->parseEvents() as $event) {
                                 'type' => 'sticker',
                                 'packageId' => $packageId,
 				'stickerId' => $stickerId,
-				 'text' => $m_message
+				 'text' => $m_message . $packageId . $stickerId
                             ),
                         ),
                     	));
