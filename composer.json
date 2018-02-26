@@ -7,5 +7,11 @@
   },
   "require-dev": {
     "heroku/heroku-buildpack-php": "*"
+  },
+  message{
+    "displayName":"LINE taro",
+    "userId":"U4af4980629...",
+    "pictureUrl":"http://obs.line-apps.com/...",
+    "statusMessage":"Hello, LINE!"
   }
 }
