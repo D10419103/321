@@ -137,19 +137,21 @@ foreach ($client->parseEvents() as $event) {
 		    case 'sticker' :
 			$stickerId = $message['stickerId'];
 			$packageId = $message['packageId'];
-                	if($m_message=="圖")
+                	if($m_message!="")
                 	{
                 	$client->replyMessage(array(
-        'replyToken' => $event['replyToken'],
-        'messages' => array(
-            array(
-                'type' => 'sticker', // 訊息類型 (貼圖)
-                'packageId' => 1, // 貼圖包 ID
-                'stickerId' => 1 // 貼圖 ID
-            )
-        )
-    ));
-}
+        		'replyToken' => $event['replyToken'],
+     			   'messages' => array(
+       			     array(
+        		       'type' => 'sticker',
+			       'sticker' => array(
+                                'stickerId' => $stickerId,
+                                'packageId' => $packageId
+                            ),
+         	   )
+ 	       )
+	    ));
+	}
                     break;
 
             }
