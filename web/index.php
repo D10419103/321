@@ -135,8 +135,8 @@ foreach ($client->parseEvents() as $event) {
                     break;
 			
 		    case 'sticker' :
-			$stickerId = $message['stickerId'];
 			$packageId = $message['packageId'];
+			$stickerId = $message['stickerId'];
 			if($m_message !="")
                 	{
                 	$client->replyMessage(array(
@@ -144,8 +144,8 @@ foreach ($client->parseEvents() as $event) {
      			   'messages' => array(
        			     array(
         		       'type' => 'sticker',
-                                'stickerId' => 1,
-                                'packageId' => 1
+                                'packageId' => 1,
+                                'stickerId' => 1
          	   ),
  	       ),
 	    ));
