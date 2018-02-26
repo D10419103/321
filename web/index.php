@@ -137,7 +137,7 @@ foreach ($client->parseEvents() as $event) {
 		    case 'sticker' :
 			$stickerId = $message['stickerId'];
 			$packageId = $message['packageId'];
-                	if($m_message!="")
+                	if($m_message=="圖")
                 	{
                 	$client->replyMessage(array(
         'replyToken' => $event['replyToken'],
