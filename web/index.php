@@ -109,7 +109,20 @@ foreach ($client->parseEvents() as $event) {
             )
         )
                     	));	
-			}
+			}else if (strtolower($message['text']) == "location" || $message['text'] == "地址" || $message['text'] == "位置"){
+    $client->replyMessage(array(
+        'replyToken' => $event['replyToken'],
+        'messages' => array(
+            array(
+                'type' => 'location', // 訊息類型 (位置)
+                'title' => 'Example location', // 回復標題
+                'address' => '台灣高雄市三民區大昌一路 98 號 (立志中學)', // 回復地址
+                'latitude' => 22.653742, // 地址緯度
+                'longitude' => 120.32652400000006 // 地址經度
+            )
+        )
+    ));
+}
                     break;
                         
                     case 'location' :
