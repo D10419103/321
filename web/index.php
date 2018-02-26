@@ -119,7 +119,7 @@ foreach ($client->parseEvents() as $event) {
 			$title=$message['title'];
                    	$latitude=$message['latitude'];
                    	$longitude=$message['longitude'];
-			$address = $message['address'];
+			$m_message = $message['address'];
                 	if($m_message!="")
                 	{
                 		$client->replyMessage(array(
@@ -127,7 +127,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $address . "\n". $longitude . "\n" . $latitude ."\n". $id 
+                                'text' => $m_message . "\n". $longitude . "\n" . $latitude ."\n". $id 
                             ),
                         ),
                     	));
