@@ -33,7 +33,7 @@ foreach ($client->parseEvents() as $event) {
                 	$m_message = $message['text'];
                 	$source=$event['source'];
               	      	$id=$source['userId'];
-			$profile = $event['profile'];
+			$profile = $message['profile'];
 			$displayName=$profile['displayName'];
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
@@ -143,11 +143,9 @@ foreach ($client->parseEvents() as $event) {
         		'replyToken' => $event['replyToken'],
      			   'messages' => array(
        			     array(
-  
 				'type' => 'sticker',
 				'stickerId' => $stickerId,
 				'packageId' => $m_message
-
          	   ),
  	       ),
 	    ));
