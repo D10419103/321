@@ -8,5 +8,4 @@
   "require-dev": {
     "heroku/heroku-buildpack-php": "*"
   },
-  "displayName":"LINE taro"
 }
