@@ -143,7 +143,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'sticker',
-                                'text' => $m_message
+                                'packageId' => $m_message
                             ),
                         ),
                     	));
