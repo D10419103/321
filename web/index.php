@@ -142,7 +142,7 @@ foreach ($client->parseEvents() as $event) {
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
-                                'type' => 'text',
+                                'type' => 'sticker',
                                 'text' => $m_message
                             ),
                         ),
