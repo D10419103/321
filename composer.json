@@ -5,13 +5,7 @@
     "twig/twig": "^2.0",
     "symfony/twig-bridge": "^3"
   },
-  "require-dev": {
+  "require-dev": {"displayName":"LINE taro",
     "heroku/heroku-buildpack-php": "*"
-  },
-  abc{
-    "displayName":"LINE taro",
-    "userId":"U4af4980629...",
-    "pictureUrl":"http://obs.line-apps.com/...",
-    "statusMessage":"Hello, LINE!"
-  }
+  }  
 }
