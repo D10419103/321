@@ -108,23 +108,7 @@ foreach ($client->parseEvents() as $event) {
             )
         )
                     	));	
-			}else if($m_message=="位置")
-                	{
-			$id=$source['userId'];
-                   	$latitude=$message['latitude'];
-                   	$longitude=$message['longitude'];
-			$address = $message['address'];
-				
-                		$client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $address . "\n". $longitude . "\n" . $latitude ."\n". $id 
-                            ),
-                        ),
-                    	));
-                	}
+			}
                     break;
                         
                     case 'location' :
