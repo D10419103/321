@@ -43,8 +43,8 @@ foreach ($client->parseEvents() as $event) {
                 'displayName' => 'LINE taro',
                 'userId' => 'Uxxxxxxxxxxxxxx1',
                 'pictureUrl' => 'https://example.com/profile.png',
-            ];
-				$bot = new \LINE\LINEBot(new CurlHTTPClient('d94WAvqAJBWRXZ3pmnlejuQ7S/Glp8CDK0FHSSLEWlypMdpiPerBs23gk/xsbQjT31RHVd1iq4YVMqqLbYiRRA0AnDPQohV2zFBBwMBK5JchWjB47muK5uiHL2l/JvkepuraSTviQNaPxMjKM7z/jwdB04t89/1O/w1cDnyilFU='), [
+            ];$displayName=return['displayName'];
+/*				$bot = new \LINE\LINEBot(new CurlHTTPClient('d94WAvqAJBWRXZ3pmnlejuQ7S/Glp8CDK0FHSSLEWlypMdpiPerBs23gk/xsbQjT31RHVd1iq4YVMqqLbYiRRA0AnDPQohV2zFBBwMBK5JchWjB47muK5uiHL2l/JvkepuraSTviQNaPxMjKM7z/jwdB04t89/1O/w1cDnyilFU='), [
     'channelSecret' => 'f09490cd01d030f3bed923ab84c529cd'
 ]);
 
@@ -54,7 +54,7 @@ if ($res->isSucceeded()) {
     $displayName = $profile['displayName'];
     $statusMessage = $profile['statusMessage'];
     $pictureUrl = $profile['pictureUrl'];
-}
+}*/
 				
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
