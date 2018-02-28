@@ -33,13 +33,12 @@ foreach ($client->parseEvents() as $event) {
                 	$m_message = $message['text'];
                 	$source=$event['source'];
               	      	$id=$source['userId'];
-
+			$displayName = $profile['displayName'];				
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
 			date_default_timezone_set('Asia/Taipei');
 			if($m_message=="安安")
                 	{
-    $displayName = $profile['displayName'];				
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
