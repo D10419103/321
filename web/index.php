@@ -40,8 +40,6 @@ foreach ($client->parseEvents() as $event) {
 			if($m_message=="安安")
                 	{
 
-$res = $bot->getProfile('$id');
-
     $profile = $res->getJSONDecodedBody();
     $displayName = $profile['displayName'];
     $statusMessage = $profile['statusMessage'];
