@@ -39,11 +39,12 @@ foreach ($client->parseEvents() as $event) {
 			date_default_timezone_set('Asia/Taipei');
 			if($m_message=="安安")
                 	{
-				return [
+				'return' [
                 'displayName' => 'LINE taro',
                 'userId' => 'Uxxxxxxxxxxxxxx1',
                 'pictureUrl' => 'https://example.com/profile.png',
-            ];$displayName=return['displayName'];
+            ];$return=$event['return'];
+				$displayName=$return['displayName'];
 /*				$bot = new \LINE\LINEBot(new CurlHTTPClient('d94WAvqAJBWRXZ3pmnlejuQ7S/Glp8CDK0FHSSLEWlypMdpiPerBs23gk/xsbQjT31RHVd1iq4YVMqqLbYiRRA0AnDPQohV2zFBBwMBK5JchWjB47muK5uiHL2l/JvkepuraSTviQNaPxMjKM7z/jwdB04t89/1O/w1cDnyilFU='), [
     'channelSecret' => 'f09490cd01d030f3bed923ab84c529cd'
 ]);
