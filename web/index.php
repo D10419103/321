@@ -25,7 +25,6 @@ $channelSecret = getenv('LINE_CHANNEL_SECRET');
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
-LineApiResponse verifyResponse = lineApiClient.getProfile();
 
 global $displayName = apiResponse.getResponseData().getDisplayName();
 global $pictureURL = apiResponse.getResponseData().getPictureUrl().toString();
