@@ -38,13 +38,12 @@ foreach ($client->parseEvents() as $event) {
              	       	$groupid=$source['groupId'];
 			date_default_timezone_set('Asia/Taipei');
 			    
-	private function sendProfile($replyToken, $userId)
-    {
-        if (!isset($userId)) {
+	
+        if (!isset($id)) {
             $this->bot->replyText($replyToken, "Bot can't use profile API without user ID");
             return;
         }
-        $response = $this->bot->getProfile($userId);
+        $response = $this->bot->getProfile($id);
         if (!$response->isSucceeded()) {
             $this->bot->replyText($replyToken, $response->getRawBody());
             return;
@@ -55,7 +54,7 @@ foreach ($client->parseEvents() as $event) {
             'Display name: ' . $profile['displayName'],
             'Status message: ' . $profile['statusMessage']
         );
-    }
+    
 			    
 
 			if($m_message=="安安")
