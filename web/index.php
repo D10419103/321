@@ -38,7 +38,7 @@ foreach ($client->parseEvents() as $event) {
              	       	$groupid=$source['groupId'];
 			date_default_timezone_set('Asia/Taipei');
 			    
-	$bot = new \LINE\LINEBot(new CurlHTTPClient('your-channel-token'), [
+	$bot = new \D10419103\LINEBot(new CurlHTTPClient('your-channel-token'), [
     'channelSecret' => 'your-channel-secret'
 ]);
 		    
