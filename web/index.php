@@ -39,7 +39,7 @@ foreach ($client->parseEvents() as $event) {
 			date_default_timezone_set('Asia/Taipei');
 			    
 			    
-$res = $client->getProfile('user-id');
+$res = $client->getProfile('$id');
 if ($m_message=="1") {
     $profile = $res->getJSONDecodedBody();
     $displayName = $profile['displayName'];
