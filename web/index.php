@@ -29,7 +29,7 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-		    case 'text':
+		    case 'text':   
                 	$m_message = $message['text'];
                 	$source=$event['source'];
               	      	$id=$source['userId'];
@@ -37,6 +37,26 @@ foreach ($client->parseEvents() as $event) {
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
 			date_default_timezone_set('Asia/Taipei');
+			    
+			    
+$res = $client->getProfile('user-id');
+if ($m_message=="1") {
+    $profile = $res->getJSONDecodedBody();
+    $displayName = $profile['displayName'];
+    $statusMessage = $profile['statusMessage'];
+    $pictureUrl = $profile['pictureUrl'];
+	$client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $profile ."\n" . $displayName."\n". date('Y-m-d h:i:sa') . "\n" . $statusMessage . "\n" . $pictureUrl
+                            )	
+                        )
+                    	));	
+}
+			    
+			    
 			if($m_message=="安安")
                 	{
                 		$client->replyMessage(array(
