@@ -25,8 +25,6 @@ $channelSecret = getenv('LINE_CHANNEL_SECRET');
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
-
- $displayName = apiResponse.getResponseData().getDisplayName();
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
