@@ -38,28 +38,26 @@ foreach ($client->parseEvents() as $event) {
              	       	$groupid=$source['groupId'];
 			date_default_timezone_set('Asia/Taipei');
 			    
-	$bot = new \D10419103\LINEBot(new CurlHTTPClient('your-channel-token'), [
-    'channelSecret' => 'your-channel-secret'
-]);
-		    
-$res = $bot->getProfile('U8acc7f611c6f853ac53e1a474bd77c92');
-if ($m_message=="1") {
-    $profile = $res->getJSONDecodedBody();
-    $displayName = $profile['displayName'];
-    $statusMessage = $profile['statusMessage'];
-    $pictureUrl = $profile['pictureUrl'];
-	$client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $profile ."\n" . $displayName."\n". date('Y-m-d h:i:sa') . "\n" . $statusMessage . "\n" . $pictureUrl
-                            )	
-                        )
-                    	));	
-}
+	private function sendProfile($replyToken, $userId)
+    {
+        if (!isset($userId)) {
+            $this->bot->replyText($replyToken, "Bot can't use profile API without user ID");
+            return;
+        }
+        $response = $this->bot->getProfile($userId);
+        if (!$response->isSucceeded()) {
+            $this->bot->replyText($replyToken, $response->getRawBody());
+            return;
+        }
+        $profile = $response->getJSONDecodedBody();
+        $this->bot->replyText(
+            $replyToken,
+            'Display name: ' . $profile['displayName'],
+            'Status message: ' . $profile['statusMessage']
+        );
+    }
 			    
-			    
+
 			if($m_message=="安安")
                 	{
                 		$client->replyMessage(array(
