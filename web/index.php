@@ -37,26 +37,6 @@ foreach ($client->parseEvents() as $event) {
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
 			date_default_timezone_set('Asia/Taipei');
-			    
-	
-        if (!isset($id)) {
-            $this->bot->replyText($replyToken, "Bot can't use profile API without user ID");
-            return;
-        }
-        $response = $this->bot->getProfile($id);
-        if (!$response->isSucceeded()) {
-            $this->bot->replyText($replyToken, $response->getRawBody());
-            return;
-        }
-        $profile = $response->getJSONDecodedBody();
-        $this->bot->replyText(
-            $replyToken,
-            'Display name: ' . $profile['displayName'],
-            'Status message: ' . $profile['statusMessage']
-        );
-    
-			    
-
 			if($m_message=="安安")
                 	{
                 		$client->replyMessage(array(
@@ -128,7 +108,33 @@ foreach ($client->parseEvents() as $event) {
             )
         )
                     	));	
-			}
+			}else if($m_message=="1"){
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'template',
+                                'altText' => 'Example confirm template',
+                                'template' => array(
+                                    'type' => 'confirm',
+                                    'text' => '請選擇日期',
+                                    'actions' => array(
+                                        array(
+                                        'type' => 'datetimepicker',
+                                        'label' => '請選擇',
+                                        'data' => 'storeId=12345',
+                                        'mode' => 'datetime',
+                                        'initial' => '2018-01-01t00:00',
+                                        'max' => '2020-12-30t00:00',
+                                        'min' => '2017-01-01t00:00'
+                                         ),
+                                        array(
+                                        'type' => 'message',
+                                        'label' => '取消',
+                                        'text' => '請使用看看'
+                                        )
+                            ))))));
+                    }
                     break;
                         
                     case 'location' :
