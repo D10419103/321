@@ -135,6 +135,29 @@ foreach ($client->parseEvents() as $event) {
                                         'text' => '請使用看看'
                                         )
                             ))))));
+                    }else if($m_message=="2"){
+                        $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'template',
+                                'altText' => 'Example confirm template',
+                                'template' => array(
+                                    'type' => 'confirm',
+                                    'text' => '請選擇日期',
+                                    'actions' => array(
+                                        array(
+                                        'type' => 'join',
+                                        'timestamp' => '1462629479859',
+                                        'groupId' => 'C4af4980629',
+                                        'mode' => 'datetime'
+                                         ),
+                                        array(
+                                        'type' => 'message',
+                                        'label' => '取消',
+                                        'text' => '請使用看看'
+                                        )
+                            ))))));
                     }
                     break;
                         
