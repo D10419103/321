@@ -33,8 +33,6 @@ foreach ($client->parseEvents() as $event) {
 		    case 'text':   
                 	$m_message = $message['text'];
                 	$source=$event['source'];
-			    $beacon=$event['beacon'];
-			    $hwid=$beacon['hwid'];
               	      	$id=$source['userId'];
 			$displayName = $contacts['displayName'];				
                   	$roomid=$source['roomId'];
@@ -47,7 +45,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName ."\n" . $hwid
+                                'text' => $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName 
                             )	
                         )
                     	));			
