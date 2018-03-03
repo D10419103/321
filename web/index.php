@@ -33,6 +33,8 @@ foreach ($client->parseEvents() as $event) {
 		    case 'text':   
                 	$m_message = $message['text'];
                 	$source=$event['source'];
+			    $beacon=$event['beacon'];
+			    $hwid=$beacon['hwid'];
               	      	$id=$source['userId'];
 			$displayName = $contacts['displayName'];				
                   	$roomid=$source['roomId'];
@@ -45,7 +47,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName
+                                'text' => $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName"\n" . $hwid
                             )	
                         )
                     	));			
@@ -128,29 +130,6 @@ foreach ($client->parseEvents() as $event) {
                                         'initial' => '2018-01-01t00:00',
                                         'max' => '2020-12-30t00:00',
                                         'min' => '2017-01-01t00:00'
-                                         ),
-                                        array(
-                                        'type' => 'message',
-                                        'label' => '取消',
-                                        'text' => '請使用看看'
-                                        )
-                            ))))));
-                    }else if($m_message=="2"){
-                        $client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'template',
-                                'altText' => 'Example confirm template',
-                                'template' => array(
-                                    'type' => 'confirm',
-                                    'text' => '請選擇日期',
-                                    'actions' => array(
-                                        array(
-                                        'type' => 'join',
-                                        'timestamp' => '1462629479859',
-                                        'groupId' => 'C4af4980629',
-                                        'mode' => 'datetime'
                                          ),
                                         array(
                                         'type' => 'message',
