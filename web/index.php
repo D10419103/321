@@ -18,7 +18,7 @@
 
 require_once('./LINEBotTiny.php');
 
-use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
+use LINE\LINEBot;
 
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
@@ -26,14 +26,16 @@ $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
 
-$httpClient = new \ LINE \ LINEBot \HTTPClient\CurlHTTPClient($channelAccessToken);
-$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
-$response = $bot->getProfile('<userId>');
-if ($response->isSucceeded()) {
-    $profile = $response->getJSONDecodedBody();
-    echo $profile['displayName'];
-    echo $profile['pictureUrl'];
-    echo $profile['statusMessage'];
+$bot = new \LINE\LINEBot(new CurlHTTPClient($channelAccessToken), [
+    'channelSecret' => $channelSecret
+]);
+
+$res = $bot->getProfile('user-id');
+if ($res->isSucceeded()) {
+    $profile = $res->getJSONDecodedBody();
+    $displayName = $profile['displayName'];
+    $statusMessage = $profile['statusMessage'];
+    $pictureUrl = $profile['pictureUrl'];
 }
 
 
