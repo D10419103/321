@@ -18,7 +18,7 @@
 
 require_once('./LINEBotTiny.php');
 
-
+use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
 
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
