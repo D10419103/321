@@ -17,6 +17,7 @@
  */
 
 require_once('./LINEBotTiny.php');
+namespace LINE\Tests\LINEBot;
 
 use LINE\LINEBot;
 
