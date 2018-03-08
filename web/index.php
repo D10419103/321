@@ -139,8 +139,6 @@ foreach ($client->parseEvents() as $event) {
 			  
 		    case "image" :
 			$type=$message['type'];
-			$originalContentUrl=$message['originalContentUrl'];
-			$previewImageUrl=$message['previewImageUrl'];
                 	if($m_message!="")
                 	{
                 		$client->replyMessage(array(
@@ -148,7 +146,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $type . "\n" . $originalContentUrl . "\n" . $previewImageUrl
+                                'text' => $type
                             ),
                         ),
                     	));
