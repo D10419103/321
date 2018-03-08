@@ -17,9 +17,6 @@
  */
 
 require_once('./LINEBotTiny.php');
-namespace LINE\Web\LINEBot;
-
-use LINE\LINEBot;
 
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
