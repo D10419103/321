@@ -36,6 +36,7 @@ foreach ($client->parseEvents() as $event) {
 			$displayName = $contacts['displayName'];				
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
+			    $a=count($message);
 			date_default_timezone_set('Asia/Taipei');
 			if($m_message=="安安")
                 	{
@@ -44,7 +45,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName 
+                                'text' => $type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName . $a . count($message) 
                             )	
                         )
                     	));			
