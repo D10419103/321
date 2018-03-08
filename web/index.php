@@ -186,7 +186,6 @@ foreach ($client->parseEvents() as $event) {
 				break;
                         
                     case 'location' :
-			$type=$message['type'];
 			$source=$event['source'];
               	      	$type = $source['type']; 
               	      	$id=$source['userId'];
@@ -194,6 +193,7 @@ foreach ($client->parseEvents() as $event) {
                    	$latitude=$message['latitude'];
                    	$longitude=$message['longitude'];
 			$m_message = $message['address'];
+			$type=$message['type'];
                 	if($m_message!="")
                 	{
                 		$client->replyMessage(array(
