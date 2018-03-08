@@ -30,7 +30,7 @@ foreach ($client->parseEvents() as $event) {
             switch ($message['type']) {
 		    case 'text':   
                 	$m_message = $message['text'];
-			$type=$message['type'];
+			$type=$message[2];
                 	$source=$event['source'];
               	      	$id=$source['userId'];
 			$displayName = $contacts['displayName'];				
