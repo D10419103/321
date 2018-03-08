@@ -44,7 +44,8 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName . count($message) . "\n" .count($event). "\n" .count($source) 
+                                'text' => $type /*."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName*/
+				    . count($message) . "\n" .count($event). "\n" .count($source) . "\n" .count($replyToken) . "\n" .count($type) . "\n" .count($timestamp) 
                             )	
                         )
                     	));			
