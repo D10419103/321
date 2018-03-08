@@ -29,8 +29,8 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];
             switch ($message['type']) {
 		    case 'text':   
-                	$m_message = $message['3'];
-			$type=$message['type'];
+                	$m_message = $message['text'];
+			$type=$message[1];
                 	$source=$event['source'];
               	      	$id=$source['userId'];
 			$displayName = $contacts['displayName'];				
