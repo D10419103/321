@@ -26,20 +26,6 @@ $channelSecret = getenv('LINE_CHANNEL_SECRET');
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
-
-$bot = new \LINE\LINEBot(new CurlHTTPClient($channelAccessToken), [
-    'channelSecret' => $channelSecret
-]);
-
-$res = $bot->getProfile('user-id');
-if ($res->isSucceeded()) {
-    $profile = $res->getJSONDecodedBody();
-    $displayName = $profile['displayName'];
-    $statusMessage = $profile['statusMessage'];
-    $pictureUrl = $profile['pictureUrl'];
-}
-
-
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
@@ -47,6 +33,7 @@ foreach ($client->parseEvents() as $event) {
             switch ($message['type']) {
 		    case 'text':   
                 	$m_message = $message['text'];
+			$type=$message['type'];
                 	$source=$event['source'];
               	      	$id=$source['userId'];
 			$displayName = $contacts['displayName'];				
@@ -60,7 +47,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName 
+                                'text' => $type ."\n" $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName 
                             )	
                         )
                     	));			
@@ -152,8 +139,57 @@ foreach ($client->parseEvents() as $event) {
                             ))))));
                     }
                     break;
+			  
+		    case "image" :
+			$type=$message['type'];
+                	if($m_message!="")
+                	{
+                		$client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $type
+                            ),
+                        ),
+                    	));
+                	}
+				break;
+	
+		    case "video" :
+			$type=$message['type'];
+                	if($m_message!="")
+                	{
+                		$client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $type
+                            ),
+                        ),
+                    	));
+                	}
+				break;
+				
+		    case "audio" :
+			$type=$message['type'];
+                	if($m_message!="")
+                	{
+                		$client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $type
+                            ),
+                        ),
+                    	));
+                	}
+				break;
                         
                     case 'location' :
+			$type=$message['type'];
 			$source=$event['source'];
               	      	$type = $source['type']; 
               	      	$id=$source['userId'];
@@ -168,7 +204,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $m_message . "\n". $longitude . "\n" . $latitude ."\n". $id 
+                                'text' => $type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $id 
                             ),
                         ),
                     	));
@@ -178,6 +214,7 @@ foreach ($client->parseEvents() as $event) {
 		    case 'sticker' :
 			$m_message = $message['packageId'];
 			$stickerId = $message['stickerId'];
+			$type=$message['type'];
 			if($m_message !="")
                 	{
                 	$client->replyMessage(array(
@@ -188,6 +225,10 @@ foreach ($client->parseEvents() as $event) {
 				'stickerId' => $stickerId,
 				'packageId' => $m_message
          	   ),
+			     array(
+                                'type' => 'text',
+                                'text' => $type
+                            ),
  	       ),
 	    ));
 	}
