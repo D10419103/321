@@ -201,7 +201,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $id 
+                                'text' => $type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $id . "\n". count($message)
                             ),
                         ),
                     	));
@@ -224,7 +224,7 @@ foreach ($client->parseEvents() as $event) {
          	   ),
 			     array(
                                 'type' => 'text',
-                                'text' => $type
+                                'text' => $type ."\n". count($message)
                             ),
  	       ),
 	    ));
