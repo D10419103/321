@@ -144,7 +144,7 @@ foreach ($client->parseEvents() as $event) {
 			  
 		    case "image" :
 			$type=$message['type'];
-                	if($m_message!="")
+                	if($type!="")
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
@@ -160,7 +160,7 @@ foreach ($client->parseEvents() as $event) {
 	
 		    case "video" :
 			$type=$message['type'];
-                	if($m_message!="")
+                	if($type!="")
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
@@ -176,7 +176,7 @@ foreach ($client->parseEvents() as $event) {
 				
 		    case "audio" :
 			$type=$message['type'];
-                	if($m_message!="")
+                	if($type!="")
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
