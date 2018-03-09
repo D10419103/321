@@ -151,7 +151,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => "安安"
+                                'text' => $type
                             ),
                         ),
                     	));
