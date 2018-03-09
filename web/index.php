@@ -30,7 +30,7 @@ foreach ($client->parseEvents() as $event) {
             switch ($message['type']) {
 		    case 'text':   
                 	$m_message = $message['text'];
-			$type = $message['type'];
+			/*$type = $message['type'];
                 	$source=$event['source'];
               	      	$id=$source['userId'];
 			$displayName = $contacts['displayName'];				
@@ -39,7 +39,7 @@ foreach ($client->parseEvents() as $event) {
 			    $replyToken=$event['replyToken'];
 			    $type2=$event['type'];
 			    $timestamp=$event['timestamp'];
-			date_default_timezone_set('Asia/Taipei');
+			date_default_timezone_set('Asia/Taipei');*/
 			if($m_message=="安安")
                 	{
                 		$client->replyMessage(array(
@@ -47,8 +47,9 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName . "\n"
-				    . count($message) . "\n" .count($event). "\n" .count($source) . "\n" .count($replyToken) . "\n" .count($type2) . "\n" .count($timestamp) 
+                                'text' => "123123"
+				    /*$type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $displayName . "\n"
+				    . count($message) . "\n" .count($event). "\n" .count($source) . "\n" .count($replyToken) . "\n" .count($type2) . "\n" .count($timestamp) */
                             )	
                         )
                     	));			
