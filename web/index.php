@@ -52,11 +52,36 @@ foreach ($client->parseEvents() as $event) {
                             )	
                         )
                     	));
-				$str = "Hello World";
-$file = fopen('output.txt','a'); //開啟檔案
-fwrite($file, $str);
+			$html = 'test.html';//要建立的頁面名稱
+$file = fopen($html,'w');//建檔
+
+//寫入資料
+fwrite($file,'<!doctype html>'."\n");
+fwrite($file,'<html>'."\n");
+fwrite($file,'<head>'."\n");
+fwrite($file,'<meta charset="utf-8">'."\n");
+fwrite($file,'<title>程式建立的 HTML 檔案</title>'."\n");
+fwrite($file,'</head>'."\n");
+fwrite($file,'<body>'."\n");
+fwrite($file,'這是以 php fopen 建立的 HTML 頁面'."\n");
+fwrite($file,'</body>'."\n");
+fwrite($file,'</html>'."\n");
+
+//關檔
 fclose($file);
 
+//判斷檔案是否存在
+if(is_file($html)){
+	$client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' =>"123"
+                            )	
+                        )
+                    	));
+}
                 	}else if($m_message=="123"){
 				
 				$client->replyMessage(array(
