@@ -52,9 +52,9 @@ foreach ($client->parseEvents() as $event) {
                             )	
                         )
                     	));
-				$file = fopen("test.xml","a+"); //開啟檔案
-				fwrite($file,$m_message);//寫入字串
-				fclose($file);
+				$fp=fopen("infor.txt","w");
+fputs($fp,"summer2004");
+fclose($fp);
                 	}else if($m_message=="123"){
 				
 				$client->replyMessage(array(
