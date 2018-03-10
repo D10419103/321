@@ -29,6 +29,17 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];
             switch ($message['type']) {
 		    case 'text':   
+			    if(is_file($html)){
+	$client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => "123"
+                            )	
+                        )
+                    	));
+}
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
