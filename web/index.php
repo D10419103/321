@@ -52,7 +52,7 @@ foreach ($client->parseEvents() as $event) {
                             )	
                         )
                     	));
-$file='./web/output.txt'; 
+$file='/app/web/output.txt'; 
 $myfile = fopen($file, "a");
 fwrite($myfile, "123");
 fclose($myfile);
