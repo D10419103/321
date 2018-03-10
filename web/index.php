@@ -60,19 +60,6 @@ fwrite($file,'123');
 
 //關檔
 fclose($file);
-
-//判斷檔案是否存在
-if(is_file($html)){
-	$client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' =>"123"
-                            )	
-                        )
-                    	));
-}
                 	}else if($m_message=="123"){
 				
 				$client->replyMessage(array(
