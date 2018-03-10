@@ -54,10 +54,7 @@ foreach ($client->parseEvents() as $event) {
                     	));
 $file='./web/output.txt'; 
 $myfile = fopen($file, "a")
-
-fwrite($myfile,'123');
-
-
+fwrite($myfile, "123");
 fclose($myfile);
                 	}else if($m_message=="123"){
 				
