@@ -53,7 +53,7 @@ foreach ($client->parseEvents() as $event) {
                         )
                     	));
 				$str = "Hello World";
-$file = fopen("test.xml","a+"); //開啟檔案
+$file = fopen("output.txt","a"); //開啟檔案
 fwrite($file,$str);
 fclose($file);
 
