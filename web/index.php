@@ -28,18 +28,7 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
-		    case 'text':   
-			    if(is_file($html)){
-	$client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => "123"
-                            )	
-                        )
-                    	));
-}
+		    case 'text':
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
@@ -51,7 +40,7 @@ foreach ($client->parseEvents() as $event) {
 			    $type2=$event['type'];
 			    $timestamp=$event['timestamp'];
 			date_default_timezone_set('Asia/Taipei');
-			if($m_message=="安安")
+			if($m_message=="安安" && is_file($html))
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
