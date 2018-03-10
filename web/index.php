@@ -52,14 +52,13 @@ foreach ($client->parseEvents() as $event) {
                             )	
                         )
                     	));
-			$html = 'test.txt';//要建立的頁面名稱
-$file = fopen($html,'w');//建檔
+$file='./web/output.txt'; 
+$myfile = fopen($file, "a")
 
-//寫入資料
-fwrite($file,'123');
+fwrite($myfile,'123');
 
-//關檔
-fclose($file);
+
+fclose($myfile);
                 	}else if($m_message=="123"){
 				
 				$client->replyMessage(array(
