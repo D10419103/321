@@ -53,8 +53,8 @@ foreach ($client->parseEvents() as $event) {
                         )
                     	));
 				$str = "Hello World";
-$file = fopen("output.txt","a"); //開啟檔案
-fwrite($file,$str);
+$file = fopen('output.txt','a'); //開啟檔案
+fwrite($file, $str);
 fclose($file);
 
                 	}else if($m_message=="123"){
