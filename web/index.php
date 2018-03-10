@@ -40,7 +40,7 @@ foreach ($client->parseEvents() as $event) {
 			    $type2=$event['type'];
 			    $timestamp=$event['timestamp'];
 			date_default_timezone_set('Asia/Taipei');
-			if($m_message=="安安" && is_file($html))
+			if($m_message=="安安")
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
