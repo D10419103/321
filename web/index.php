@@ -52,20 +52,11 @@ foreach ($client->parseEvents() as $event) {
                             )	
                         )
                     	));
-			$html = 'test.html';//要建立的頁面名稱
+			$html = 'test.txt';//要建立的頁面名稱
 $file = fopen($html,'w');//建檔
 
 //寫入資料
-fwrite($file,'<!doctype html>'."\n");
-fwrite($file,'<html>'."\n");
-fwrite($file,'<head>'."\n");
-fwrite($file,'<meta charset="utf-8">'."\n");
-fwrite($file,'<title>程式建立的 HTML 檔案</title>'."\n");
-fwrite($file,'</head>'."\n");
-fwrite($file,'<body>'."\n");
-fwrite($file,'這是以 php fopen 建立的 HTML 頁面'."\n");
-fwrite($file,'</body>'."\n");
-fwrite($file,'</html>'."\n");
+fwrite($file,'123');
 
 //關檔
 fclose($file);
