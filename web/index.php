@@ -51,7 +51,10 @@ foreach ($client->parseEvents() as $event) {
 				    . count($message) . "\n" .count($event). "\n" .count($source) . "\n" .count($replyToken) . "\n" .count($type2) . "\n" .count($timestamp) 
                             )	
                         )
-                    	));			
+                    	));
+				$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+				fwrite($myfile, $m_message);
+				fclose($myfile);
                 	}else if($m_message=="123"){
 				
 				$client->replyMessage(array(
