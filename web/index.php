@@ -52,9 +52,9 @@ foreach ($client->parseEvents() as $event) {
                             )	
                         )
                     	));
-				$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-				fwrite($myfile, $m_message);
-				fclose($myfile);
+				$file = fopen("test.xml","a+"); //開啟檔案
+				fwrite($file,$m_message);//寫入字串
+				fclose($file);
                 	}else if($m_message=="123"){
 				
 				$client->replyMessage(array(
