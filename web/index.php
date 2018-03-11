@@ -29,6 +29,10 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];
             switch ($message['type']) {
 		    case 'text':
+			    $file = fopen("C:\\Line_log.txt", "a+");
+fwrite($file, $json_string."\n");
+$json_obj = json_decode($json_string);
+$event = $json_obj->{"events"}[0];
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
