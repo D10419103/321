@@ -22,40 +22,40 @@ use LINE\LINEBot\Constant\ActionType;
 use LINE\LINEBot\TemplateActionBuilder;
 
 /**
- * A builder class for message action.
+ * A builder class for postback action.
  *
  * @package LINE\LINEBot\TemplateActionBuilder
  */
-class MessageTemplateActionBuilder implements TemplateActionBuilder
+class PostbackTemplateActionBuilder implements TemplateActionBuilder
 {
     /** @var string */
     private $label;
     /** @var string */
-    private $text;
+    private $data;
 
     /**
-     * MessageAction constructor.
+     * PostbackAction constructor.
      *
      * @param string $label Label of action.
-     * @param string $text Text of message.
+     * @param string $data Data of postback.
      */
-    public function __construct($label, $text)
+    public function __construct($label, $data)
     {
         $this->label = $label;
-        $this->text = $text;
+        $this->data = $data;
     }
 
     /**
-     * Builds message action structure.
+     * Builds postback action structure.
      *
-     * @return array Built message action structure.
+     * @return array Built postback action structure.
      */
     public function buildTemplateAction()
     {
         return [
-            'type' => ActionType::MESSAGE,
+            'type' => ActionType::POSTBACK,
             'label' => $this->label,
-            'text' => $this->text,
+            'data' => $this->data,
         ];
     }
 }

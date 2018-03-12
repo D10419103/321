@@ -22,40 +22,40 @@ use LINE\LINEBot\Constant\ActionType;
 use LINE\LINEBot\TemplateActionBuilder;
 
 /**
- * A builder class for message action.
+ * A builder class for URI action.
  *
  * @package LINE\LINEBot\TemplateActionBuilder
  */
-class MessageTemplateActionBuilder implements TemplateActionBuilder
+class UriTemplateActionBuilder implements TemplateActionBuilder
 {
     /** @var string */
     private $label;
     /** @var string */
-    private $text;
+    private $uri;
 
     /**
-     * MessageAction constructor.
+     * UriAction constructor.
      *
      * @param string $label Label of action.
-     * @param string $text Text of message.
+     * @param string $uri URI of the link.
      */
-    public function __construct($label, $text)
+    public function __construct($label, $uri)
     {
         $this->label = $label;
-        $this->text = $text;
+        $this->uri = $uri;
     }
 
     /**
-     * Builds message action structure.
+     * Builds URI action structure.
      *
-     * @return array Built message action structure.
+     * @return array Built URI action structure.
      */
     public function buildTemplateAction()
     {
         return [
-            'type' => ActionType::MESSAGE,
+            'type' => ActionType::URI,
             'label' => $this->label,
-            'text' => $this->text,
+            'uri' => $this->uri,
         ];
     }
 }
