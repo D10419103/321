@@ -30,9 +30,9 @@ foreach ($client->parseEvents() as $event) {
             switch ($message['type']) {
 		    case 'text':
 			    $file = fopen("C:\\Line_log.txt", "a+");
-fwrite($file, $json_string."\n");
+/*fwrite($file, $json_string."\n");
 $json_obj = json_decode($json_string);
-$event = $json_obj->{"events"}[0];
+$event = $json_obj->{"events"}[0];*/
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
@@ -56,7 +56,7 @@ $event = $json_obj->{"events"}[0];
                             )	
                         )
                     	));
-fwrite($file, $m_message."\n");
+/*fwrite($file, $m_message."\n");
 $ch = curl_init("https://api.line.me/v2/bot/message/reply");
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
@@ -72,7 +72,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 $result = curl_exec($ch);
 fwrite($file, $result."\n"); 
 fclose($file);
-curl_close($ch);
+curl_close($ch);*/
                 	}else if($m_message=="123"){
 				
 				$client->replyMessage(array(
