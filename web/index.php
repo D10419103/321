@@ -164,6 +164,8 @@ curl_close($ch);*/
 			  
 		    case "image" :
 			$type=$message['type'];
+			    $originalContentUrl=$message['originalContentUrl'];
+			    $previewImageUrl=$message['previewImageUrl'];
                 	if($type!="")
                 	{
                 		$client->replyMessage(array(
@@ -171,7 +173,7 @@ curl_close($ch);*/
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $type . "我試圖"
+                                'text' => $type . "\n" . $originalContentUrl . "\n" . $previewImageUrl
                             ),
                         ),
                     	));
