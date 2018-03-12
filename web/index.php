@@ -15,7 +15,8 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
+/*use D10419103\src\LINEBot\HTTPClient;
+use D10419103\LINEBot;*/
 require_once('./LINEBotTiny.php');
 
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
@@ -29,7 +30,7 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];
             switch ($message['type']) {
 		    case 'text':
-			    $file = fopen("C:\\Line_log.txt", "a+");
+			    //$file = fopen("C:\\Line_log.txt", "a+");
 /*fwrite($file, $json_string."\n");
 $json_obj = json_decode($json_string);
 $event = $json_obj->{"events"}[0];*/
