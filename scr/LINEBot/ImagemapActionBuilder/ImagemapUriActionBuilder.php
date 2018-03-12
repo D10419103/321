@@ -18,50 +18,42 @@
 
 namespace LINE\LINEBot\ImagemapActionBuilder;
 
+use LINE\LINEBot\Constant\ActionType;
+use LINE\LINEBot\ImagemapActionBuilder;
+
 /**
- * A builder class for area of imagemap.
+ * A builder class for URI action of imagemap.
  *
  * @package LINE\LINEBot\ImagemapActionBuilder
  */
-class AreaBuilder
+class ImagemapUriActionBuilder implements ImagemapActionBuilder
 {
-    /** @var int */
-    private $x;
-    /** @var int */
-    private $y;
-    /** @var int */
-    private $width;
-    /** @var int */
-    private $height;
+    private $linkUri;
+    private $areaBuilder;
 
     /**
-     * AreaBuilder constructor.
+     * ImagemapUriActionBuilder constructor.
      *
-     * @param int $x Position of x-axis.
-     * @param int $y Position of y-axis.
-     * @param int $width Width of area.
-     * @param int $height Height of area.
+     * @param string $linkUri URI of the link.
+     * @param AreaBuilder $areaBuilder Builder of area.
      */
-    public function __construct($x, $y, $width, $height)
+    public function __construct($linkUri, AreaBuilder $areaBuilder)
     {
-        $this->x = $x;
-        $this->y = $y;
-        $this->width = $width;
-        $this->height = $height;
+        $this->linkUri = $linkUri;
+        $this->areaBuilder = $areaBuilder;
     }
 
     /**
-     * Builds imagemap area structure.
+     * Builds imagemap URI action structure.
      *
-     * @return array Built area structure.
+     * @return array Built URI action structure.
      */
-    public function build()
+    public function buildImagemapAction()
     {
         return [
-            'x' => $this->x,
-            'y' => $this->y,
-            'width' => $this->width,
-            'height' => $this->height,
+            'type' => ActionType::URI,
+            'linkUri' => $this->linkUri,
+            'area' => $this->areaBuilder->build(),
         ];
     }
 }
