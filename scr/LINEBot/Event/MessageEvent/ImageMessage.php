@@ -21,14 +21,14 @@ namespace LINE\LINEBot\Event\MessageEvent;
 use LINE\LINEBot\Event\MessageEvent;
 
 /**
- * A class that represents the message event of audio.
+ * A class that represents the message event of image.
  *
  * @package LINE\LINEBot\Event\MessageEvent
  */
-class AudioMessage extends MessageEvent
+class ImageMessage extends MessageEvent
 {
     /**
-     * AudioMessage constructor.
+     * ImageMessage constructor.
      *
      * @param array $event
      */

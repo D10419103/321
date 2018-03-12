@@ -21,19 +21,59 @@ namespace LINE\LINEBot\Event\MessageEvent;
 use LINE\LINEBot\Event\MessageEvent;
 
 /**
- * A class that represents the message event of audio.
+ * A class that represents the message event of location.
  *
  * @package LINE\LINEBot\Event\MessageEvent
  */
-class AudioMessage extends MessageEvent
+class LocationMessage extends MessageEvent
 {
     /**
-     * AudioMessage constructor.
+     * LocationMessage constructor.
      *
      * @param array $event
      */
     public function __construct($event)
     {
         parent::__construct($event);
+    }
+
+    /**
+     * Returns title of the location message.
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->message['title'];
+    }
+
+    /**
+     * Returns address of the location message.
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->message['address'];
+    }
+
+    /**
+     * Returns latitude of the location message.
+     *
+     * @return double
+     */
+    public function getLatitude()
+    {
+        return $this->message['latitude'];
+    }
+
+    /**
+     * Returns longitude of the location message.
+     *
+     * @return double
+     */
+    public function getLongitude()
+    {
+        return $this->message['longitude'];
     }
 }
