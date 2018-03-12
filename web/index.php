@@ -15,8 +15,9 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-/*use D10419103\src\LINEBot\HTTPClient;
-use D10419103\LINEBot;*/
+use /app/src/LINEBot/HTTPClient/CurlHTTPClient;
+use /app/src/LINEBot;
+
 require_once('./LINEBotTiny.php');
 
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
