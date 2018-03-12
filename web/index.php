@@ -15,8 +15,8 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-use D10419103\src\LINEBot\HTTPClient\CurlHTTPClient;
-use D10419103\src\LINEBot;
+/*use D10419103\src\LINEBot\HTTPClient\CurlHTTPClient;
+use D10419103\src\LINEBot;*/
 
 require_once('./LINEBotTiny.php');
 
@@ -24,7 +24,7 @@ $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
-
+$httpClient = new \D10419103\src\LINEBot\HTTPClient\CurlHTTPClient('d94WAvqAJBWRXZ3pmnlejuQ7S/Glp8CDK0FHSSLEWlypMdpiPerBs23gk/xsbQjT31RHVd1iq4YVMqqLbYiRRA0AnDPQohV2zFBBwMBK5JchWjB47muK5uiHL2l/JvkepuraSTviQNaPxMjKM7z/jwdB04t89/1O/w1cDnyilFU=');
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
