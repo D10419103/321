@@ -18,11 +18,11 @@
 
 namespace LINE\LINEBot\HTTPClient;
 
-use LINE\LINEBot\Constant\Meta;
-use LINE\LINEBot\Exception\CurlExecutionException;
-use LINE\LINEBot\HTTPClient;
-use LINE\LINEBot\Response;
-use LINE\LINEBot\HTTPClient\Curl;
+use D10419103\src\LINEBot\Constant\Meta;
+use D10419103\src\LINEBot\Exception\CurlExecutionException;
+use D10419103\src\LINEBot\HTTPClient;
+use D10419103\src\LINEBot\Response;
+use D10419103\src\LINEBot\HTTPClient\Curl;
 
 /**
  * Class CurlHTTPClient.
