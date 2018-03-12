@@ -18,16 +18,15 @@
 
 namespace LINE\LINEBot\MessageBuilder\TemplateBuilder;
 
-use LINE\LINEBot\Constant\TemplateType;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder;
 use LINE\LINEBot\TemplateActionBuilder;
 
 /**
- * A builder class for button template message.
+ * A builder class for column of carousel template.
  *
  * @package LINE\LINEBot\MessageBuilder\TemplateBuilder
  */
-class ButtonTemplateBuilder implements TemplateBuilder
+class CarouselColumnTemplateBuilder implements TemplateBuilder
 {
     /** @var string */
     private $title;
@@ -42,7 +41,7 @@ class ButtonTemplateBuilder implements TemplateBuilder
     private $template;
 
     /**
-     * ConfirmTemplate constructor.
+     * CarouselColumnTemplateBuilder constructor.
      *
      * @param string $title
      * @param string $text
@@ -58,7 +57,7 @@ class ButtonTemplateBuilder implements TemplateBuilder
     }
 
     /**
-     * Builds button template message structure.
+     * Builds column of carousel template structure.
      *
      * @return array
      */
@@ -74,7 +73,6 @@ class ButtonTemplateBuilder implements TemplateBuilder
         }
 
         $this->template = [
-            'type' => TemplateType::BUTTONS,
             'thumbnailImageUrl' => $this->thumbnailImageUrl,
             'title' => $this->title,
             'text' => $this->text,

@@ -23,18 +23,14 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder;
 use LINE\LINEBot\TemplateActionBuilder;
 
 /**
- * A builder class for button template message.
+ * A builder class for confirm template.
  *
  * @package LINE\LINEBot\MessageBuilder\TemplateBuilder
  */
-class ButtonTemplateBuilder implements TemplateBuilder
+class ConfirmTemplateBuilder implements TemplateBuilder
 {
     /** @var string */
-    private $title;
-    /** @var string */
     private $text;
-    /** @var string */
-    private $thumbnailImageUrl;
     /** @var TemplateActionBuilder[] */
     private $actionBuilders;
 
@@ -44,21 +40,17 @@ class ButtonTemplateBuilder implements TemplateBuilder
     /**
      * ConfirmTemplate constructor.
      *
-     * @param string $title
      * @param string $text
-     * @param string $thumbnailImageUrl
      * @param TemplateActionBuilder[] $actionBuilders
      */
-    public function __construct($title, $text, $thumbnailImageUrl, array $actionBuilders)
+    public function __construct($text, array $actionBuilders)
     {
-        $this->title = $title;
         $this->text = $text;
-        $this->thumbnailImageUrl = $thumbnailImageUrl;
         $this->actionBuilders = $actionBuilders;
     }
 
     /**
-     * Builds button template message structure.
+     * Builds confirm template structure.
      *
      * @return array
      */
@@ -74,9 +66,7 @@ class ButtonTemplateBuilder implements TemplateBuilder
         }
 
         $this->template = [
-            'type' => TemplateType::BUTTONS,
-            'thumbnailImageUrl' => $this->thumbnailImageUrl,
-            'title' => $this->title,
+            'type' => TemplateType::CONFIRM,
             'text' => $this->text,
             'actions' => $actions,
         ];

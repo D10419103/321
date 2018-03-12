@@ -20,45 +20,32 @@ namespace LINE\LINEBot\MessageBuilder\TemplateBuilder;
 
 use LINE\LINEBot\Constant\TemplateType;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder;
-use LINE\LINEBot\TemplateActionBuilder;
 
 /**
- * A builder class for button template message.
+ * A builder class for carousel template.
  *
  * @package LINE\LINEBot\MessageBuilder\TemplateBuilder
  */
-class ButtonTemplateBuilder implements TemplateBuilder
+class CarouselTemplateBuilder implements TemplateBuilder
 {
-    /** @var string */
-    private $title;
-    /** @var string */
-    private $text;
-    /** @var string */
-    private $thumbnailImageUrl;
-    /** @var TemplateActionBuilder[] */
-    private $actionBuilders;
+    /** @var CarouselColumnTemplateBuilder[] */
+    private $columnTemplateBuilders;
 
     /** @var array */
     private $template;
 
     /**
-     * ConfirmTemplate constructor.
+     * CarouselTemplateBuilder constructor.
      *
-     * @param string $title
-     * @param string $text
-     * @param string $thumbnailImageUrl
-     * @param TemplateActionBuilder[] $actionBuilders
+     * @param CarouselColumnTemplateBuilder[] $columnTemplateBuilders
      */
-    public function __construct($title, $text, $thumbnailImageUrl, array $actionBuilders)
+    public function __construct(array $columnTemplateBuilders)
     {
-        $this->title = $title;
-        $this->text = $text;
-        $this->thumbnailImageUrl = $thumbnailImageUrl;
-        $this->actionBuilders = $actionBuilders;
+        $this->columnTemplateBuilders = $columnTemplateBuilders;
     }
 
     /**
-     * Builds button template message structure.
+     * Builds carousel template structure.
      *
      * @return array
      */
@@ -68,17 +55,14 @@ class ButtonTemplateBuilder implements TemplateBuilder
             return $this->template;
         }
 
-        $actions = [];
-        foreach ($this->actionBuilders as $actionBuilder) {
-            $actions[] = $actionBuilder->buildTemplateAction();
+        $columns = [];
+        foreach ($this->columnTemplateBuilders as $columnTemplateBuilder) {
+            $columns[] = $columnTemplateBuilder->buildTemplate();
         }
 
         $this->template = [
-            'type' => TemplateType::BUTTONS,
-            'thumbnailImageUrl' => $this->thumbnailImageUrl,
-            'title' => $this->title,
-            'text' => $this->text,
-            'actions' => $actions,
+            'type' => TemplateType::CAROUSEL,
+            'columns' => $columns,
         ];
 
         return $this->template;
