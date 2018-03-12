@@ -15,8 +15,8 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-use /321/src/LINEBot/HTTPClient/CurlHTTPClient;
-use /321/src/LINEBot;
+use D10419103/321/src/LINEBot/HTTPClient/CurlHTTPClient;
+use D10419103/321/src/LINEBot;
 
 require_once('./LINEBotTiny.php');
 
