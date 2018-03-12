@@ -25,7 +25,7 @@ $channelSecret = getenv('LINE_CHANNEL_SECRET');
 
 //$client = new LINEBotTiny($channelAccessToken, $channelSecret);
 $httpClient = new CurlHTTPClient($channelAccessToken);
-$bot = new LINEBot($httpClient, ['channelSecret' => $channelSecret]);
+$bot = new \LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
