@@ -19,10 +19,9 @@
 namespace LINE\LINEBot\Exception;
 
 /**
- * An exception class that is raised when cURL execution is failed.
- *
+ * An exception class that is raised when signature is invalid.
  * @package LINE\LINEBot\Exception
  */
-class CurlExecutionException extends \Exception
+class InvalidSignatureException extends \Exception
 {
 }

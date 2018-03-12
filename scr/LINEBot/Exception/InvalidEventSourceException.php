@@ -19,10 +19,10 @@
 namespace LINE\LINEBot\Exception;
 
 /**
- * An exception class that is raised when cURL execution is failed.
+ * An exception class that is raised when received invalid event source.
  *
  * @package LINE\LINEBot\Exception
  */
-class CurlExecutionException extends \Exception
+class InvalidEventSourceException extends \Exception
 {
 }
