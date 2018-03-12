@@ -18,9 +18,14 @@
 
 namespace LINE\LINEBot\Constant;
 
-class ActionType
+class MessageType
 {
-    const MESSAGE = 'message';
-    const POSTBACK = 'postback';
-    const URI = 'uri';
+    const TEXT = 'text';
+    const TEMPLATE = 'template';
+    const IMAGEMAP = 'imagemap';
+    const STICKER = 'sticker';
+    const LOCATION = 'location';
+    const IMAGE = 'image';
+    const AUDIO = 'audio';
+    const VIDEO = 'video';
 }

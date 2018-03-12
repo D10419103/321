@@ -18,9 +18,7 @@
 
 namespace LINE\LINEBot\Constant;
 
-class ActionType
+class HTTPHeader
 {
-    const MESSAGE = 'message';
-    const POSTBACK = 'postback';
-    const URI = 'uri';
+    const LINE_SIGNATURE = 'X_LINE_SIGNATURE';
 }

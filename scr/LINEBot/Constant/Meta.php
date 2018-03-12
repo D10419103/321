@@ -18,9 +18,7 @@
 
 namespace LINE\LINEBot\Constant;
 
-class ActionType
+class Meta
 {
-    const MESSAGE = 'message';
-    const POSTBACK = 'postback';
-    const URI = 'uri';
+    const VERSION = '1.0.0';
 }

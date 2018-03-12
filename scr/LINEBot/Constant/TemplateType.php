@@ -18,9 +18,9 @@
 
 namespace LINE\LINEBot\Constant;
 
-class ActionType
+class TemplateType
 {
-    const MESSAGE = 'message';
-    const POSTBACK = 'postback';
-    const URI = 'uri';
+    const CONFIRM = 'confirm';
+    const BUTTONS = 'buttons';
+    const CAROUSEL = 'carousel';
 }

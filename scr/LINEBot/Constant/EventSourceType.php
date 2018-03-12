@@ -18,9 +18,9 @@
 
 namespace LINE\LINEBot\Constant;
 
-class ActionType
+class EventSourceType
 {
-    const MESSAGE = 'message';
-    const POSTBACK = 'postback';
-    const URI = 'uri';
+    const USER = 'user';
+    const GROUP = 'group';
+    const ROOM = 'room';
 }
