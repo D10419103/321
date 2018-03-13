@@ -18,9 +18,9 @@
 
 require_once('./LINEBotTiny.php');
 //require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/LINE/LINEBot/HTTPClient.php';
-require_once __DIR__ . '/LINE/LINEBot/Constant/Meta.php';
-require_once __DIR__ . '/LINE/LINEBot/HTTPClient/CurlHTTPClient.php';
+require_once __DIR__ . '/../LINEBot/HTTPClient.php';
+require_once __DIR__ . '/../LINEBot/Constant/Meta.php';
+require_once __DIR__ . '/../LINEBot/HTTPClient/CurlHTTPClient.php';
 
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
