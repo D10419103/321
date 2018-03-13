@@ -18,11 +18,11 @@
 
 namespace D10419103\HTTPClient;
 
-use D10419103\Meta;
-use D10419103\CurlExecutionException;
-use D10419103\HTTPClient;
-use D10419103\Response;
-use D10419103\Curl;
+use .\Meta;
+use .\CurlExecutionException;
+use .\HTTPClient;
+use .\Response;
+use .\Curl;
 
 /**
  * Class CurlHTTPClient.
