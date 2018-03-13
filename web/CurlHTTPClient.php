@@ -16,20 +16,20 @@
  * under the License.
  */
 
-namespace app\web\HTTPClient;
+namespace LINE\web\HTTPClient;
 
-use app\web\Meta;
-use app\web\CurlExecutionException;
-use app\web\HTTPClient;
-use app\web\Response;
-use app\web\Curl;
+use LINE\web\Meta;
+use LINE\web\CurlExecutionException;
+use LINE\web\HTTPClient;
+use LINE\web\Response;
+use LINE\web\Curl;
 
 /**
  * Class CurlHTTPClient.
  *
  * A HTTPClient that uses cURL.
  *
- * @package LINE\LINEBot\HTTPClient
+ * @package LINE\web\HTTPClient
  */
 class CurlHTTPClient implements HTTPClient
 {
