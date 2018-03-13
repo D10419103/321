@@ -29,7 +29,7 @@ use LINE\web\Curl;
  *
  * A HTTPClient that uses cURL.
  *
- * @package LINE\web\HTTPClient
+ * @package LINE\LINEBot\HTTPClient
  */
 class CurlHTTPClient implements HTTPClient
 {
