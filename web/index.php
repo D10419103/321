@@ -30,7 +30,12 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
-
+			    $content = $receive->result[0]->content;
+$text = $content->text;
+$from = $content->from;
+			    if (preg_match("你好", $text)){
+    $bot->sendText([$from], "安安");
+}
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
@@ -38,12 +43,7 @@ foreach ($client->parseEvents() as $event) {
             switch ($message['type']) {
 		    case 'text':
 			    
-			    $content = $receive->result[0]->content;
-$text = $content->text;
-$from = $content->from;
-			    if (preg_match("/^你是誰/i", $text)){
-    $bot->sendText([$from], "敲敲設計有限公司：");
-}
+
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
