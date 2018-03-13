@@ -16,13 +16,13 @@
  * under the License.
  */
 
-namespace D10419103\web\HTTPClient;
+namespace \web\HTTPClient;
 
-use D10419103\web\Meta;
-use D10419103\web\CurlExecutionException;
-use D10419103\web\HTTPClient;
-use D10419103\web\Response;
-use D10419103\web\Curl;
+use \web\Meta;
+use \web\CurlExecutionException;
+use \web\HTTPClient;
+use \web\Response;
+use \web\Curl;
 
 /**
  * Class CurlHTTPClient.
