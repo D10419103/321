@@ -30,19 +30,16 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
-			    $content = $receive->result[0]->content;
-$text = $content->text;
-$from = $content->from;
-			    if (preg_match("你好", $text)){
-    $bot->sendText([$from], "安安");
-}
+			    
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
             $message = $event['message'];
             switch ($message['type']) {
 		    case 'text':
-			    
+			    if (preg_match("你好")){
+    				echo "安安";
+			}
 
                 	$m_message = $message['text'];
 			$type = $message['type'];
