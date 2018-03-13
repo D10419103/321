@@ -18,7 +18,7 @@
 
 namespace scr\LINEBot\HTTPClient;
 
-use scr\LINEBot\Constant\Meta;
+use LINE\scr\LINEBot\Constant\Meta;
 use scr\LINEBot\Exception\CurlExecutionException;
 use scr\LINEBot\HTTPClient;
 use scr\LINEBot\Response;
