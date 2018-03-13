@@ -37,6 +37,13 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];
             switch ($message['type']) {
 		    case 'text':
+			    
+			    $content = $receive->result[0]->content;
+$text = $content->text;
+$from = $content->from;
+			    if (preg_match("/^你是誰/i", $text)){
+    $bot->sendText([$from], "敲敲設計有限公司：");
+}
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
