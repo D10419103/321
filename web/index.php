@@ -22,10 +22,9 @@ require_once __DIR__ . '/../scr/LINEBot/HTTPClient.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient/CurlHTTPClient.php';
 
 
-$channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
-$channelSecret = getenv('LINE_CHANNEL_SECRET');
-
-$client = new LINEBotTiny($channelAccessToken, $channelSecret);
+/*$channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
+$channelSecret = getenv('LINE_CHANNEL_SECRET');*/
+$client = new LINEBotTiny('d94WAvqAJBWRXZ3pmnlejuQ7S/Glp8CDK0FHSSLEWlypMdpiPerBs23gk/xsbQjT31RHVd1iq4YVMqqLbYiRRA0AnDPQohV2zFBBwMBK5JchWjB47muK5uiHL2l/JvkepuraSTviQNaPxMjKM7z/jwdB04t89/1O/w1cDnyilFU=', 'f09490cd01d030f3bed923ab84c529cd'
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('d94WAvqAJBWRXZ3pmnlejuQ7S/Glp8CDK0FHSSLEWlypMdpiPerBs23gk/xsbQjT31RHVd1iq4YVMqqLbYiRRA0AnDPQohV2zFBBwMBK5JchWjB47muK5uiHL2l/JvkepuraSTviQNaPxMjKM7z/jwdB04t89/1O/w1cDnyilFU=');
 $bot = new \scr\LINEBot($httpClient, ['channelSecret' => 'f09490cd01d030f3bed923ab84c529cd']);
 foreach ($client->parseEvents() as $event) {
