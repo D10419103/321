@@ -19,6 +19,7 @@
 use D10419103\src\LINEBot;*/
 
 require_once('./LINEBotTiny.php');
+require_once('./CurlHTTPClient.php');
 
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
