@@ -17,7 +17,7 @@
  */
 
 require_once('./LINEBotTiny.php');
-require_once __DIR__ . '/../vendor/autoload.php';
+//require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient/CurlHTTPClient.php';
 
@@ -25,7 +25,7 @@ require_once __DIR__ . '/../scr/LINEBot/HTTPClient/CurlHTTPClient.php';
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
-$httpClient = new \..\scr\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
+$httpClient = new \scr\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \scr\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
