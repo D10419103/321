@@ -16,7 +16,7 @@
  * under the License.
  */
 
-namespace LINE\LINEBot\HTTPClient;
+namespace scr\LINEBot\HTTPClient;
 
 /**
  * cURL session manager
