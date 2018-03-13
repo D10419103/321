@@ -16,7 +16,7 @@
  * under the License.
  */
 
-namespace LINE\LINEBot;
+namespace scr\LINEBot;
 
 /**
  * A class represents API response.
