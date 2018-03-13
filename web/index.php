@@ -19,13 +19,13 @@
 use D10419103\src\LINEBot;*/
 
 require_once('./LINEBotTiny.php');
-require_once('./CurlHTTPClient.php');
+require_once('./LINEBot/HTTPClient/CurlHTTPClient.php');
 
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
-$httpClient = new CurlHTTPClient($channelAccessToken);
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
