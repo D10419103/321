@@ -16,7 +16,7 @@
  * under the License.
  */
 
-namespace LINE\LINEBot\Constant;
+namespace scr\LINEBot\Constant;
 
 class Meta
 {
