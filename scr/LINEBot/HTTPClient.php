@@ -16,7 +16,7 @@
  * under the License.
  */
 
-namespace \scr\LINEBot;
+namespace scr\LINEBot;
 
 /**
  * The interface that represents HTTP client of LINE Messaging API.
