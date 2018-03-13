@@ -16,13 +16,13 @@
  * under the License.
  */
 
-namespace D10419103\scr\LINEBot\HTTPClient;
+namespace \app\scr\LINEBot\HTTPClient;
 
-use D10419103\scr\LINEBot\Constant\Meta;
-use D10419103\scr\LINEBot\Exception\CurlExecutionException;
-use D10419103\scr\LINEBot\HTTPClient;
-use D10419103\scr\LINEBot\Response;
-use D10419103\scr\LINEBot\HTTPClient\Curl;
+use \app\scr\LINEBot\Constant\Meta;
+use \app\scr\LINEBot\Exception\CurlExecutionException;
+use \app\scr\LINEBot\HTTPClient;
+use \app\scr\LINEBot\Response;
+use \app\scr\LINEBot\HTTPClient\Curl;
 
 /**
  * Class CurlHTTPClient.
