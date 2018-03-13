@@ -16,7 +16,7 @@
  * under the License.
  */
 
-namespace D10419103\web\HTTPClient;
+namespace D10419103\HTTPClient;
 
 use D10419103\Meta;
 use D10419103\CurlExecutionException;
