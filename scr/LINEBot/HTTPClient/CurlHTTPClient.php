@@ -17,7 +17,7 @@
  */
 $receive = json_decode(file_get_contents("php://input"));
 
-namespace scrLINEBot\HTTPClient;
+
 
 use scr\LINEBot\Constant\Meta;
 use scr\LINEBot\Exception\CurlExecutionException;
