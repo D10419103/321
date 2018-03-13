@@ -36,10 +36,9 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
 		    
             $message = $event['message'];
-		    if (preg_match("你好",$message['text'])){
+		    
     				echo "安安";
-			}
-		    break;
+			
             switch ($message['type']) {
 		    case 'text':
 			    
