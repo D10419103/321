@@ -18,7 +18,7 @@
 
 namespace app\web\HTTPClient;
 
-use app\\web\Meta;
+use app\web\Meta;
 use app\web\CurlExecutionException;
 use app\web\HTTPClient;
 use app\web\Response;
