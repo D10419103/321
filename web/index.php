@@ -15,11 +15,10 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
-require_once __DIR__ . '/../vendor/autoload.php';
 require_once('./LINEBotTiny.php');
-require_once __DIR__ . '/../scr/LINEBot/HTTPClient/CurlHTTPClient.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../scr/LINEBot/HTTPClient/CurlHTTPClient.php';
 
 
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
@@ -34,10 +33,6 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];
             switch ($message['type']) {
 		    case 'text':
-			    //$file = fopen("C:\\Line_log.txt", "a+");
-/*fwrite($file, $json_string."\n");
-$json_obj = json_decode($json_string);
-$event = $json_obj->{"events"}[0];*/
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
@@ -61,23 +56,6 @@ $event = $json_obj->{"events"}[0];*/
                             )	
                         )
                     	));
-/*fwrite($file, $m_message."\n");
-$ch = curl_init("https://api.line.me/v2/bot/message/reply");
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $m_message);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json',
-    'Authorization: Bearer '.$channelAccessToken
-    //'Authorization: Bearer '. TOKEN
-));
-$result = curl_exec($ch);
-fwrite($file, $result."\n"); 
-fclose($file);
-curl_close($ch);*/
                 	}else if($m_message=="123"){
 				
 				$client->replyMessage(array(
