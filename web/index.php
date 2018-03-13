@@ -37,11 +37,7 @@ $text = $content->text;
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
-		    
-            $message = $event['message'];
-		    
-    				
-			
+            $message = $event['message'];		
             switch ($message['type']) {
 		    case 'text':
                 	$m_message = $message['text'];
@@ -56,7 +52,7 @@ foreach ($client->parseEvents() as $event) {
 			    $timestamp=$event['timestamp'];
 			date_default_timezone_set('Asia/Taipei');
 			if($m_message=="安安")
-                	{$bot->sendText($replyToken, "文字訊息");
+                	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
