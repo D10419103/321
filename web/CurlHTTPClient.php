@@ -16,13 +16,13 @@
  * under the License.
  */
 
-namespace \web\HTTPClient;
+namespace app\web\HTTPClient;
 
-use \web\Meta;
-use \web\CurlExecutionException;
-use \web\HTTPClient;
-use \web\Response;
-use \web\Curl;
+use app\\web\Meta;
+use app\web\CurlExecutionException;
+use app\web\HTTPClient;
+use app\web\Response;
+use app\web\Curl;
 
 /**
  * Class CurlHTTPClient.
