@@ -16,14 +16,15 @@
  * under the License.
  */
 
-namespace LINEBot\HTTPClient;
+namespace scrLINEBot\HTTPClient;
 
-//use scr\LINEBot\Constant\Meta;
-//use scr\LINEBot\Exception\CurlExecutionException;
-use LINEBot\HTTPClient;
-//use scr\LINEBot\Response;
-//use scr\LINEBot\HTTPClient\Curl;
+use scr\LINEBot\Constant\Meta;
+use scr\LINEBot\Exception\CurlExecutionException;
+use scrLINEBot\HTTPClient;
+use scr\LINEBot\Response;
+use scr\LINEBot\HTTPClient\Curl;
 
+require_once __DIR__ . '/../scr/LINEBot/HTTPClient.php';
 /**
  * Class CurlHTTPClient.
  *
