@@ -16,13 +16,14 @@
  * under the License.
  */
 
-namespace LINE\web\HTTPClient;
+/*namespace LINE\web\HTTPClient;
 
 use LINE\web\Meta;
 use LINE\web\CurlExecutionException;
 use LINE\web\HTTPClient;
 use LINE\web\Response;
-use LINE\web\Curl;
+use LINE\web\Curl;*/
+require_once('./HTTPClient.php');
 
 /**
  * Class CurlHTTPClient.
