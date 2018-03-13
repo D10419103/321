@@ -15,6 +15,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
+require_once __DIR__ . '/../scr/LINEBot/HTTPClient.php';
 
 namespace scrLINEBot\HTTPClient;
 
@@ -24,7 +25,6 @@ use scrLINEBot\HTTPClient;
 use scr\LINEBot\Response;
 use scr\LINEBot\HTTPClient\Curl;
 
-require_once __DIR__ . '/../scr/LINEBot/HTTPClient.php';
 /**
  * Class CurlHTTPClient.
  *
