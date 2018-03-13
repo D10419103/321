@@ -34,12 +34,14 @@ $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
+		    
             $message = $event['message'];
-            switch ($message['type']) {
-		    case 'text':
-			    if (preg_match("你好",$message['text'])){
+		    if (preg_match("你好",$message['text'])){
     				echo "安安";
 			}
+            switch ($message['type']) {
+		    case 'text':
+			    
 
                 	$m_message = $message['text'];
 			$type = $message['type'];
