@@ -33,10 +33,8 @@ $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 		
 $content = $receive->result[0]->content;
 $text = $content->text;
-if (preg_match("安安", $text)){
-$bot->sendText($replyToken, "文字訊息");
-	}
-/*foreach ($client->parseEvents() as $event) {
+	
+foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
 		    
@@ -58,7 +56,7 @@ $bot->sendText($replyToken, "文字訊息");
 			    $timestamp=$event['timestamp'];
 			date_default_timezone_set('Asia/Taipei');
 			if($m_message=="安安")
-                	{
+                	{$bot->sendText($replyToken, "文字訊息");
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
@@ -261,5 +259,5 @@ $bot->sendText($replyToken, "文字訊息");
             error_log("Unsupporeted event type: " . $event['type']);
             break;
     }
-};*/
+};
 ?>
