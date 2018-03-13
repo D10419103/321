@@ -37,7 +37,7 @@ foreach ($client->parseEvents() as $event) {
 		    
             $message = $event['message'];
 		    
-    				echo "安安";
+    				
 			
             switch ($message['type']) {
 		    case 'text':
@@ -56,6 +56,7 @@ foreach ($client->parseEvents() as $event) {
 			date_default_timezone_set('Asia/Taipei');
 			if($m_message=="安安")
                 	{
+				echo "xxxx";
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
