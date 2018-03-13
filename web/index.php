@@ -30,8 +30,13 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
-			    
-foreach ($client->parseEvents() as $event) {
+		
+$content = $receive->result[0]->content;
+$text = $content->text;
+if (preg_match("安安", $text)){
+$bot->sendText($replyToken, "文字訊息");
+	}
+/*foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
 		    
@@ -41,8 +46,6 @@ foreach ($client->parseEvents() as $event) {
 			
             switch ($message['type']) {
 		    case 'text':
-			    
-
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
@@ -56,7 +59,6 @@ foreach ($client->parseEvents() as $event) {
 			date_default_timezone_set('Asia/Taipei');
 			if($m_message=="安安")
                 	{
-				echo "xxxx";
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
@@ -259,5 +261,5 @@ foreach ($client->parseEvents() as $event) {
             error_log("Unsupporeted event type: " . $event['type']);
             break;
     }
-};
+};*/
 ?>
