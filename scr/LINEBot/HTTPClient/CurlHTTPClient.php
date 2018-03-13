@@ -16,7 +16,7 @@
  * under the License.
  */
 
-namespace LINE\LINEBot\HTTPClient;
+namespace scr\LINEBot\HTTPClient;
 
 use scr\LINEBot\Constant\Meta;
 use scr\LINEBot\Exception\CurlExecutionException;
