@@ -20,8 +20,6 @@ require_once('./LINEBotTiny.php');
 //require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient/CurlHTTPClient.php';
-include __DIR__ . '/../scr/LINEBot.php';
-
 
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
