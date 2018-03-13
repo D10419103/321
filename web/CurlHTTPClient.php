@@ -16,7 +16,7 @@
  * under the License.
  */
 
-namespace D10419103\scr\LINEBot\HTTPClient;
+namespace D10419103\web\HTTPClient;
 
 use D10419103\web\Meta;
 use D10419103\web\CurlExecutionException;
