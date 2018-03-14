@@ -269,7 +269,7 @@ $bot->replyMessage($replyToken,$msg);*/
  	       ),
 	    ));*/
 				
-				$msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($packageId,$stickerId);
+				$msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($m_message,$stickerId);
 $bot->replyMessage($replyToken,$msg);
 	}
                     break;
