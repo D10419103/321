@@ -62,7 +62,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $id . "\n" . $groupid. "\n" . $profile['displayName'] . "\n"
+                                'text' => $type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $userId . "\n" . $groupid. "\n" . $profile['displayName'] . "\n"
 				    . count($message) . "\n" .count($event). "\n" .count($source) . "\n" .count($replyToken) . "\n" .count($type2) . "\n" .count($timestamp) 
                             )	
                         )
@@ -209,7 +209,7 @@ foreach ($client->parseEvents() as $event) {
                     case 'location' :
 			$source=$event['source'];
               	      	$type = $source['type']; 
-              	      	$id=$source['userId'];
+              	      	$userId=$source['userId'];
 			$title=$message['title'];
                    	$latitude=$message['latitude'];
                    	$longitude=$message['longitude'];
@@ -222,7 +222,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $id . "\n". count($message)
+                                'text' => $type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId . "\n". count($message)
                             ),
                         ),
                     	));
