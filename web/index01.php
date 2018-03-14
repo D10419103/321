@@ -29,8 +29,6 @@ require_once __DIR__ . '/../scr/LINEBot/Constant/MessageType.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TextMessageBuilder.php';
 
-require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/LocationMessageBuilder.php';
-
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 
@@ -224,9 +222,16 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
                 	if($m_message!="")
-                	{				
-				$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($title,$m_message , $latitude, $longitude );
-$bot->replyMessage($replyToken,$msg);
+                	{
+                		$client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId . "\n". count($message) . "\n" . $displayname
+                            ),
+                        ),
+                    	));
                 	}
                     break;
 			
