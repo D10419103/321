@@ -17,7 +17,7 @@
  */
 
 require_once('./LINEBotTiny.php');
-//require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient.php';
 require_once __DIR__ . '/../scr/LINEBot/Constant/Meta.php';
 require_once __DIR__ . '/../scr/LINEBot.php';
