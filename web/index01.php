@@ -41,7 +41,7 @@ $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 /*$content = $receive->result[0]->content;
 $text = $content->text;*/
 
-foreach ($client->parseEvents() as $event) {
+foreach ($bot->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
             $message = $event['message'];		
@@ -165,6 +165,8 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			    $previewImageUrl=$message['previewImageUrl'];
                 	if($type!="")
                 	{
+				$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder("位址名稱", "地址", 緯度, 經度);
+$bot->replyMessage($replyToken,$msg);
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $originalContentUrl . "\n" . $previewImageUrl . "\n" . $displayname);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                 	}
