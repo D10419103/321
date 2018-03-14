@@ -170,21 +170,21 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                 	if($type!="")
                 	{
                 		$client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $type . "\n" . $displayname
-                            ),
-				array(
-                'type' => 'image', // 訊息類型 (圖片)
-                'originalContentUrl' => $originalContentUrl, // 回復圖片
-                'previewImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg' // 回復的預覽圖片
-            ),
-                        ),
-                    	));
-                	}
-				break;
+                                    'replyToken' => $event['replyToken'],
+                                    'messages' => array(
+                                       array(
+                                          'type' => 'text',
+                                          'text' => $type . "\n" . $displayname
+                                       )//,
+				     /*  array(
+                                          'type' => 'image', // 訊息類型 (圖片)
+                                          'originalContentUrl' => $originalContentUrl, // 回復圖片
+                                          'previewImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg' // 回復的預覽圖片
+                                       ),*/
+                                   ),
+                               ));
+                       }
+		       break;
 	
 		    case "video" :
 			$type=$message['type'];
