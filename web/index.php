@@ -44,7 +44,7 @@ if ($response->isSucceeded()) {
     echo $profile['pictureUrl'];
     echo $profile['statusMessage'];
 }
-	
+/*	
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
@@ -266,5 +266,5 @@ foreach ($client->parseEvents() as $event) {
             error_log("Unsupporeted event type: " . $event['type']);
             break;
     }
-};
+};*/
 ?>
