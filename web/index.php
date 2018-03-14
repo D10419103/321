@@ -36,8 +36,11 @@ $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 		
 /*$content = $receive->result[0]->content;
 $text = $content->text;*/
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+$response = $bot->replyMessage('<replyToken>', $textMessageBuilder);
 
-foreach ($client->parseEvents() as $event) {
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+/*foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
             $message = $event['message'];		
@@ -261,5 +264,5 @@ foreach ($client->parseEvents() as $event) {
             error_log("Unsupporeted event type: " . $event['type']);
             break;
     }
-};
+};*/
 ?>
