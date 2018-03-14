@@ -269,13 +269,7 @@ $bot->replyMessage($replyToken,$msg);*/
  	       ),
 	    ));*/
 				
-				$msg = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
-for($i=0;$i<2;$i++)
-{
-  $_msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type ."\n". count($message) . "\n" . $displayname.0);
-	$_msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($packageId,$stickerId.1);
-  $msg->add($_msg);
-}
+				$msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($packageId,$stickerId);
 $bot->replyMessage($replyToken,$msg);
 	}
                     break;
