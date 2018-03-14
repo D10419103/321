@@ -56,7 +56,7 @@ foreach ($client->parseEvents() as $event) {
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
 			date_default_timezone_set('Asia/Taipei');
-			if($m_message=="安安" || $response->isSucceeded())
+			if($m_message=="安安")
                 	{
                 		$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
