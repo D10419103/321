@@ -31,7 +31,7 @@ $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
 
-$response = $bot->getProfile('<userId>');
+$response = $bot->getProfile($id);
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 		
