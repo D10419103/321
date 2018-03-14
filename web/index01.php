@@ -41,7 +41,7 @@ $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 /*$content = $receive->result[0]->content;
 $text = $content->text;*/
 
-foreach ($bot->parseEvents() as $event) {
+foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
             $message = $event['message'];		
