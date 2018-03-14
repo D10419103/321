@@ -158,6 +158,8 @@ foreach ($client->parseEvents() as $event) {
                     break;
 			  
 		    case "image" :
+			    $source=$event['source'];
+              	      	$userId=$source['userId'];
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
@@ -240,6 +242,8 @@ foreach ($client->parseEvents() as $event) {
 			$m_message = $message['packageId'];
 			$stickerId = $message['stickerId'];
 			$type=$message['type'];
+			    $source=$event['source'];
+              	      	$userId=$source['userId'];
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
