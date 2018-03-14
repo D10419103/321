@@ -37,6 +37,13 @@ $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 		
 /*$content = $receive->result[0]->content;
 $text = $content->text;*/
+
+if ($response->isSucceeded()) {
+    $profile = $response->getJSONDecodedBody();
+    echo $profile['displayName'];
+    echo $profile['pictureUrl'];
+    echo $profile['statusMessage'];
+}
 	
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
