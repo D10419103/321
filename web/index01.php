@@ -29,6 +29,8 @@ require_once __DIR__ . '/../scr/LINEBot/Constant/MessageType.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TextMessageBuilder.php';
 
+require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/LocationMessageBuilder.php';
+
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 
