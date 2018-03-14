@@ -62,16 +62,6 @@ foreach ($client->parseEvents() as $event) {
 			date_default_timezone_set('Asia/Taipei');
 			if($m_message=="安安")
                 	{
-                		/*$client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $userId . "\n" . $groupid. "\n" . $displayname . "\n"
-				    . count($message) . "\n" .count($event). "\n" .count($source) . "\n" .count($replyToken) . "\n" .count($type2) . "\n" .count($timestamp) 
-                            )	
-                        )
-                    	));*/
 				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $userId . "\n" . $groupid. "\n" . $displayname . "\n"
 				    . count($message) . "\n" .count($event). "\n" .count($source) . "\n" .count($replyToken) . "\n" .count($type2) . "\n" .count($timestamp));
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
@@ -180,10 +170,13 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $type . "\n" . $originalContentUrl . "\n" . $previewImageUrl . "\n" . $displayname
+                                'text' => 
                             ),
                         ),
                     	));
+				
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $originalContentUrl . "\n" . $previewImageUrl . "\n" . $displayname);
+$response = $bot->replyMessage($replyToken, $textMessageBuilder);
                 	}
 				break;
 	
@@ -233,15 +226,10 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			    $displayname=$profile['displayName'];
                 	if($m_message!="")
                 	{
-                		$client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId . "\n". count($message) . "\n" . $displayname
-                            ),
-                        ),
-                    	));
+                	
+				
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId . "\n". count($message) . "\n" . $displayname);
+$response = $bot->replyMessage($replyToken, $textMessageBuilder);
                 	}
                     break;
 			
