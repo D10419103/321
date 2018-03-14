@@ -43,7 +43,6 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];		
             switch ($message['type']) {
 		    case 'text':
-			    $response = $bot->getProfile($userId);
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
@@ -53,6 +52,7 @@ foreach ($client->parseEvents() as $event) {
 			    $replyToken=$event['replyToken'];
 			    $type2=$event['type'];
 			    $timestamp=$event['timestamp'];
+			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
 			date_default_timezone_set('Asia/Taipei');
