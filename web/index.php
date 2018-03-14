@@ -44,7 +44,6 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];		
             switch ($message['type']) {
 		    case 'text':
-			    if ($response->isSucceeded()) {
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
@@ -70,7 +69,7 @@ foreach ($client->parseEvents() as $event) {
                             )	
                         )
                     	));
-                	}}else if($m_message=="123"){
+                	}else if($m_message=="123"){
 				
 				$client->replyMessage(array(
   'replyToken' => $event['replyToken'],
