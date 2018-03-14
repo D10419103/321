@@ -158,6 +158,9 @@ foreach ($client->parseEvents() as $event) {
                     break;
 			  
 		    case "image" :
+			    $response = $bot->getProfile($userId);
+			    $profile = $response->getJSONDecodedBody();
+			    $displayname=$profile['displayName'];
 			$type=$message['type'];
 			    $originalContentUrl=$message['originalContentUrl'];
 			    $previewImageUrl=$message['previewImageUrl'];
@@ -216,6 +219,9 @@ foreach ($client->parseEvents() as $event) {
                    	$longitude=$message['longitude'];
 			$m_message = $message['address'];
 			$type=$message['type'];
+			    $response = $bot->getProfile($userId);
+			    $profile = $response->getJSONDecodedBody();
+			    $displayname=$profile['displayName'];
                 	if($m_message!="")
                 	{
                 		$client->replyMessage(array(
@@ -234,6 +240,9 @@ foreach ($client->parseEvents() as $event) {
 			$m_message = $message['packageId'];
 			$stickerId = $message['stickerId'];
 			$type=$message['type'];
+			    $response = $bot->getProfile($userId);
+			    $profile = $response->getJSONDecodedBody();
+			    $displayname=$profile['displayName'];
 			if($m_message !="")
                 	{
                 	$client->replyMessage(array(
