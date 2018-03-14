@@ -234,15 +234,6 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			    $displayname=$profile['displayName'];
                 	if($m_message!="")
                 	{
-                		/*$client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId . "\n". count($message) . "\n" . $displayname
-                            ),
-                        ),
-                    	));*/
 				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId . "\n". count($message) . "\n" . $displayname);
 $bot->replyMessage($replyToken,$msg);
 				/*$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($type, $m_message, $latitude, $longitude);
