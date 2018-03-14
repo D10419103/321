@@ -24,8 +24,6 @@ require_once __DIR__ . '/../scr/LINEBot.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient/CurlHTTPClient.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient/Curl.php';
 require_once __DIR__ . '/../scr/LINEBot/Response.php';
-require_once __DIR__ . '/../scr/LINEBot/MessageBuilder.php';
-require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TextMessageBuilder.php';
 
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
@@ -38,11 +36,8 @@ $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 		
 /*$content = $receive->result[0]->content;
 $text = $content->text;*/
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-$response = $bot->replyMessage('<replyToken>', $textMessageBuilder);
 
-echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-/*foreach ($client->parseEvents() as $event) {
+foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
             $message = $event['message'];		
@@ -52,8 +47,7 @@ echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
-              	      	$userId=$source['userId'];
-			$displayName = $contacts['displayName'];				
+              	      	$userId=$source['userId'];			
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
 			    $replyToken=$event['replyToken'];
@@ -266,5 +260,5 @@ echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
             error_log("Unsupporeted event type: " . $event['type']);
             break;
     }
-};*/
+};
 ?>
