@@ -44,6 +44,7 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];		
             switch ($message['type']) {
 		    case 'text':
+			    if ($response->isSucceeded()) {
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
@@ -54,6 +55,7 @@ foreach ($client->parseEvents() as $event) {
 			    $replyToken=$event['replyToken'];
 			    $type2=$event['type'];
 			    $timestamp=$event['timestamp'];
+			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
 			date_default_timezone_set('Asia/Taipei');
 			if($m_message=="安安")
@@ -68,7 +70,7 @@ foreach ($client->parseEvents() as $event) {
                             )	
                         )
                     	));
-                	}else if($m_message=="123"){
+                	}}else if($m_message=="123"){
 				
 				$client->replyMessage(array(
   'replyToken' => $event['replyToken'],
