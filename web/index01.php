@@ -271,7 +271,7 @@ $bot->replyMessage($replyToken,$msg);*/
 				$msg1 = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type ."\n". count($message) . "\n" . $displayname);
 //$bot->replyMessage($replyToken,$msg1);
 				$msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($m_message,$stickerId);
-$bot->replyMessage($replyToken,$msg1,$msg);
+$bot->replyMessage($replyToken,$msg1,$replyToken,$msg);
 	}
                     break;
 
