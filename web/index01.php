@@ -48,7 +48,7 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];		
             switch ($message['type']) {
-		    case 'text':
+		  /*  case 'text':
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
@@ -210,7 +210,7 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                     	));
                 	}
 				break;
-                        
+                        */
                     case 'location' :
 			$source=$event['source'];
               	      	$type = $source['type']; 
