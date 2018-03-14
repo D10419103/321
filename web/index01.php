@@ -243,6 +243,7 @@ $bot->replyMessage($replyToken,$msg);*/
                     break;
 			
 		    case 'sticker' :
+			    $replyToken=$event['replyToken'];
 			$m_message = $message['packageId'];
 			$stickerId = $message['stickerId'];
 			$type=$message['type'];
@@ -253,7 +254,7 @@ $bot->replyMessage($replyToken,$msg);*/
 			    $displayname=$profile['displayName'];
 			if($m_message !="")
                 	{
-                	$client->replyMessage(array(
+                	/*$client->replyMessage(array(
         		'replyToken' => $event['replyToken'],
      			   'messages' => array(
        			     array(
@@ -266,7 +267,16 @@ $bot->replyMessage($replyToken,$msg);*/
                                 'text' => $type ."\n". count($message) . "\n" . $displayname
                             ),
  	       ),
-	    ));
+	    ));*/
+				
+				$msg = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+for($i=0;$i<2;$i++)
+{
+  $_msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type ."\n". count($message) . "\n" . $displayname.0);
+	$_msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($packageId,$stickerId.1);
+  $msg->add($_msg);
+}
+$bot->replyMessage($replyToken,$msg);
 	}
                     break;
 
