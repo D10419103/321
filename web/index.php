@@ -168,7 +168,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $type . "\n" . $originalContentUrl . "\n" . $previewImageUrl
+                                'text' => $type . "\n" . $originalContentUrl . "\n" . $previewImageUrl . "\n" . $displayname
                             ),
                         ),
                     	));
@@ -223,7 +223,7 @@ foreach ($client->parseEvents() as $event) {
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId . "\n". count($message)
+                                'text' => $type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId . "\n". count($message) . "\n" . $displayname
                             ),
                         ),
                     	));
@@ -246,7 +246,7 @@ foreach ($client->parseEvents() as $event) {
          	   ),
 			     array(
                                 'type' => 'text',
-                                'text' => $type ."\n". count($message)
+                                'text' => $type ."\n". count($message) . "\n" . $displayname
                             ),
  	       ),
 	    ));
