@@ -273,8 +273,8 @@ $bot->replyMessage($replyToken,$msg);*/
 				$msg = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
 for($i=0;$i<2;$i++)
 {if(i==0){
-  $_msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type ."\n". count($message) . "\n" . $displayname);
-}else $_msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($m_message,$stickerId);
+  $_msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type ."\n". count($message) . "\n" . $displayname);}
+}else $_msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($m_message,$stickerId);}
   $msg->add($_msg);
 }
 $bot->replyMessage($replyToken,$msg);
