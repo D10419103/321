@@ -59,7 +59,6 @@ foreach ($client->parseEvents() as $event) {
 			    
 			    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
-$a=$response->getHTTPStatus(); $b=$response->getRawBody();
 			    
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
@@ -72,7 +71,7 @@ $a=$response->getHTTPStatus(); $b=$response->getRawBody();
                         'messages' => array(
                             array(
                                 'type' => 'text',
-                                'text' => $a . $b . "\n" . $type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $userId . "\n" . $groupid. "\n" . $displayname . "\n"
+                                'text' => $type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $userId . "\n" . $groupid. "\n" . $displayname . "\n"
 				    . count($message) . "\n" .count($event). "\n" .count($source) . "\n" .count($replyToken) . "\n" .count($type2) . "\n" .count($timestamp) 
                             )	
                         )
