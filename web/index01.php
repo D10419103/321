@@ -165,7 +165,7 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
 			$type=$message['type'];
-			    $originalContentUrl=$message['originalContentUrl'];
+			    $originalContentUrl='a-' . $message['originalContentUrl'] . 'a-';
 			    $previewImageUrl=$message['previewImageUrl'];
                 	if($type!="")
                 	{
@@ -179,7 +179,7 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 				       array(
 					  
                                           'type' => 'image', // 訊息類型 (圖片)
-                                          'originalContentUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg', // 回復圖片
+                                          'originalContentUrl' => $originalContentUrl, // 回復圖片
                                           'previewImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg' // 回復的預覽圖片
 				       ),
                                    ),
