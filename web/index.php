@@ -29,10 +29,12 @@ $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
 
+$response = $bot->getProfile('<userId>');
+
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 		
-$content = $receive->result[0]->content;
-$text = $content->text;
+/*$content = $receive->result[0]->content;
+$text = $content->text;*/
 	
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
