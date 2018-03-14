@@ -56,17 +56,13 @@ foreach ($client->parseEvents() as $event) {
 			    $replyToken=$event['replyToken'];
 			    $type2=$event['type'];
 			    $timestamp=$event['timestamp'];
-			    
-			 /*   $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($m_message);
-$response = $bot->replyMessage($replyToken, $textMessageBuilder);*/
-			    
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
 			date_default_timezone_set('Asia/Taipei');
 			if($m_message=="安安")
                 	{
-                		$client->replyMessage(array(
+                		/*$client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
                         'messages' => array(
                             array(
@@ -75,7 +71,10 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);*/
 				    . count($message) . "\n" .count($event). "\n" .count($source) . "\n" .count($replyToken) . "\n" .count($type2) . "\n" .count($timestamp) 
                             )	
                         )
-                    	));
+                    	));*/
+				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $userId . "\n" . $groupid. "\n" . $displayname . "\n"
+				    . count($message) . "\n" .count($event). "\n" .count($source) . "\n" .count($replyToken) . "\n" .count($type2) . "\n" .count($timestamp));
+$response = $bot->replyMessage($replyToken, $textMessageBuilder);
                 	}else if($m_message=="123"){
 				
 				$client->replyMessage(array(
