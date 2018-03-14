@@ -165,10 +165,15 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			    $previewImageUrl=$message['previewImageUrl'];
                 	if($type!="")
                 	{
-				$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder("位址名稱", "地址", 緯度, 經度);
-$bot->replyMessage($replyToken,$msg);
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $originalContentUrl . "\n" . $previewImageUrl . "\n" . $displayname);
-$response = $bot->replyMessage($replyToken, $textMessageBuilder);
+                		$client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $type . "\n" . $originalContentUrl . "\n" . $previewImageUrl . "\n" . $displayname
+                            ),
+                        ),
+                    	));
                 	}
 				break;
 	
@@ -218,10 +223,15 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			    $displayname=$profile['displayName'];
                 	if($m_message!="")
                 	{
-                	
-				
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId . "\n". count($message) . "\n" . $displayname);
-$response = $bot->replyMessage($replyToken, $textMessageBuilder);
+                		$client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => $type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId . "\n". count($message) . "\n" . $displayname
+                            ),
+                        ),
+                    	));
                 	}
                     break;
 			
