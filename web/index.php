@@ -31,7 +31,7 @@ $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
 
-$response = $bot->getProfile($id);
+$response = $bot->getProfile($userId);
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 		
@@ -47,7 +47,7 @@ foreach ($client->parseEvents() as $event) {
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
-              	      	$id=$source['userId'];
+              	      	$userId=$source['userId'];
 			$displayName = $contacts['displayName'];				
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
