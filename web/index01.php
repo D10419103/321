@@ -165,16 +165,6 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			    $previewImageUrl=$message['previewImageUrl'];
                 	if($type!="")
                 	{
-                		$client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => 
-                            ),
-                        ),
-                    	));
-				
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $originalContentUrl . "\n" . $previewImageUrl . "\n" . $displayname);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                 	}
