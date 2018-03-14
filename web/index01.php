@@ -46,6 +46,7 @@ foreach ($client->parseEvents() as $event) {
         case 'message':
             $message = $event['message'];		
             switch ($message['type']) {
+			    $replyToken=$event['replyToken'];
 		    case 'text':
                 	$m_message = $message['text'];
 			$type = $message['type'];
@@ -53,7 +54,6 @@ foreach ($client->parseEvents() as $event) {
               	      	$userId=$source['userId'];			
                   	$roomid=$source['roomId'];
              	       	$groupid=$source['groupId'];
-			    $replyToken=$event['replyToken'];
 			    $type2=$event['type'];
 			    $timestamp=$event['timestamp'];
 			    $response = $bot->getProfile($userId);
