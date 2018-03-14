@@ -57,7 +57,7 @@ foreach ($client->parseEvents() as $event) {
 			    $type2=$event['type'];
 			    $timestamp=$event['timestamp'];
 			    
-			    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+			    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($m_message);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			    
 			    $response = $bot->getProfile($userId);
