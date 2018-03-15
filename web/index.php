@@ -71,11 +71,11 @@ foreach ($client->parseEvents() as $event) {
                                 'text' =>$pictureUrl."\n". $type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $userId . "\n" . $groupid. "\n" . $displayname . "\n"
 				    . count($message) . "\n" .count($event). "\n" .count($source) . "\n" .count($replyToken) . "\n" .count($type2) . "\n" .count($timestamp) 
                             ),
-				array(
+				/*array(
                 'type' => 'image', // 訊息類型 (圖片)
                 'originalContentUrl' => $pictureUrl, // 回復圖片
                 'previewImageUrl' => $pictureUrl // 回復的預覽圖片
-            ),
+            ),*/
 				
                         )
                     	));
