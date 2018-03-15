@@ -42,6 +42,11 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
+
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+$response = $bot->pushMessage($to, $textMessageBuilder);
+
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 /*$content = $receive->result[0]->content;
 $text = $content->text;*/
 
