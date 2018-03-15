@@ -195,8 +195,8 @@ if ($response->isSucceeded()) {
                                           'previewImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg' // 回復的預覽圖片
 				       ),
                                    ),
-                               ));*/
-                       }
+                               ));
+                       }*/
 		       break;
 	
 		    case "video" :
