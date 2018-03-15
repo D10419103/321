@@ -51,11 +51,31 @@ echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 $text = $content->text;*/
 
 foreach ($client->parseEvents() as $event) {
+	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+$response = $bot->pushMessage($to, $textMessageBuilder);
+
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
     switch ($event['type']) {
+		    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+$response = $bot->pushMessage($to, $textMessageBuilder);
+
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
         case 'message':
+		    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+$response = $bot->pushMessage($to, $textMessageBuilder);
+
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
             $message = $event['message'];		
             switch ($message['type']) {
+			    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+$response = $bot->pushMessage($to, $textMessageBuilder);
+
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 		    case 'text':
+			    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+$response = $bot->pushMessage($to, $textMessageBuilder);
+
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
