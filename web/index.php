@@ -73,7 +73,8 @@ foreach ($client->parseEvents() as $event) {
                             ),
 				array(
                 'type' => 'image', // 訊息類型 (圖片)
-                'originalContentUrl' => 'http://dl.profile.line-cdn.net/0m07f761d3725160f5cadeea55759363686dd40ed8c9c1', // 回復圖片
+                //'originalContentUrl' => 'http://dl.profile.line-cdn.net/0m07f761d3725160f5cadeea55759363686dd40ed8c9c1', // 回復圖片
+		'previewImageUrl' => 'http://dl.profile.line-cdn.net/0m07f761d3725160f5cadeea55759363686dd40ed8c9c1' // 回復的預覽圖片
             ),
 				
                         )
