@@ -46,10 +46,8 @@ $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 $text = $content->text;*/
 
 foreach ($client->parseEvents() as $event) {
-	$source=$event['source'];
-              	      	$userId=$source['userId'];
 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-$response = $bot->pushMessage($userId, $textMessageBuilder);
+$response = $bot->pushMessage('U8acc7f611c6f853ac53e1a474bd77c92', $textMessageBuilder);
     switch ($event['type']) {
         case 'message':
             $message = $event['message'];		
