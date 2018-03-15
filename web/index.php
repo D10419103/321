@@ -73,8 +73,8 @@ foreach ($client->parseEvents() as $event) {
                             ),
 				array(
                 'type' => 'image', // 訊息類型 (圖片)
-                //'originalContentUrl' => 'http://dl.profile.line-cdn.net/0m07f761d3725160f5cadeea55759363686dd40ed8c9c1', // 回復圖片
-		'previewImageUrl' => 'http://dl.profile.line-cdn.net/0m07f761d3725160f5cadeea55759363686dd40ed8c9c1' // 回復的預覽圖片
+                //'originalContentUrl' => 'https://imagelab.nownews.com/?w=1080&q=85&src=http://s.nownews.com/92/29/9229d2dc2e9ca559158895766771f3c2.jpg', // 回復圖片
+		'previewImageUrl' => 'https://imagelab.nownews.com/?w=1080&q=85&src=http://s.nownews.com/92/29/9229d2dc2e9ca559158895766771f3c2.jpg' // 回復的預覽圖片
             ),
 				
                         )
