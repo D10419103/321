@@ -46,12 +46,15 @@ $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 $text = $content->text;*/
 
 foreach ($client->parseEvents() as $event) {
+	$source=$event['source'];
+              	      	$userId=$source['userId'];
+	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+$response = $bot->pushMessage($userId, $textMessageBuilder);
     switch ($event['type']) {
         case 'message':
             $message = $event['message'];		
             switch ($message['type']) {
 		    case 'text':
-			    
                 	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
@@ -168,18 +171,8 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			$type=$message['type'];
 			    $originalContentUrl='a-' . $message['originalContentUrl'] . 'a-';
 			    $previewImageUrl=$message['previewImageUrl'];
-			    $id=$message['id'];
-			    
-			    $response = $bot->getMessageContent($id);
-if ($response->isSucceeded()) {
-    $tempfile = tmpfile();
-    fwrite($tempfile, $response->getRawBody());
-} else {
-    error_log($response->getHTTPStatus() . ' ' . $response->getRawBody());
-}
-			    
-			    
-                	/*if($type!="")
+			    $id=$message['id'];	    	    
+                	if($type!="")
                 	{
                 		$client->replyMessage(array(
                                     'replyToken' => $event['replyToken'],
@@ -196,7 +189,7 @@ if ($response->isSucceeded()) {
 				       ),
                                    ),
                                ));
-                       }*/
+                       }
 		       break;
 	
 		    case "video" :
