@@ -42,6 +42,10 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 		
+ $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+$response = $bot->pushMessage('<to>', $textMessageBuilder);
+
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 /*$content = $receive->result[0]->content;
 $text = $content->text;*/
 
@@ -64,14 +68,7 @@ foreach ($client->parseEvents() as $event) {
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
-			date_default_timezone_set('Asia/Taipei');
-			    
-			    
-			    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-$response = $bot->pushMessage('<to>', $textMessageBuilder);
-
-echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-			    
+			date_default_timezone_set('Asia/Taipei');	    
 			if($m_message=="安安")
                 	{
 				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $userId . "\n" . $groupid. "\n" . $displayname . "\n"
