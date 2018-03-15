@@ -42,6 +42,10 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
+
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+$response = $bot->pushMessage('你好', $textMessageBuilder);
+
 /*$content = $receive->result[0]->content;
 $text = $content->text;*/
 
