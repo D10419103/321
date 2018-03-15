@@ -168,7 +168,18 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			$type=$message['type'];
 			    $originalContentUrl='a-' . $message['originalContentUrl'] . 'a-';
 			    $previewImageUrl=$message['previewImageUrl'];
-                	if($type!="")
+			    $id=$message['id'];
+			    
+			    $response = $bot->getMessageContent($id);
+if ($response->isSucceeded()) {
+    $tempfile = tmpfile();
+    fwrite($tempfile, $response->getRawBody());
+} else {
+    error_log($response->getHTTPStatus() . ' ' . $response->getRawBody());
+}
+			    
+			    
+                	/*if($type!="")
                 	{
                 		$client->replyMessage(array(
                                     'replyToken' => $event['replyToken'],
@@ -184,7 +195,7 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                                           'previewImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg' // 回復的預覽圖片
 				       ),
                                    ),
-                               ));
+                               ));*/
                        }
 		       break;
 	
