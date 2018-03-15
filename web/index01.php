@@ -63,10 +63,12 @@ foreach ($client->parseEvents() as $event) {
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
+			     $pictureUrl=$profile['pictureUrl'];
+	    		$statusMessage= $profile['statusMessage'];
 			date_default_timezone_set('Asia/Taipei');
 			if($m_message=="安安")
                 	{
-				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($replyToken//$type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $userId . "\n" . $groupid. "\n" . $displayname . "\n"
+				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($statusMessage."\n".$pictureUrl."\n".$type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $userId . "\n" . $groupid. "\n" . $displayname . "\n"
 				    . count($message) . "\n" .count($event). "\n" .count($source) . "\n" .count($replyToken) . "\n" .count($type2) . "\n" .count($timestamp));
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                 	}else if($m_message=="123"){
