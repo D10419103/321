@@ -11,7 +11,7 @@ require_once __DIR__ . '/../scr/LINEBot/HTTPClient/CurlHTTPClient.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TextMessageBuilder.php';
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
-$client = new LINEBotTiny($channelAccessToken, $channelSecret);
+$client = new LINEBotTiny($httpClient, $bot);
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 foreach ($client->parseEvents() as $event) {
