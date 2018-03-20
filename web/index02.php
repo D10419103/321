@@ -37,7 +37,7 @@ foreach ($client->parseEvents() as $event) {
 		    }
                     if($m_message=="安安"){
                        error_log("this");
-				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool . "123");
+				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool . "\n" . $m_message);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		    }
                     break;
