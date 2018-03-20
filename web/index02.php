@@ -1,5 +1,5 @@
 <?php
-require_once('./LINEBotTiny.php');
+//require_once('./LINEBotTiny.php');
 require_once __DIR__ . '/../scr/LINEBot.php';
 require_once __DIR__ . '/../scr/LINEBot/Response.php';
 require_once __DIR__ . '/../scr/LINEBot/Constant/Meta.php';
