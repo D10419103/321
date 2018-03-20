@@ -36,14 +36,9 @@ foreach ($client->parseEvents() as $event) {
 			 $mysqli->close();
 		    }
                     if($m_message=="安安"){
-                       $client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-				'text' => $cool
-                            )	
-                        )));
+                       
+				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool);
+$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		    }
                     break;
             }
