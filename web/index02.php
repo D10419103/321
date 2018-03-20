@@ -28,7 +28,7 @@ foreach ($client->parseEvents() as $event) {
                     date_default_timezone_set('Asia/Taipei');
                     $debugmsg='123456';
                     $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-                    $cool=mysqli_query($mysqli,"select Q from test where cool=456");
+                    $cool=mysqli_query($mysqli,'select Q from test where cool=456');
 	            if(mysqli_connect_errno()){ 
                         $debugmsg='資料庫連線失敗';
                     }
@@ -37,7 +37,7 @@ foreach ($client->parseEvents() as $event) {
 		    }
                     if($m_message=="安安"){
                        error_log("this");
-				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(($mysqli,"select Q from test where cool=456") . "\n" . $m_message);
+				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(select Q from test where cool=456 .$cool. "\n" . $m_message);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		    }
                     break;
