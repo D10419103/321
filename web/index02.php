@@ -1,5 +1,6 @@
 <?php
 //require_once('./LINEBotTiny.php');
+require('../vendor/autoload.php');
 require_once __DIR__ . '/../scr/LINEBot.php';
 require_once __DIR__ . '/../scr/LINEBot/Response.php';
 require_once __DIR__ . '/../scr/LINEBot/Constant/Meta.php';
@@ -9,12 +10,13 @@ require_once __DIR__ . '/../scr/LINEBot/Constant/MessageType.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient/CurlHTTPClient.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TextMessageBuilder.php';
+
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
-$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
-$client = new ($httpClient, $bot);
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
+$client = new LINEBotTiny($channelAccessToken, $channelSecret);
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
