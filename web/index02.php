@@ -36,7 +36,7 @@ foreach ($client->parseEvents() as $event) {
 			 $mysqli->close();
 		    }
                     if($m_message=="安安"){
-                       
+                       error_log("this");
 				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		    }
