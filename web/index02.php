@@ -28,11 +28,23 @@ foreach ($client->parseEvents() as $event) {
                     date_default_timezone_set('Asia/Taipei');
                     $debugmsg='123456';
                     $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-                    $cool=mysqli_query($mysqli,'select Q from test where cool=456');
+                    $result=mysqli_query($mysqli,'select Q from test where cool=456');
+		$cool='';
+		//$result = $db->query("call getUsers()");
+		if($result){
+		     // Cycle through results
+		    while ($row = $result->fetch_object()){
+			$cool = $row;
+		    }
+		    // Free result set
+		    $result->close();
+		}    
 	            if(mysqli_connect_errno()){ 
                         $debugmsg='資料庫連線失敗';
                     }
                     else{
+			    
+			    
 			 $mysqli->close();
 		    }
                     if($m_message=="安安"){
