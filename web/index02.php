@@ -45,7 +45,6 @@ foreach ($client->parseEvents() as $event) {
 				                'text' => $cool
                             )	
                         )));
-			    UPDATE test SET cool = 200;
 		    }
                     break;
             }
