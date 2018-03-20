@@ -54,33 +54,18 @@ $receive = json_decode(file_get_contents("php://input"));
 	reply($content_type, $text);
 
 function reply($content_type, $message) {
-    switch ($event['type']) {
-        case 'message':
-            $message = $event['message'];
-            switch ($message['type']) {
-                case 'text':
-                    $replyToken=$event['replyToken'];
-                	$m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $id=$source['userId'];
-                    $roomid=$source['roomId']; $groupid=$source['groupId'];
-                    $pictureUrl=$message['pictureUrl'];$res = $bot->getProfile($id);$profile = $res->getJSONDecodedBody();
-                    $displayName = $profile['displayName'];
-                    date_default_timezone_set('Asia/Taipei');
-                    $debugmsg='123456';
-                    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-                    $cool=mysqli_query($mysqli,"select Q from test where cool=456");
-			        if(mysqli_connect_errno()){ 
-                        $debugmsg='資料庫連線失敗';
-                    }
-                    else{
-					    $mysqli->close();
-				    }
-                    if($m_message=="安安"){
-                       $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool);
-$response = $bot->replyMessage($replyToken, $textMessageBuilder);
-		    }
-                    break;
-            }
-            break;
+    global $header, $from, $receive;
+	 	
+		$url = "https://api.line.me/v2/bot/message/push";
+		
+		$data = ["to" => $from, "messages" => array(["type" => "text", "text" => $message])];
+		
+		switch($content_type) {
+		
+			case "text" :
+				$content_type = "文字訊息";
+				$data = ["to" => $from, "messages" => array(["type" => "text", "text" => $message])];
+				break;
         default:
             error_log("Unsupporeted event type: " . $event['type']);
             break;
