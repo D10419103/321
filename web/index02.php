@@ -27,8 +27,17 @@ foreach ($client->parseEvents() as $event) {
                     $displayName = $profile['displayName'];
                     date_default_timezone_set('Asia/Taipei');
                     $debugmsg='123456';
+			    
                     $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-                    $result=mysqli_query($mysqli,'select Q from test where cool=456');
+                    
+$sql = "select Q from test where cool=456";
+$result = $mysqli->query($sql);
+ 
+while($row = $result->fetch_array()) {
+  	$cool = $row['Q'] ;
+  }
+			    /*
+		$mysqli->query('select Q from test where cool=456');
 		$cool='';
 		//$result = $db->query("call getUsers()");
 		if($result){
@@ -39,6 +48,7 @@ foreach ($client->parseEvents() as $event) {
 		    // Free result set
 		    $result->close();
 		}    
+			    */
 	            if(mysqli_connect_errno()){ 
                         $debugmsg='資料庫連線失敗';
                     }
