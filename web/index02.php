@@ -61,8 +61,15 @@ while($row = $result->fetch_array()) {
                        error_log("this");
 				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool. "\n" . $m_message);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
-			    "use fu7wm9fyq2nkgeuk";
-			     "INSERT INTO test (Q,cool,test) VALUES ('111','222','333')";
+			    
+			    DROP TABLE IF EXISTS test;
+CREATE TABLE test (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);
+INSERT INTO test (name, quantity) VALUES ('banana', 150);
+INSERT INTO test (name, quantity) VALUES ('orange', 154);
+INSERT INTO test (name, quantity) VALUES ('apple', 100);
+			    
+			    /*"use fu7wm9fyq2nkgeuk";
+			     "INSERT INTO test (Q,cool,test) VALUES ('111','222','333')";*/
 		    }
                     break;
             }
