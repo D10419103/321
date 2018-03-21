@@ -30,7 +30,7 @@ foreach ($client->parseEvents() as $event) {
 			    
                     $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
                     
-$sql = "select Q from test where cool=456";
+$sql = "select Q from test";
 $result = $mysqli->query($sql);
  
 while($row = $result->fetch_array()) {
