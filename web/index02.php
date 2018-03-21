@@ -60,16 +60,11 @@ while($row = $result->fetch_array()) {
                     if($m_message=="安安"){
                        error_log("this");
 				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool. "\n" . $m_message);
-$response = $bot->replyMessage($replyToken, $textMessageBuilder);
-			    
-			    DROP TABLE IF EXISTS test;
-CREATE TABLE test (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);
-INSERT INTO test (name, quantity) VALUES ('banana', 150);
-INSERT INTO test (name, quantity) VALUES ('orange', 154);
-INSERT INTO test (name, quantity) VALUES ('apple', 100);
-			    
-			    /*"use fu7wm9fyq2nkgeuk";
-			     "INSERT INTO test (Q,cool,test) VALUES ('111','222','333')";*/
+$response = $bot->replyMessage($replyToken, $textMessageBuilder);	  
+			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			    "use fu7wm9fyq2nkgeuk";
+			     "INSERT INTO test (Q,cool,test) VALUES ('111','222','333')";
+			     $mysqli->close();
 		    }
                     break;
             }
