@@ -61,7 +61,7 @@ while($row = $result->fetch_array()) {
                        error_log("this");
 				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool. "\n" . $m_message);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
-			    "INSERT INTO test (Q,cool,test) VALUES ('111','222','333')";
+			   // "INSERT INTO test (Q,cool,test) VALUES ('111','222','333')";
 		    }
                     break;
             }
