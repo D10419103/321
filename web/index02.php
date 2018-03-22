@@ -33,6 +33,11 @@ foreach ($client->parseEvents() as $event) {
 $sql = "select Q from test";
 $result = $mysqli->query($sql);
  
+			    
+			    mysql_query("SET NAMES 'utf8'");
+			    $a="INSERT INTO test (Q,cool,test) VALUES (111, 222,333)";
+			    mysql_query($a);
+			    
 while($row = $result->fetch_array()) {
   	$cool = $row['Q'] ;
   }
@@ -63,8 +68,6 @@ while($row = $result->fetch_array()) {
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);	  
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 			    mysql_query("SET NAMES 'utf8'");
-mysql_query("SET CHARACTER_SET_CLIENT=utf8");
-mysql_query("SET CHARACTER_SET_RESULTS=utf8");
 			    $a="INSERT INTO test (Q,cool,test) VALUES (111, 222,333)";
 			    mysql_query($a);
 			     $mysqli->close();
