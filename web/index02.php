@@ -33,7 +33,7 @@ foreach ($client->parseEvents() as $event) {
 $sql = "select Q from test";
 $result = $mysqli->query($sql);
  			    
-			    $a="INSERT INTO test (Q,cool,test) VALUES (111, 222,333)";
+			    $a="INSERT INTO test (Q,cool,test) VALUES (111, 333,222)";
 			    
 while($row = $result->fetch_array()) {
   	$cool = $row['Q'] ;
