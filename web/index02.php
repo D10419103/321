@@ -62,6 +62,9 @@ while($row = $result->fetch_array()) {
 				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool. "\n" . $m_message);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);	  
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			    mysql_query("SET NAMES 'utf8'");
+mysql_query("SET CHARACTER_SET_CLIENT=utf8");
+mysql_query("SET CHARACTER_SET_RESULTS=utf8");
 			    $a="INSERT INTO test (Q,cool,test) VALUES (111, 222,333)";
 			    mysql_query($a);
 			     $mysqli->close();
