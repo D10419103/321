@@ -63,6 +63,7 @@ while($row = $result->fetch_array()) {
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);	  
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 			    $a="INSERT INTO test (Q,cool,test) VALUES (111, 222,333)";
+			    mysql_query($a);
 			     $mysqli->close();
 		    }
                     break;
