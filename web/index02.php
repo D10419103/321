@@ -62,7 +62,7 @@ while($row = $result->fetch_array()) {
 				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool. "\n" . $m_message);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);	  
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			    $sql="INSERT INTO test (Q,cool,test) VALUES ('$displayName', '$m_message','$m_message')";
+			    $sql="INSERT INTO test (Q,cool,test) VALUES ('$m_message', '$m_message','$m_message')";
 			    $result = $mysqli->query($sql);
 			     $mysqli->close();
 		    }
