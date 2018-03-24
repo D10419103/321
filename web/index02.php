@@ -130,7 +130,7 @@ $bot->replyMessage($replyToken,$msg);
 				/*$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($type, $m_message, $latitude, $longitude);
 $bot->replyMessage($replyToken,$msg);*/
 				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			    $sql = "UPDATE workPunch SET location='$m_message' where name='$displayname';";
+			    $sql = "UPDATE workPunch SET location='$m_message' longitude='$longitude' latitude='$latitude' where name='$displayname';";
 			    $result = $mysqli->query($sql);
                 	}
                     break;
