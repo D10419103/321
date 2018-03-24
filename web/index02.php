@@ -30,12 +30,12 @@ foreach ($client->parseEvents() as $event) {
 			    
                     $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
                     
-$sql = "select Q from workPunch";
+/*$sql = "select Q from workPunch";
 $result = $mysqli->query($sql);
 			    
 while($row = $result->fetch_array(MYSQLI_BOTH)) {
   	$cool = $row['Q'] ;
-  }
+  }*/
 			    /*
 		$mysqli->query('select Q from test where cool=456');
 		$cool='';
