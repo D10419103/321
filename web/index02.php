@@ -1,4 +1,5 @@
  <?php
+
 /**
  * Copyright 2016 LINE Corporation
  *
@@ -14,6 +15,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
+
 require_once('./LINEBotTiny.php');
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient.php';
@@ -22,24 +24,34 @@ require_once __DIR__ . '/../scr/LINEBot.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient/CurlHTTPClient.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient/Curl.php';
 require_once __DIR__ . '/../scr/LINEBot/Response.php';
+
 require_once __DIR__ . '/../scr/LINEBot/Constant/MessageType.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TextMessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/StickerMessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/LocationMessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/MultiMessageBuilder.php';
+
+
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
+
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
+
+
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
+
+/*$content = $receive->result[0]->content;
+$text = $content->text;*/
+
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
-            $message = $event['message'];
+            $message = $event['message'];		
             switch ($message['type']) {
-                case 'text':
-                    $m_message = $message['text'];
+		    case 'text':
+                	$m_message = $message['text'];
 			$type = $message['type'];
                 	$source=$event['source'];
               	      	$userId=$source['userId'];			
@@ -51,7 +63,7 @@ foreach ($client->parseEvents() as $event) {
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
-			date_default_timezone_set('Asia/Taipei');
+			date_default_timezone_set('Asia/Taipei');	   
 			    $time=date('Y-m-d h:i:sa');
                     //$debugmsg='123456';
 			    
