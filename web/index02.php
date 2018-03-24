@@ -39,14 +39,19 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];
             switch ($message['type']) {
                 case 'text':
-                    $replyToken=$event['replyToken'];
-                	$m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $userid=$source['userId'];
-                    $roomid=$source['roomId']; $groupid=$source['groupId'];
-                    $pictureUrl=$message['pictureUrl'];
+                    $m_message = $message['text'];
+			$type = $message['type'];
+                	$source=$event['source'];
+              	      	$userId=$source['userId'];			
+                  	$roomid=$source['roomId'];
+             	       	$groupid=$source['groupId'];
+			$replyToken=$event['replyToken'];
+			    $type2=$event['type'];
+			    $timestamp=$event['timestamp'];
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
-                    $displayName = $profile['displayName'];
-                    date_default_timezone_set('Asia/Taipei');
+			    $displayname=$profile['displayName'];
+			date_default_timezone_set('Asia/Taipei');
 			    $time=date('Y-m-d h:i:sa');
                     $debugmsg='123456';
 			    
