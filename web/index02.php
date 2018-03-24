@@ -96,14 +96,20 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    
 			 $mysqli->close();
 		    }*/
-                    if($m_message=="安安"){
+			    if($m_message=="安安")
+                	{
+				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $userId . "\n" . $groupid. "\n" . $displayname . "\n"
+				    . count($message) . "\n" .count($event). "\n" .count($source) . "\n" .count($replyToken) . "\n" .count($type2) . "\n" .count($timestamp));
+$response = $bot->replyMessage($replyToken, $textMessageBuilder);
+                	}
+                    /*if($m_message=="安安"){
 				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($m_message . "\n" . $displayName . "\n" . $userId ."\n" . $time);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);	  
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 			    $sql="INSERT INTO workPunch (name,userid,worktime) VALUES ('$displayName','$userid','$time')";
 			    $result = $mysqli->query($sql);
 			     $mysqli->close();
-		    }else if($m_message=="123"){
+		    }*/else if($m_message=="123"){
 				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool. "\n" . $m_message);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);	  
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
