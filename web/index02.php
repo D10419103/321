@@ -112,6 +112,32 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			     $mysqli->close();
 		    }
                     break;
+			    case 'location' :
+			    $replyToken=$event['replyToken'];
+			$source=$event['source'];
+              	      	$type = $source['type']; 
+              	      	$userId=$source['userId'];
+			$title=$message['title'];
+                   	$latitude=$message['latitude'];
+                   	$longitude=$message['longitude'];
+			$m_message = $message['address'];
+			$type=$message['type'];
+			    $response = $bot->getProfile($userId);
+			    $profile = $response->getJSONDecodedBody();
+			    $displayname=$profile['displayName'];
+                	if($m_message!="")
+                	{
+				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId . "\n". count($message) . "\n" . $displayname);
+$bot->replyMessage($replyToken,$msg);
+				/*$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($type, $m_message, $latitude, $longitude);
+$bot->replyMessage($replyToken,$msg);*/
+				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			    $sql = "UPDATE workPunch SET location='$m_message' where name='$displayname';";
+			    $result = $mysqli->query($sql);
+			     $mysqli->close();
+                	}
+                    break;
+			
             }
             break;
         default:
