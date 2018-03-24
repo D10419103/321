@@ -71,6 +71,7 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);	  
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 			    $sql="INSERT INTO test (cool,test) VALUES (123456,5645646)";
+			    $sql = "UPDATE test SET test='123' WHERE cool='34';";
 			    $result = $mysqli->query($sql);
 			     $mysqli->close();
 		    }
