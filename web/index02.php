@@ -62,7 +62,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool. "\n" . $m_message);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);	  
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			    $sql="INSERT INTO workPunch (name,worktime) VALUES ('$displayName','date('Y-m-d h:i:sa')')";
+			    $sql="INSERT INTO workPunch (name,worktime) VALUES (123,456);
 			    $result = $mysqli->query($sql);
 			     $mysqli->close();
 		    }else if($m_message=="123"){
