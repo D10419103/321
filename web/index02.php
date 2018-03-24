@@ -62,7 +62,7 @@ while($row = $result->fetch_array()) {
 				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool. "\n" . $m_message);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);	  
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			    $sql="INSERT INTO test (Q,cool) VALUES (12,34 )";
+			    $sql="INSERT INTO test (Q,cool) VALUES (1234,5678 )";
 			    $result = $mysqli->query($sql);
 			     $mysqli->close();
 		    }else if($m_message=="123"){
@@ -70,8 +70,7 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cool. "\n" . $m_message);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);	  
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			    $sql="INSERT INTO test (cool,test) VALUES (123456,5645646)";
-			    $sql = "UPDATE test SET test='123' WHERE cool='34';";
+			    $sql = "UPDATE test SET test='98765';";
 			    $result = $mysqli->query($sql);
 			     $mysqli->close();
 		    }
