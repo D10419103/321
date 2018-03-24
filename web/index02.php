@@ -55,7 +55,7 @@ foreach ($client->parseEvents() as $event) {
 			    $time=date('Y-m-d h:i:sa');
                     //$debugmsg='123456';
 			    
-                    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+                    //$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
                     
 /*$sql = "select Q from workPunch";
 $result = $mysqli->query($sql);
