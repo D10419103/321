@@ -33,7 +33,7 @@ foreach ($client->parseEvents() as $event) {
 $sql = "select Q from workPunch";
 $result = $mysqli->query($sql);
 			    
-while($row = $result->fetch_array()) {
+while($row = $result->fetch_array(MYSQLI_BOTH)) {
   	$cool = $row['Q'] ;
   }
 			    /*
