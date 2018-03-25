@@ -32,8 +32,8 @@ require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/StickerMessageBuilder.php
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/LocationMessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/MultiMessageBuilder.php';
 
-/*require_once __DIR__ . '/../scr/LINEBot/TemplateActionBuilder/PostbackTemplateActionBuilder.php';
-require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TemplateBuilder/ConfirmTemplateBuilder.php';
+require_once __DIR__ . '/../scr/LINEBot/TemplateActionBuilder/PostbackTemplateActionBuilder.php';
+/*require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TemplateBuilder/ConfirmTemplateBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TemplateMessageBuilder.php';*/
 
 
