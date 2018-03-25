@@ -163,9 +163,10 @@ $bot->replyMessage($replyToken,$msg);*/
                         array(
                             'type' => 'message', // 類型 (訊息)
                             'label' => '下班', // 標籤 2
-                            'text' => '下班',$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-				$sql = "UPDATE workPunch SET worktype='下班' where name='$displayname' and worktype='';";
-			    $result = $mysqli->query($sql); // 用戶發送文字 2
+                            'text' => '下班',
+				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306"),
+				$sql = "UPDATE workPunch SET worktype='下班' where name='$displayname' and worktype='';",
+			    $result = $mysqli->query($sql) // 用戶發送文字 2
                         )
                     )
                 )
