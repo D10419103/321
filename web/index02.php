@@ -147,11 +147,15 @@ $bot->replyMessage($replyToken,$msg);*/
                             'type' => 'message', // 類型 (訊息)
                             'label' => '上班', // 標籤 1
                             'text' => '上班' // 用戶發送文字 1
+				$sql = "UPDATE workPunch SET worktype='上班' where name='$displayname' and worktype='';";
+			    $result = $mysqli->query($sql);
                         ),
                         array(
                             'type' => 'message', // 類型 (訊息)
                             'label' => '下班', // 標籤 2
                             'text' => '下班' // 用戶發送文字 2
+				$sql = "UPDATE workPunch SET worktype='下班' where name='$displayname' and worktype='';";
+			    $result = $mysqli->query($sql);
                         )
                     )
                 )
