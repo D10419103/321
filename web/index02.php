@@ -109,6 +109,33 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			    $sql = "UPDATE test SET workPunch='98765';";
 			    $result = $mysqli->query($sql);
 		    }
+			else if($m_message=="321"){
+				$client->replyMessage(array(
+  'replyToken' => $event['replyToken'],
+    'messages' => array(
+            array(
+                'type' => 'template', // 訊息類型 (模板)
+                'altText' => 'Example confirm template', // 替代文字
+                'template' => array(
+                    'type' => 'confirm', // 類型 (確認)
+                    'text' => 'Are you sure?', // 文字
+                    'actions' => array(
+                        array(
+                            'type' => 'message', // 類型 (訊息)
+                            'label' => 'Yes', // 標籤 1
+                            'text' => 'Yes' // 用戶發送文字 1
+                        ),
+                        array(
+                            'type' => 'message', // 類型 (訊息)
+                            'label' => 'No', // 標籤 2
+                            'text' => 'No' // 用戶發送文字 2
+                        )
+                    )
+                )
+            )
+        )
+    ));
+			}
                     break;
 			    case 'location' :
 			    $replyToken=$event['replyToken'];
