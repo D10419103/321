@@ -133,7 +133,15 @@ $bot->replyMessage($replyToken,$msg);*/
 			    $sql = "UPDATE workPunch SET location='$m_message',longitude='$longitude',latitude='$latitude' where name='$displayname' and location='';";
 			    $result = $mysqli->query($sql);
 				
-				$client->replyMessage(array(
+				
+				$actions = array(
+  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("是", "ans=Y"),
+  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("否", "ans=N")
+);
+$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("問題", $actions);
+$msg = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
+$bot->replyMessage($replyToken,$msg);
+				/*$client->replyMessage(array(
   'replyToken' => $event['replyToken'],
     'messages' => array(
             array(
@@ -147,23 +155,20 @@ $bot->replyMessage($replyToken,$msg);*/
                             'type' => 'message', // 類型 (訊息)
                             'label' => '上班', // 標籤 1
                             'text' => '上班' // 用戶發送文字 1
-				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-				$sql = "UPDATE workPunch SET worktype='上班' where name='$displayname' and worktype='';";
-			    $result = $mysqli->query($sql);
                         ),
                         array(
                             'type' => 'message', // 類型 (訊息)
                             'label' => '下班', // 標籤 2
                             'text' => '下班' // 用戶發送文字 2
-				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-				$sql = "UPDATE workPunch SET worktype='下班' where name='$displayname' and worktype='';";
-			    $result = $mysqli->query($sql);
                         )
                     )
                 )
             )
         )
     ));
+				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+				$sql = "UPDATE workPunch SET worktype='下班' where name='$displayname' and worktype='';";
+			    $result = $mysqli->query($sql);*/
                 	}
                     break;
 			
