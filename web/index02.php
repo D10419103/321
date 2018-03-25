@@ -143,8 +143,8 @@ $bot->replyMessage($replyToken,$msg);*/
 				
 				
 				$actions = array(
-  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("上班", "上班"),
-  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("下班", "下班")
+  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("上班"),
+  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("下班")
 );
 $button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("你現在是要上班還是下班?", $actions);
 $msg = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
