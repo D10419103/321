@@ -109,33 +109,6 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			    $sql = "UPDATE test SET workPunch='98765';";
 			    $result = $mysqli->query($sql);
 		    }
-			else if($m_message=="321"){
-				$client->replyMessage(array(
-  'replyToken' => $event['replyToken'],
-    'messages' => array(
-            array(
-                'type' => 'template', // 訊息類型 (模板)
-                'altText' => 'Example confirm template', // 替代文字
-                'template' => array(
-                    'type' => 'confirm', // 類型 (確認)
-                    'text' => 'Are you sure?', // 文字
-                    'actions' => array(
-                        array(
-                            'type' => 'message', // 類型 (訊息)
-                            'label' => 'Yes', // 標籤 1
-                            'text' => 'Yes' // 用戶發送文字 1
-                        ),
-                        array(
-                            'type' => 'message', // 類型 (訊息)
-                            'label' => 'No', // 標籤 2
-                            'text' => 'No' // 用戶發送文字 2
-                        )
-                    )
-                )
-            )
-        )
-    ));
-			}
                     break;
 			    case 'location' :
 			    $replyToken=$event['replyToken'];
@@ -152,13 +125,39 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			    $displayname=$profile['displayName'];
                 	if($m_message!="")
                 	{
-				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
-$bot->replyMessage($replyToken,$msg);
+				/*$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
+$bot->replyMessage($replyToken,$msg);*/
 				/*$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($type, $m_message, $latitude, $longitude);
 $bot->replyMessage($replyToken,$msg);*/
 				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 			    $sql = "UPDATE workPunch SET location='$m_message',longitude='$longitude',latitude='$latitude' where name='$displayname' and location='';";
 			    $result = $mysqli->query($sql);
+				
+				$client->replyMessage(array(
+  'replyToken' => $event['replyToken'],
+    'messages' => array(
+            array(
+                'type' => 'template', // 訊息類型 (模板)
+                'altText' => 'Example confirm template', // 替代文字
+                'template' => array(
+                    'type' => 'confirm', // 類型 (確認)
+                    'text' => '你現在是要上班還是下班?', // 文字
+                    'actions' => array(
+                        array(
+                            'type' => 'message', // 類型 (訊息)
+                            'label' => '上班', // 標籤 1
+                            'text' => '上班' // 用戶發送文字 1
+                        ),
+                        array(
+                            'type' => 'message', // 類型 (訊息)
+                            'label' => '下班', // 標籤 2
+                            'text' => '下班' // 用戶發送文字 2
+                        )
+                    )
+                )
+            )
+        )
+    ));
                 	}
                     break;
 			
