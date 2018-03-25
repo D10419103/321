@@ -143,10 +143,10 @@ $bot->replyMessage($replyToken,$msg);*/
 				
 				
 				$actions = array(
-  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("是", "ans=Y"),
-  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("否", "ans=N")
+  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("上班", "上班"),
+  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("下班", "下班")
 );
-$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("問題", $actions);
+$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("你現在是要上班還是下班?", $actions);
 $msg = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
 $bot->replyMessage($replyToken,$msg);
 				/*$client->replyMessage(array(
