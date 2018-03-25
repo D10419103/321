@@ -33,6 +33,7 @@ require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/LocationMessageBuilder.ph
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/MultiMessageBuilder.php';
 
 require_once __DIR__ . '/../scr/LINEBot/TemplateActionBuilder.php';
+require_once __DIR__ . '/../scr/LINEBot/Constant/ActionType.php';
 require_once __DIR__ . '/../scr/LINEBot/TemplateActionBuilder/PostbackTemplateActionBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TemplateBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TemplateBuilder/ConfirmTemplateBuilder.php';
