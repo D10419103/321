@@ -155,23 +155,20 @@ $bot->replyMessage($replyToken,$msg);*/
                         array(
                             'type' => 'message', // 類型 (訊息)
                             'label' => '上班', // 標籤 1
-                            'text' => '上班' // 用戶發送文字 1
+                            'text' => '上班', $a="上班"// 用戶發送文字 1
                         ),
                         array(
                             'type' => 'message', // 類型 (訊息)
                             'label' => '下班', // 標籤 2
-                            'text' => '下班' // 用戶發送文字 2
+                            'text' => '下班',$a="下班" // 用戶發送文字 2
                         )
-			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-				$sql = "UPDATE workPunch SET worktype='test' where name='$displayname' and worktype='';";
-			    $result = $mysqli->query($sql);
                     )
                 )
             )
         )
     ));
 				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-				$sql = "UPDATE workPunch SET worktype='test' where name='$displayname' and worktype='';";
+				$sql = "UPDATE workPunch SET worktype='$a' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
                 	}
                     break;
