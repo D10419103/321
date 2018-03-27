@@ -115,8 +115,15 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
          	   ),
  	       ),
 	    ));
+		 $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			   $sql = "select number from workPunch";
+		$result = $mysqli->query($sql);
+			    
+		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$a = $row['number'] ;
+ 		 }
 			   $a=$a+1;
-			   $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			   
 				$sql = "UPDATE workPunch SET worktype='上班',number='$a' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
 		    }else if($m_message=="下班"){
@@ -130,8 +137,15 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
          	   ),
  	       ),
 	    ));
+			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			   $sql = "select number from workPunch";
+		$result = $mysqli->query($sql);
+			    
+		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$a = $row['number'] ;
+ 		 }
 			   	$a=$a+1;
-			   $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			  
 				$sql = "UPDATE workPunch SET worktype='下班',number='$a' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
 		    }
