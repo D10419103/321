@@ -116,15 +116,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
  	       ),
 	    ));
 		 $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			   $sql = "select number from workPunch";
-		$result = $mysqli->query($sql);
-			    
-		while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  			$a = $row['number'] ;
- 		 }
-			   $a=$a+1;
-			   
-				$sql = "UPDATE workPunch SET worktype='上班',number='$a' where name='$displayname' and worktype='';";
+				$sql = "UPDATE workPunch SET worktype='上班' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
 		    }else if($m_message=="下班"){
 			$client->replyMessage(array(
@@ -138,15 +130,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
  	       ),
 	    ));
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			   $sql = "select number from workPunch";
-		$result = $mysqli->query($sql);
-			    
-		while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  			$a = $row['number'] ;
- 		 }
-			   	$a=$a+1;
-			  
-				$sql = "UPDATE workPunch SET worktype='下班',number='$a' where name='$displayname' and worktype='';";
+				$sql = "UPDATE workPunch SET worktype='下班' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
 		    }
                     break;
@@ -172,7 +156,14 @@ $bot->replyMessage($replyToken,$msg);*/
 				/*$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($type, $m_message, $latitude, $longitude);
 $bot->replyMessage($replyToken,$msg);*/
 				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			    $sql="INSERT INTO workPunch (name,userid,location,longitude,latitude,worktime) VALUES ('$displayname','$userId','$m_message','$longitude','$latitude','$time')";
+			    $sql = "select number from workPunch";
+		$result = $mysqli->query($sql);
+			    
+		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$a = $row['number'] ;
+ 		 }
+			   $a=$a+1;
+				$sql="INSERT INTO workPunch (number,name,userid,location,longitude,latitude,worktime) VALUES ('$a','$displayname','$userId','$m_message','$longitude','$latitude','$time')";
 			    $result = $mysqli->query($sql);
 				
 				
