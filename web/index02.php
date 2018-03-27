@@ -110,7 +110,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
      			   'messages' => array(
        			     array(
 				'type' => 'sticker',
-				'stickerId' => 1,
+				'stickerId' => 106,
 				'packageId' => 1
          	   ),
  	       ),
@@ -120,8 +120,16 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    $result = $mysqli->query($sql);
 			   
 		    }else if($m_message=="下班"){
-			$msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1,1);
-				$bot->replyMessage($reply_token,$msg);	
+			$client->replyMessage(array(
+        		'replyToken' => $event['replyToken'],
+     			   'messages' => array(
+       			     array(
+				'type' => 'sticker',
+				'stickerId' => 13,
+				'packageId' => 1
+         	   ),
+ 	       ),
+	    ));
 			   $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				$sql = "UPDATE workPunch SET worktype='下班' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
