@@ -162,7 +162,7 @@ $bot->replyMessage($replyToken,$msg);*/
 		while($row = $result->fetch_array(MYSQLI_BOTH)) {
   			$a = $row['number'] ;
  		 }
-			   $a=$a+1;
+			   $a+=1;
 				$sql="INSERT INTO workPunch (number,name,userid,location,longitude,latitude,worktime) VALUES ('$a','$displayname','$userId','$m_message','$longitude','$latitude','$time')";
 			    $result = $mysqli->query($sql);
 				
