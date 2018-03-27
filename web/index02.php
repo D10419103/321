@@ -132,7 +132,10 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				$sql = "UPDATE workPunch SET worktype='下班' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
-		    }
+		    }else if($userId){
+		   $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+		   $response = $bot->pushMessage('<to>', $textMessageBuilder);
+		   }
                     break;
 			    case 'location' :
 			    $replyToken=$event['replyToken'];
