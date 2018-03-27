@@ -105,8 +105,16 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			 $mysqli->close();
 		    }*/
                    if($m_message=="上班"){
-			$msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1,1);
-				$bot->replyMessage($reply_token,$msg);	
+			$client->replyMessage(array(
+        		'replyToken' => $event['replyToken'],
+     			   'messages' => array(
+       			     array(
+				'type' => 'sticker',
+				'stickerId' => 1,
+				'packageId' => 1
+         	   ),
+ 	       ),
+	    ));
 			   $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				$sql = "UPDATE workPunch SET worktype='上班' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
