@@ -108,10 +108,14 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				$sql = "UPDATE workPunch SET worktype='上班' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
+			   $msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1,1);
+				$bot->replyMessage($reply_token,$msg);
 		    }else if($m_message=="下班"){
 				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				$sql = "UPDATE workPunch SET worktype='下班' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
+			   $msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1,1);
+				$bot->replyMessage($reply_token,$msg);
 		    }
                     break;
 			    case 'location' :
