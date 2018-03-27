@@ -104,13 +104,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    
 			 $mysqli->close();
 		    }*/
-                    if($m_message=="安安"){
-				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($m_message . "\n" . $displayname . "\n" . $userId ."\n" . $time);
-$response = $bot->replyMessage($replyToken, $textMessageBuilder);	  
-			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			    $sql="INSERT INTO workPunch (name,userid,worktime) VALUES ('$displayname','$userId','$time')";
-			    $result = $mysqli->query($sql);
-		    }else if($m_message=="上班"){
+                   if($m_message=="上班"){
 				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				$sql = "UPDATE workPunch SET worktype='上班' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
@@ -130,6 +124,8 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                    	$longitude=$message['longitude'];
 			$m_message = $message['address'];
 			$type=$message['type'];
+			    date_default_timezone_set('Asia/Taipei');	   
+			    $time=date('Y-m-d h:i:sa');
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
@@ -140,7 +136,7 @@ $bot->replyMessage($replyToken,$msg);*/
 				/*$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($type, $m_message, $latitude, $longitude);
 $bot->replyMessage($replyToken,$msg);*/
 				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			    $sql = "UPDATE workPunch SET location='$m_message',longitude='$longitude',latitude='$latitude' where name='$displayname' and location='';";
+			    $sql="INSERT INTO workPunch (name,userid,location,longitude,latitude,worktime) VALUES ('$displayname','$userId','$m_message','$longitude','$latitude','$time')";
 			    $result = $mysqli->query($sql);
 				
 				
