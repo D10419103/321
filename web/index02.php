@@ -178,17 +178,17 @@ $bot->replyMessage($replyToken,$msg);*/
                 'altText' => 'Example confirm template', // 替代文字
                 'template' => array(
                     'type' => 'confirm', // 類型 (確認)
-                    'text' => '你現在是要上班還是下班?', // 文字
+                    'text' => '你現在是要進還是出?', // 文字
                     'actions' => array(
                         array(
                             'type' => 'message', // 類型 (訊息)
-                            'label' => '上班', // 標籤 1
-                            'text' => '上班'// 用戶發送文字 1
+                            'label' => '進', // 標籤 1
+                            'text' => '進'// 用戶發送文字 1
                         ),
                         array(
                             'type' => 'message', // 類型 (訊息)
-                            'label' => '下班', // 標籤 2
-                            'text' => '下班' // 用戶發送文字 2
+                            'label' => '出', // 標籤 2
+                            'text' => '出' // 用戶發送文字 2
                         )
                     )
                 )
