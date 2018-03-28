@@ -104,7 +104,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    
 			 $mysqli->close();
 		    }*/$a=0;
-                   if($m_message=="上班"){
+                   if($m_message=="進"){
 			$client->replyMessage(array(
         		'replyToken' => $event['replyToken'],
      			   'messages' => array(
@@ -116,9 +116,9 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
  	       ),
 	    ));
 		 $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-				$sql = "UPDATE workPunch SET worktype='上班' where name='$displayname' and worktype='';";
+				$sql = "UPDATE workPunch SET worktype='進' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
-		    }else if($m_message=="下班"){
+		    }else if($m_message=="出"){
 			$client->replyMessage(array(
         		'replyToken' => $event['replyToken'],
      			   'messages' => array(
@@ -130,7 +130,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
  	       ),
 	    ));
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-				$sql = "UPDATE workPunch SET worktype='下班' where name='$displayname' and worktype='';";
+				$sql = "UPDATE workPunch SET worktype='出' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
 		    }else if($userId){
 		   $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
