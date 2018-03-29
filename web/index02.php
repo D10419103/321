@@ -108,6 +108,10 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			$client->replyMessage(array(
         		'replyToken' => $event['replyToken'],
      			   'messages' => array(
+				   array(
+                                          'type' => 'text',
+                                          'text' => "歡迎你的到來!!" . "\n" . "祝你使用愉快!!"
+                                       ),
        			     array(
 				'type' => 'sticker',
 				'stickerId' => 106,
@@ -122,6 +126,10 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			$client->replyMessage(array(
         		'replyToken' => $event['replyToken'],
      			   'messages' => array(
+				   array(
+                                          'type' => 'text',
+                                          'text' => "謝謝你的使用" . "\n" . "歡迎下再來!!"
+                                       ),
        			     array(
 				'type' => 'sticker',
 				'stickerId' => 13,
