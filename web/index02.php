@@ -128,7 +128,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
      			   'messages' => array(
 				   array(
                                           'type' => 'text',
-                                          'text' => "謝謝你的使用!!" . "\n" . "歡迎下再來!!"
+                                          'text' => "謝謝你的使用!!" . "\n" . "歡迎下次再來!!"
                                        ),
        			     array(
 				'type' => 'sticker',
