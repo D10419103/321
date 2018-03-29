@@ -165,7 +165,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
 $bot->replyMessage($replyToken,$msg);
 			    }
-                	if($m_message!="" && $longitude=="121.50089" && $latitude=="24.992889")
+                	if($m_message!="" && $longitude=="121.009" && $latitude=="24.992883")
                 	{
 				/*$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
 $bot->replyMessage($replyToken,$msg);*/
