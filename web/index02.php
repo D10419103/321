@@ -160,11 +160,11 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
-			    if($m_message!="")
+			    /*if($m_message!="")
                 	{
 				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
 $bot->replyMessage($replyToken,$msg);
-			    }
+			    }*/
                 	if($m_message!="" && sprintf("%.2f",substr(sprintf("%.3f", $longitude), 0, -2))=="121.50" && sprintf("%.2f",substr(sprintf("%.3f", $latituderound), 0, -2))=="24.99")
                 	{
 				/*$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
