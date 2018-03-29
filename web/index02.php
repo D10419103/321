@@ -160,7 +160,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
-			    if($m_message!="" && $longitude=="121.50089" && $latitude=="24.992889")
+			    if($m_message!="")
                 	{
 				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
 $bot->replyMessage($replyToken,$msg);
