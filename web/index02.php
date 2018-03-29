@@ -162,8 +162,8 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    $displayname=$profile['displayName'];
                 	if($m_message!="" && $longitude=="121.50089" && $latitude=="24.992889")
                 	{
-				/*$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
-$bot->replyMessage($replyToken,$msg);*/
+				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
+$bot->replyMessage($replyToken,$msg);
 				/*$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($type, $m_message, $latitude, $longitude);
 $bot->replyMessage($replyToken,$msg);*/
 				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
