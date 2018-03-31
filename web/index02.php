@@ -218,6 +218,7 @@ $bot->replyMessage($replyToken,$msg);*/
 			    $result = $mysqli->query($sql);
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("安安");
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);*/
+				}
                     break;
 			
             }
