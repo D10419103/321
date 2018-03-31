@@ -143,9 +143,6 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 		    }else if($m_message=="安安"){
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    	$response = $bot->pushMessage('U8acc7f611c6f853ac53e1a474bd77c92', $textMessageBuilder);
-			   
-			   $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("安安");
-			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		   }
                     break;
 			    case 'location' :
