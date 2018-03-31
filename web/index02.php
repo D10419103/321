@@ -209,13 +209,15 @@ $bot->replyMessage($replyToken,$msg);*/
             )
         )
     ));
+				sleep(10);
+				/*$sql="INSERT INTO workPunch (number,name,userid,location,longitude,latitude,worktime) VALUES ('$a','$displayname','$userId','$m_message','$longitude','$latitude','$time')";
+			    $result = $mysqli->query($sql);
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("安安");
-$response = $bot->replyMessage($replyToken, $textMessageBuilder);
-			sleep(10);
-			if($address!="" && $m_message!="進" && $m_message!="出"){
+$response = $bot->replyMessage($replyToken, $textMessageBuilder);*/
+			//if($address!="" && $m_message!="進" && $m_message!="出"){
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
-		    	$response = $bot->pushMessage('$userId', $textMessageBuilder);
-			}
+		    	$response = $bot->pushMessage('U8acc7f611c6f853ac53e1a474bd77c92', $textMessageBuilder);
+			//}
                 	}
                     break;
 			
