@@ -140,7 +140,10 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				$sql = "UPDATE workPunch SET worktype='出' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
-		    }
+		    }else if($m_message=="安安"){
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
+		    	$response = $bot->pushMessage('U8acc7f611c6f853ac53e1a474bd77c92', $textMessageBuilder);	   
+		   }
                     break;
 			    case 'location' :
 			    $replyToken=$event['replyToken'];
