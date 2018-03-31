@@ -209,6 +209,20 @@ $bot->replyMessage($replyToken,$msg);*/
             )
         )
     ));
+				$client->replyMessage(array(
+        		'replyToken' => $event['replyToken'],
+     			   'messages' => array(
+				   array(
+                                          'type' => 'text',
+                                          'text' => "謝謝你的使用!!" . "\n" . "歡迎下次再來!!"
+                                       ),
+       			     array(
+				'type' => 'sticker',
+				'stickerId' => 13,
+				'packageId' => 1
+         	   ),
+ 	       ),
+	    ));
 			sleep(10);
 			if($address!="" && $m_message!="進" && $m_message!="出"){
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
