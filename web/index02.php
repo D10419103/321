@@ -153,23 +153,24 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			$title=$message['title'];
                    	$latitude=$message['latitude'];
                    	$longitude=$message['longitude'];
-			$m_message = $message['address'];
+			$address = $message['address'];
 			$type=$message['type'];
+			    $m_message = $message['text'];
 			    date_default_timezone_set('Asia/Taipei');	   
 			    $time=date("Y-m-d H:i:s");
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
-			    /*if($m_message!="")
+			    /*if($address!="")
                 	{
-				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
+				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $address . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
 $bot->replyMessage($replyToken,$msg);
 			    }*/
-                	if($m_message!=""/* && $longitude="121.500%" && $latituderound="24.99%"*/)
+                	if($address!=""/* && $longitude="121.500%" && $latituderound="24.99%"*/)
                 	{
-				/*$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
+				/*$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $address . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
 $bot->replyMessage($replyToken,$msg);*/
-				/*$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($type, $m_message, $latitude, $longitude);
+				/*$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($type, $address, $latitude, $longitude);
 $bot->replyMessage($replyToken,$msg);*/
 				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 			    $sql = "select number from workPunch";
@@ -208,7 +209,7 @@ $bot->replyMessage($replyToken,$msg);*/
             )
         )
     ));
-			sleep(10);	
+			sleep(10);
 			if($address!="" && $m_message!="進" && $m_message!="出"){
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    	$response = $bot->pushMessage('$userId', $textMessageBuilder);
