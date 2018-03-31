@@ -208,6 +208,11 @@ $bot->replyMessage($replyToken,$msg);*/
             )
         )
     ));
+			sleep(10);	
+			if($address!="" && $m_message!="進" && $m_message!="出"){
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
+		    	$response = $bot->pushMessage('$userId', $textMessageBuilder);
+			}
                 	}
                     break;
 			
