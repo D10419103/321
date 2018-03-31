@@ -140,10 +140,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				$sql = "UPDATE workPunch SET worktype='出' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
-		    }else if($userId){
-		   $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-		   $response = $bot->pushMessage('<to>', $textMessageBuilder);
-		   }
+		    }
                     break;
 			    case 'location' :
 			    $replyToken=$event['replyToken'];
@@ -180,7 +177,7 @@ $bot->replyMessage($replyToken,$msg);*/
   			$a = $row['number'] ;
  		 }
 			   $a+=1;
-				$sql="INSERT INTO workPunch (number,name,userid,location,longitude,latitude,worktime) VALUES ('$a','$displayname','$userId','$m_message','$longitude','$latitude','$time')";
+				$sql="INSERT INTO workPunch (number,name,userid,location,longitude,latitude,worktime) VALUES ('$a','$displayname','$userId','$address','$longitude','$latitude','$time')";
 			    $result = $mysqli->query($sql);
 				
 				
