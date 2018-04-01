@@ -161,11 +161,11 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
-			    /*if($address!="")
+			    if($address!="" && $longitude=="/^121.500/" && $latituderound=="/^24.99/")
                 	{
 				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $address . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
 $bot->replyMessage($replyToken,$msg);
-			    }*/
+			    }
                 	if($address!="" && $longitude=="/^121.500/" && $latituderound=="/^24.99/")
                 	{
 				/*$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $address . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
