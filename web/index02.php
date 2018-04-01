@@ -142,7 +142,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    $result = $mysqli->query($sql);
 		    }else if($m_message=="安安"){
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
-		    	$response = $bot->pushMessage('U8acc7f611c6f853ac53e1a474bd77c92', $textMessageBuilder);
+		    	$response = $bot->pushMessage('U1bfd8c42263e43bc3f34a6d0c4e1ecb2', $textMessageBuilder);
 		   }
                     break;
 			    case 'location' :
