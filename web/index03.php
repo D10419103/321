@@ -64,8 +64,8 @@ foreach ($client->parseEvents() as $event) {
 			$replyToken=$event['replyToken'];
 			    $type2=$event['type'];
 			    $timestamp=$event['timestamp'];
-			    $response = $bot->getProfile($userId);
-			    $profile = $response->getJSONDecodedBody();
+			    $res = $bot->getProfile($userId);
+			    $profile = $res->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
 			date_default_timezone_set('Asia/Taipei');	    
 			if($m_message=="安安")
@@ -85,8 +85,8 @@ foreach ($client->parseEvents() as $event) {
                    	$longitude=$message['longitude'];
 			$m_message = $message['address'];
 			$type=$message['type'];
-			    $response = $bot->getProfile($userId);
-			    $profile = $response->getJSONDecodedBody();
+			    $res = $bot->getProfile($userId);
+			    $profile = $res->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
                 	if($m_message!="")
                 	{
