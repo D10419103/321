@@ -39,67 +39,37 @@ require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TemplateMessageBuilder.ph
 
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
-
-$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
-$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
-
-
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
-
-/*$content = $receive->result[0]->content;
-$text = $content->text;*/
-
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message':
-            $message = $event['message'];		
+            $message = $event['message'];
             switch ($message['type']) {
-		    case 'text':
-                	$m_message = $message['text'];
-			$type = $message['type'];
-                	$source=$event['source'];
-              	      	$userId=$source['userId'];			
-                  	$roomid=$source['roomId'];
-             	       	$groupid=$source['groupId'];
-			$replyToken=$event['replyToken'];
-			    $type2=$event['type'];
-			    $timestamp=$event['timestamp'];
-			    $res = $bot->getProfile($userId);
-			    $profile = $res->getJSONDecodedBody();
-			    $displayname=$profile['displayName'];
-			date_default_timezone_set('Asia/Taipei');	    
-			if($m_message=="安安")
-                	{
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($m_message);
+		  case 'text':
+		    $replyToken=$event['replyToken'];
+                    $m_message = $message['text']; $source=$event['source']; $idtype = $source['type'];  $userid=$source['userId'];
+                    $roomid=$source['roomId']; $groupid=$source['groupId'];
+                    $res = $bot->getProfile($userid); $profile = $res->getJSONDecodedBody();$displayName = $profile['displayName'];
+		    $address=$message['address']; $title=$message['title'];
+                    $longitude=$message['longitude']; $latitude=$message['latitude']; 
+                    date_default_timezone_set('Asia/Taipei');$time=date("Y-m-d H:i:s");
+		    if($m_message!="" && $userid!='Ud9a4e29db28b8b07a78cecf6d8ec3bdb' && $roomid!='R8466f385da9bd8eac6fb509622c0a892'){
+	            //if($m_message!=""){
+		    	$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+		    	$sql = "SELECT userid from mysql";
+		    	$result = $mysqli->query($sql);
+			$row = $result->fetch_array(MYSQLI_BOTH);
+		    	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($m_message);
 		    	$response = $bot->pushMessage('U8acc7f611c6f853ac53e1a474bd77c92', $textMessageBuilder);
 			$response = $bot->pushMessage('U0da0177d489bff17a4d77614a0b23257', $textMessageBuilder);
-                	}
-                    break;        
-                    case 'location' :
-			    $replyToken=$event['replyToken'];
-			$source=$event['source'];
-              	      	$type = $source['type']; 
-              	      	$userId=$source['userId'];
-			$title=$message['title'];
-                   	$latitude=$message['latitude'];
-                   	$longitude=$message['longitude'];
-			$m_message = $message['address'];
-			$type=$message['type'];
-			    $res = $bot->getProfile($userId);
-			    $profile = $res->getJSONDecodedBody();
-			    $displayname=$profile['displayName'];
-                	if($m_message!="")
-                	{
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-$response = $bot->pushMessage('U8acc7f611c6f853ac53e1a474bd77c92', $textMessageBuilder);
-                	}
-                    break;
+		    }
+		break;
             }
-		    
             break;
         default:
             error_log("Unsupporeted event type: " . $event['type']);
             break;
     }
-};
-?>
+}
