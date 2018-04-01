@@ -64,6 +64,8 @@ foreach ($client->parseEvents() as $event) {
 		    	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($m_message);
 		    	$response = $bot->pushMessage('U8acc7f611c6f853ac53e1a474bd77c92', $textMessageBuilder);
 			$response = $bot->pushMessage('U0da0177d489bff17a4d77614a0b23257', $textMessageBuilder);
+			    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($userid);
+			$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 		    }
 		break;
             }
