@@ -212,12 +212,10 @@ $bot->replyMessage($replyToken,$msg);*/
         )
     ));
 
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
-		    		$response = $bot->pushMessage('U8acc7f611c6f853ac53e1a474bd77c92', $textMessageBuilder);
-				/*$sql="INSERT INTO workPunch (number,name,userid,location,longitude,latitude,worktime) VALUES ('$a','$displayname','$userId','$m_message','$longitude','$latitude','$time')";
+				$sql="INSERT INTO workPunch (number,name,userid,location,longitude,latitude,worktime) VALUES ('$a','$displayname','$userId','$m_message','$longitude','$latitude','$time')";
 			    $result = $mysqli->query($sql);
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("安安");
-$response = $bot->replyMessage($replyToken, $textMessageBuilder);*/
+$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 				}
                     break;
 			
