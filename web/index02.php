@@ -161,7 +161,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
-			    $longitude=$c
+			    $longitude=$c;
 			    $a="/^121.5/";
 			    $b="/^24.99/";
 			    if($address!="" && $c=$a && $latituderound=$b)
