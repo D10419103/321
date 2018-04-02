@@ -169,7 +169,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 $bot->replyMessage($replyToken,$msg);
 			    }
 			    
-                	if($address!="" && $longitude=$a && $latituderound=$b)
+                	if($address!="" && $longitude==$a && $latituderound=$b)
                 	{
 				/*$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $address . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
 $bot->replyMessage($replyToken,$msg);*/
