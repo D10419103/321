@@ -185,7 +185,7 @@ $bot->replyMessage($replyToken,$msg);*/
  		 }
 			   $a+=1;
 				$tim=$time;
-				$sql="INSERT INTO workPunch (number,name,userid,location,longitude,latitude,worktime) VALUES ('$a','$displayname','$userId','$address','$longitude','$latitude','$time')";
+				$sql="INSERT INTO workPunch (number,name,userid,location,longitude,latitude,worktype,worktime) VALUES ('$a','$displayname','$userId','$address','$longitude','$latitude','安安','$time')";
 			    $result = $mysqli->query($sql);
 				
 				
@@ -220,7 +220,7 @@ $bot->replyMessage($replyToken,$msg);*/
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   			$worktype = $row['worktype'] ;
 			}
-				if(($time=$tim+date("Y-m-d", mktime(+5, 0, 0, date('m'), date('d'), date('Y'))))&& $worktype==""){
+				if(($time=$tim+date("Y-m-d", mktime(+5, 0, 0, date('m'), date('d'), date('Y'))))&& $worktype=="安安"){
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    		$response = $bot->pushMessage('U1bfd8c42263e43bc3f34a6d0c4e1ecb2', $textMessageBuilder);
 				}
