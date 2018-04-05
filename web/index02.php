@@ -221,7 +221,7 @@ $bot->replyMessage($replyToken,$msg);*/
   			$worktime = $row['worktime'] ;
 			}
 				if(($worktype==""){
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($worktime);
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(strtotime($worktime));
 		    		$response = $bot->pushMessage('U1bfd8c42263e43bc3f34a6d0c4e1ecb2', $textMessageBuilder);
 				}
 				}
