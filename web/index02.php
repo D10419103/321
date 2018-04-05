@@ -220,7 +220,7 @@ $bot->replyMessage($replyToken,$msg);*/
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   			$worktype = $row['worktype'] ;
 			}
-				if($time=$tim+date("Y-m-d", mktime(+5, 0, 0, date('m'), date('d'), date('Y')))){
+				if(($time=$tim+date("Y-m-d", mktime(+5, 0, 0, date('m'), date('d'), date('Y'))))&& $worktype==""){
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
 		    		$response = $bot->pushMessage('U1bfd8c42263e43bc3f34a6d0c4e1ecb2', $textMessageBuilder);
 				}
