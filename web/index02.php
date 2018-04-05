@@ -215,7 +215,7 @@ $bot->replyMessage($replyToken,$msg);*/
         )
     ));
 				sleep(5);
-				$sql = "select worktype from workPunch where worktime=''";
+				$sql = "select worktime from workPunch where worktype=''";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
   			$worktime = $row['worktime'] ;
