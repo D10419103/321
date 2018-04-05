@@ -184,7 +184,6 @@ $bot->replyMessage($replyToken,$msg);*/
   			$a = $row['number'] ;
  		 }
 			   $a+=1;
-				$tim=$time;
 				$sql="INSERT INTO workPunch (number,name,userid,location,longitude,latitude,worktime) VALUES ('$a','$displayname','$userId','$address','$longitude','$latitude','$time')";
 			    $result = $mysqli->query($sql);
 				
@@ -215,13 +214,14 @@ $bot->replyMessage($replyToken,$msg);*/
         )
     ));
 				sleep(5);
-				$sql = "select worktime from workPunch where worktype=''";
+				$sql = "select worktype from workPunch where worktype=''";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  			$worktime = $row['worktime'] ;
+  			$worktype = $row['worktype'] ;
 			}
+				flush(); 
 				if(($worktype==""){
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(strtotime($worktime));
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
 		    		$response = $bot->pushMessage('U1bfd8c42263e43bc3f34a6d0c4e1ecb2', $textMessageBuilder);
 				}
 				}
