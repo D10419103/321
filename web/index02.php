@@ -214,15 +214,15 @@ $bot->replyMessage($replyToken,$msg);*/
         )
     ));
 				sleep(5);
-				$sql = "select name from workPunch where worktype=''";
+				$sql = "select worktype from workPunch where worktype=''";
 			$result = $mysqli->query($sql);
 			    
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  			$name = $row['name'] ;
+  			$worktype = $row['worktype'] ;
 			}
-				if($worktype==""){
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name);
-		    	$response = $bot->pushMessage('U1bfd8c42263e43bc3f34a6d0c4e1ecb2', $textMessageBuilder);
+				if($worktype!=""){
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($worktype);
+		    		$response = $bot->pushMessage('U1bfd8c42263e43bc3f34a6d0c4e1ecb2', $textMessageBuilder);
 				}
 				}
                     break;
