@@ -185,7 +185,7 @@ $bot->replyMessage($replyToken,$msg);*/
  		 }
 			   $a+=1;
 				$tim=$time;
-				$sql="INSERT INTO workPunch (number,name,userid,location,longitude,latitude,worktype,worktime) VALUES ('$a','$displayname','$userId','$address','$longitude','$latitude','安安','$time')";
+				$sql="INSERT INTO workPunch (number,name,userid,location,longitude,latitude,worktime) VALUES ('$a','$displayname','$userId','$address','$longitude','$latitude','$time')";
 			    $result = $mysqli->query($sql);
 				
 				
@@ -215,13 +215,13 @@ $bot->replyMessage($replyToken,$msg);*/
         )
     ));
 				sleep(5);
-				$sql = "select worktype from workPunch where worktype=''";
+				$sql = "select worktype from workPunch where worktime=''";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  			$worktype = $row['worktype'] ;
+  			$worktime = $row['worktime'] ;
 			}
-				if(($worktype=="安安"){
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
+				if(($worktype==""){
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($worktime);
 		    		$response = $bot->pushMessage('U1bfd8c42263e43bc3f34a6d0c4e1ecb2', $textMessageBuilder);
 				}
 				}
