@@ -214,11 +214,11 @@ $bot->replyMessage($replyToken,$msg);*/
         )
     ));
 				sleep(5);
-				$sql = "select worktype from workPunch where worktype=""";
+				$sql = "select worktype from workPunch where worktype=''";
 			$result = $mysqli->query($sql);
 			    
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  			$worktype = $row['Q'] ;
+  			$worktype = $row['worktype'] ;
 			}
 				if($worktype==""){
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
