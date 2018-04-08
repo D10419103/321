@@ -213,7 +213,7 @@ $bot->replyMessage($replyToken,$msg);*/
             )
         )
     ));
-				sleep(5);
+				sleep(30);
 				$sql = "select name from workPunch where worktype=''";
 			$result = $mysqli->query($sql);
 			while($row = $result->fetch_array(MYSQLI_BOTH)) {
