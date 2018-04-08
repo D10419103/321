@@ -104,13 +104,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    
 			 $mysqli->close();
 		    }*/
-			    
-			    $sql = "select name from workPunch where worktype=''";
-			$result = $mysqli->query($sql);
-			while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  			$name = $row['name'] ;
-			}	
-				if($name!=""){
+
 				if($m_message=="進"){
 			$client->replyMessage(array(
         		'replyToken' => $event['replyToken'],
@@ -147,68 +141,7 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				$sql = "UPDATE workPunch SET worktype='出' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
-				}else {
-					if($m_message=="進"){
-			$client->replyMessage(array(
-        		'replyToken' => $event['replyToken'],
-     			   'messages' => array(
-				   array(
-                                          'type' => 'text',
-                                          'text' => "歡迎你的到來!!" . "\n" . "祝你使用愉快!!"
-                                       ),
-				    array(
-                                          'type' => 'text',
-                                          'text' => "請定位你的位置!!"
-                                       ),
-       			     array(
-				'type' => 'sticker',
-				'stickerId' => 106,
-				'packageId' => 1
-         	   ),
- 	       ),
-	    ));
-		 $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			    $sql = "select number from workPunch";
-		$result = $mysqli->query($sql);
-			    
-		while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  			$a = $row['number'] ;
- 		 }
-			   $a+=1;
-				$sql = "INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','進','$time')";
-			    $result = $mysqli->query($sql);
-		    }else if($m_message=="出"){
-			$client->replyMessage(array(
-        		'replyToken' => $event['replyToken'],
-     			   'messages' => array(
-				   array(
-                                          'type' => 'text',
-                                          'text' => "謝謝你的使用!!" . "\n" . "歡迎下次再來!!"
-                                       ),
-				   array(
-                                          'type' => 'text',
-                                          'text' => "請定位你的位置!!"
-                                       ),
-       			     array(
-				'type' => 'sticker',
-				'stickerId' => 13,
-				'packageId' => 1
-         	   ),
- 	       ),
-	    ));
-			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			    $sql = "select number from workPunch";
-		$result = $mysqli->query($sql);
-			    
-		while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  			$a = $row['number'] ;
- 		 }
-			   $a+=1;
-				$sql = "INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','出','$time')";
-			    $result = $mysqli->query($sql);
-				}
-			    
-			    
+
                    
 		    }/*else if($m_message=="安安"){
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按鈕");
@@ -240,23 +173,6 @@ while($row = $result->fetch_array(MYSQLI_BOTH)) {
 $bot->replyMessage($replyToken,$msg);
 			    }*/
 			    
-					
-					$sql = "select name from workPunch where worktype!='' and location='' and userid='$userId'";
-			$result = $mysqli->query($sql);
-			while($row = $result->fetch_array(MYSQLI_BOTH)) {
-  			$name = $row['name'] ;
-			}	
-				if($name!=""){
-					if($address!="" && $c=$e && $latituderound=$b)
-                	{
-				
-				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-				$sql="UPDATE workPunch SET location='$address',longitude='$longitude',latitude='$latitude' where name='$displayname' and location='' and longitude='' and latitude='' and worktype!='';";
-			    $result = $mysqli->query($sql);
-
-					}
-				}	else{
-					
                 	if($address!="" && $c=$e && $latituderound=$b)
                 	{
 				/*$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $address . "\n". $longitude . "\n" . $latitude ."\n". $userId ."\n" . $displayname);
