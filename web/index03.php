@@ -67,6 +67,14 @@ foreach ($client->parseEvents() as $event) {
 			    $displayname=$profile['displayName'];
 			date_default_timezone_set('Asia/Taipei');	   
 			    $time=date("Y-m-d H:i:s");
+			    
+			    
+			    $sql = "select location from workPunch where worktype='' and userid='$userId'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$location = $row['location'] ;
+			}	
+				if($location!=""){
 				if($m_message=="進"){
 			$client->replyMessage(array(
         		'replyToken' => $event['replyToken'],
@@ -104,6 +112,66 @@ foreach ($client->parseEvents() as $event) {
 				$sql = "UPDATE workPunch SET worktype='出' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);                  
 		    }
+				}else{
+					if($m_message=="進"){
+			$client->replyMessage(array(
+        		'replyToken' => $event['replyToken'],
+     			   'messages' => array(
+				   array(
+                                          'type' => 'text',
+                                          'text' => "歡迎你的到來!!" . "\n" . "祝你使用愉快!!"
+                                       ),
+       			     array(
+				'type' => 'sticker',
+				'stickerId' => 106,
+				'packageId' => 1
+         	   ),
+ 	       ),
+	    ));
+						
+						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			    $sql = "select number from workPunch";
+		$result = $mysqli->query($sql);
+			    
+		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$a = $row['number'] ;
+ 		 }
+			   $a+=1;
+				$sql="INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','進','$time')";
+			    $result = $mysqli->query($sql);
+						
+					}else if($m_message=="出"){
+			$client->replyMessage(array(
+        		'replyToken' => $event['replyToken'],
+     			   'messages' => array(
+				   array(
+                                          'type' => 'text',
+                                          'text' => "謝謝你的使用!!" . "\n" . "歡迎下次再來!!"
+                                       ),
+       			     array(
+				'type' => 'sticker',
+				'stickerId' => 13,
+				'packageId' => 1
+         	   ),
+ 	       ),
+	    ));
+						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			    $sql = "select number from workPunch";
+		$result = $mysqli->query($sql);
+			    
+		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$a = $row['number'] ;
+ 		 }
+			   $a+=1;
+				$sql="INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','出','$time')";
+			    $result = $mysqli->query($sql);
+					}
+					
+				}
+			    
+			    
+			    
+				
                     break;
 			    case 'location' :
 			    $replyToken=$event['replyToken'];
@@ -124,6 +192,21 @@ foreach ($client->parseEvents() as $event) {
 			    $c=$longitude;
 			    $e="/^121.5/";
 			    $b="/^24.99/";
+			    
+			    
+			    $sql = "select worktype from workPunch where location='' and longitude='' and latitude='' and userid='$userId'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$worktype = $row['worktype'] ;
+			}	
+				if($worktype!=""){
+					if($address!="" && $c=$e && $latituderound=$b){
+					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+				$sql = "UPDATE workPunch SET location='$address' , longitude='$longitude' , latitude='$latitude' where name='$displayname' and  location='' and longitude='' and latitude='';";
+			    $result = $mysqli->query($sql); }
+				}else {
+			    
+			    
                 	if($address!="" && $c=$e && $latituderound=$b)
                 	{
 				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
@@ -174,7 +257,7 @@ foreach ($client->parseEvents() as $event) {
 		    		$response = $bot->pushMessage('U1bfd8c42263e43bc3f34a6d0c4e1ecb2', $textMessageBuilder);
 				}
 			
-				
+			}
 			}
                     break;
 			
