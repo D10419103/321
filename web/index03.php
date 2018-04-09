@@ -107,6 +107,17 @@ foreach ($client->parseEvents() as $event) {
 			   $a+=1;
 				$sql="INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','進','$time')";
 			    $result = $mysqli->query($sql);
+					
+					sleep(30);
+				$sql = "select name from workPunch where location='' and userid='$userId'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$name = $row['name'] ;
+			}	
+				if($name!=""){
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+		    		$response = $bot->pushMessage('$userId', $textMessageBuilder);
+				}
 				}
 					
 		    }else if($m_message=="出"){
@@ -165,6 +176,17 @@ foreach ($client->parseEvents() as $event) {
 				$sql="INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','出','$time')";
 			    $result = $mysqli->query($sql);
 				}	
+					
+					sleep(30);
+				$sql = "select name from workPunch where location='' and userid='$userId'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$name = $row['name'] ;
+			}	
+				if($name!=""){
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+		    		$response = $bot->pushMessage('$userId', $textMessageBuilder);
+				}
 		    }
                     break;
 			    case 'location' :
