@@ -115,13 +115,8 @@ foreach ($client->parseEvents() as $event) {
   			$name = $row['name'] ;
 			}	
 				if($name!=""){
-					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-$response = $bot->replyMessage($replyToken, $textMessageBuilder);
-					
-					
-					
-				/*$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-		    		$response = $bot->pushMessage('$userId', $textMessageBuilder);*/
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+		    		$response = $bot->pushMessage('U1bfd8c42263e43bc3f34a6d0c4e1ecb2', $textMessageBuilder);
 				}
 				}
 					
@@ -189,10 +184,8 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
   			$name = $row['name'] ;
 			}	
 				if($name!=""){
-					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-$response = $bot->replyMessage($replyToken, $textMessageBuilder);
-				/*$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-		    		$response = $bot->pushMessage('$userId', $textMessageBuilder);*/
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+		    		$response = $bot->pushMessage('U1bfd8c42263e43bc3f34a6d0c4e1ecb2', $textMessageBuilder);
 				}
 		    }
                     break;
@@ -282,10 +275,8 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
   			$name = $row['name'] ;
 			}	
 				if($name!=""){
-					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
-$response = $bot->replyMessage($replyToken, $textMessageBuilder);
-				/*$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
-		    		$response = $bot->pushMessage('$userId', $textMessageBuilder);*/
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
+		    		$response = $bot->pushMessage('U1bfd8c42263e43bc3f34a6d0c4e1ecb2', $textMessageBuilder);
 				}
 				}	
 			}
