@@ -198,6 +198,15 @@ foreach ($client->parseEvents() as $event) {
 					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				$sql = "UPDATE workPunch SET location='$address',longitude='$longitude',latitude='$latitude' where name='$displayname' and worktype!=''and userid='$userId';";
 			    $result = $mysqli->query($sql);
+					$client->replyMessage(array(
+        		'replyToken' => $event['replyToken'],
+     			   'messages' => array(
+				   array(
+                                          'type' => 'text',
+                                          'text' => "定位成功!!"
+                                       ),
+ 	       ),
+	    ));
 				}else{				
 				
 				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
