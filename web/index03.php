@@ -54,7 +54,14 @@ foreach ($client->parseEvents() as $event) {
 			    $time=date("Y-m-d H:i:s");
 
 				if($m_message=="進"){
-			$client->replyMessage(array(
+					
+					$sql = "select location from workPunch where worktype='' and userid='$userId'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$location = $row['location'] ;
+			}	
+				if($location!=""){
+					$client->replyMessage(array(
         		'replyToken' => $event['replyToken'],
      			   'messages' => array(
 				   array(
@@ -71,7 +78,45 @@ foreach ($client->parseEvents() as $event) {
 		 $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				$sql = "UPDATE workPunch SET worktype='進' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
+				}else{
+					$client->replyMessage(array(
+        		'replyToken' => $event['replyToken'],
+     			   'messages' => array(
+				   array(
+                                          'type' => 'text',
+                                          'text' => "歡迎你的到來!!" . "\n" . "祝你使用愉快!!"
+                                       ),
+				   array(
+                                          'type' => 'text',
+                                          'text' => "請定位你的位置!!"
+                                       ),
+       			     array(
+				'type' => 'sticker',
+				'stickerId' => 106,
+				'packageId' => 1
+         	   ),
+ 	       ),
+	    ));
+					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			    $sql = "select number from workPunch";
+		$result = $mysqli->query($sql);
+			    
+		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$a = $row['number'] ;
+ 		 }
+			   $a+=1;
+				$sql="INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','進','$time')";
+			    $result = $mysqli->query($sql);
+				}
+					
 		    }else if($m_message=="出"){
+					
+				$sql = "select location from workPunch where worktype='' and userid='$userId'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$location = $row['location'] ;
+			}	
+				if($location!=""){
 			$client->replyMessage(array(
         		'replyToken' => $event['replyToken'],
      			   'messages' => array(
@@ -89,6 +134,37 @@ foreach ($client->parseEvents() as $event) {
 			    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				$sql = "UPDATE workPunch SET worktype='出' where name='$displayname' and worktype='';";
 			    $result = $mysqli->query($sql);
+					
+			}else{
+				$client->replyMessage(array(
+        		'replyToken' => $event['replyToken'],
+     			   'messages' => array(
+				   array(
+                                          'type' => 'text',
+                                          'text' => "謝謝你的使用!!" . "\n" . "歡迎下次再來!!"
+                                       ),
+				   array(
+                                          'type' => 'text',
+                                          'text' => "請定位你的位置!!"
+                                       ),
+       			     array(
+				'type' => 'sticker',
+				'stickerId' => 13,
+				'packageId' => 1
+         	   ),
+ 	       ),
+	    ));
+					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			    $sql = "select number from workPunch";
+		$result = $mysqli->query($sql);
+			    
+		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$a = $row['number'] ;
+ 		 }
+			   $a+=1;
+				$sql="INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','出','$time')";
+			    $result = $mysqli->query($sql);
+				}	
 		    }
                     break;
 			    case 'location' :
