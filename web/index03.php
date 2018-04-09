@@ -112,6 +112,17 @@ foreach ($client->parseEvents() as $event) {
 			    $b="/^24.99/";
                 	if($address!="" && $c=$e && $latituderound=$b)
                 	{
+				$sql = "select name from workPunch where location='' and longitude='' and latitude='' and userid='$userId'";
+			$result = $mysqli->query($sql);
+			while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  			$name = $row['name'] ;
+			}	
+				if($name!=""){
+					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+				$sql = "UPDATE workPunch SET location='$address',longitude='$longitude',latitude='$latitude' where name='$displayname' and worktype!=''and userid='$userId';";
+			    $result = $mysqli->query($sql);
+				}else{				
+				
 				$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 			    $sql = "select number from workPunch";
 		$result = $mysqli->query($sql);
@@ -159,7 +170,7 @@ foreach ($client->parseEvents() as $event) {
 				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
 		    		$response = $bot->pushMessage('U1bfd8c42263e43bc3f34a6d0c4e1ecb2', $textMessageBuilder);
 				}
-				
+				}	
 			}
                     break;
 			
