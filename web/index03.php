@@ -270,7 +270,17 @@ foreach ($client->parseEvents() as $event) {
 						    		$response = $bot->pushMessage($userId, $textMessageBuilder);
 					    		}
 				    		}
-			    		} 
+			    		}else{
+						$client->replyMessage(array(
+						    		'replyToken' => $event['replyToken'],
+						    		'messages' => array(
+							    		array(
+								    		'type' => 'text',
+								    		'text' => $longitude . "\n" . $latituderound
+							    		),
+						    		),
+					    		));
+					}
 					break;
 			}
 			break;
