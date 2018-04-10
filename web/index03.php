@@ -198,9 +198,10 @@ foreach ($client->parseEvents() as $event) {
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
 			    $c=$longitude;
+			    $f=$latituderound;
 			    $e="/^121.5/";
 			    $b="/^24.99/";
-			    if($address!="" && $c=$e && $latituderound=$b)
+			    if($address!="" && $c=$e && $f=$b)
 			    {
 				    $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				    $sql = "select worktype from workPunch where location='' and longitude='' and latitude='' and userid='$userId'";
