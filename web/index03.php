@@ -53,10 +53,11 @@ foreach ($client->parseEvents() as $event) {
 			    		$time=date("Y-m-d H:i:s");
 			    		if($m_message=="進"){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-				    		$sql = "select location from workPunch where worktype='' and userid='$userId'";
+				    		$sql = "select location,number from workPunch where worktype='' and userid='$userId'";
 				    		$result = $mysqli->query($sql);
 				    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
-					    		$location = $row['location'] ;	
+					    		$location = $row['location'];
+							$number=$row['number'];
 				    		}	
 				    		if($location!=""){
 							$client->replyMessage(array(
@@ -74,7 +75,7 @@ foreach ($client->parseEvents() as $event) {
 						    		),
 					    		));
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					    		$sql = "UPDATE workPunch SET worktype='進' where name='$displayname' and worktype='';";
+					    		$sql = "UPDATE workPunch SET worktype='進' where name='$displayname' and worktype='' and number='$number';";
 					    		$result = $mysqli->query($sql);
 				    		}else{
 					    		$client->replyMessage(array(
