@@ -203,7 +203,7 @@ foreach ($client->parseEvents() as $event) {
 			    		$f=$latituderound;
 			    		$e="/^121.5/";
 			    		$b="/^25.0/";
-					if($address!="" && ($longitude>=121.5 || $longitude<121.6) && ($latituderound>=25.0 || $latituderound<25.1))
+					if($address!="" && (($longitude>=121.5 && $longitude<121.6) || ($latituderound>=25.0 && $latituderound<25.1)))
 					{
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 						$sql = "select worktype from workPunch where location='' and longitude='' and latitude='' and userid='$userId'";
@@ -231,56 +231,51 @@ foreach ($client->parseEvents() as $event) {
 					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
 						    		$a = $row['number'] ;
 					    		}
-							
-							
-							
-							
-							
-					    $a+=1;
-					    $sql="INSERT INTO workPunch (number,name,userid,location,longitude,latitude,worktime) VALUES ('$a','$displayname','$userId','$address','$longitude','$latitude','$time')";
-					    $result = $mysqli->query($sql);
-					    $client->replyMessage(array(
-						    'replyToken' => $event['replyToken'],
-						    'messages' => array(
-							    array(
-								    'type' => 'template', // 訊息類型 (模板)
-								    'altText' => 'Example confirm template', // 替代文字
-								    'template' => array(
-									    'type' => 'confirm', // 類型 (確認)
-									    'text' => '你現在是要進還是出?', // 文字
-									    'actions' => array(
-										    array(
-											    'type' => 'message', // 類型 (訊息)
-											    'label' => '進', // 標籤 1
-											    'text' => '進'// 用戶發送文字 1
-										    ),
-										    array(
-											    'type' => 'message', // 類型 (訊息)
-											    'label' => '出', // 標籤 2
-											    'text' => '出' // 用戶發送文字 2
-										    )
-									    )
-								    )
-							    )
-						    )
-					    ));
-					    sleep(5);
-					    $sql = "select name from workPunch where worktype='' and userid='$userId'";
-					    $result = $mysqli->query($sql);
-					    while($row = $result->fetch_array(MYSQLI_BOTH)) {
-						    $name = $row['name'] ;
-					    }	
-					    if($name!=""){
-						    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
-						    $response = $bot->pushMessage($userId, $textMessageBuilder);
-					    }
-				    }
-			    } 
-			    break;
-	    }
-		    break;
-	    default:
-		    error_log("Unsupporeted event type: " . $event['type']);  
-		    break; 
-    }
+							$a+=1;
+					    		$sql="INSERT INTO workPunch (number,name,userid,location,longitude,latitude,worktime) VALUES ('$a','$displayname','$userId','$address','$longitude','$latitude','$time')";
+					    		$result = $mysqli->query($sql);
+					    		$client->replyMessage(array(
+						    		'replyToken' => $event['replyToken'],
+						    		'messages' => array(
+							    		array(
+								    		'type' => 'template', // 訊息類型 (模板)
+								    		'altText' => 'Example confirm template', // 替代文字
+								    		'template' => array(
+									    		'type' => 'confirm', // 類型 (確認)
+									    		'text' => '你現在是要進還是出?', // 文字
+									    		'actions' => array(
+										    		array(
+											    		'type' => 'message', // 類型 (訊息)
+											    		'label' => '進', // 標籤 1
+											    		'text' => '進'// 用戶發送文字 1
+										    		),
+										    		array(
+											    		'type' => 'message', // 類型 (訊息)
+											    		'label' => '出', // 標籤 2
+											    		'text' => '出' // 用戶發送文字 2
+										    		)
+									    		)
+								    		)
+							    		)
+						    		)
+					    		));
+					    		sleep(5);
+					    		$sql = "select name from workPunch where worktype='' and userid='$userId'";
+					    		$result = $mysqli->query($sql);
+					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+						    		$name = $row['name'] ;
+					    		}	
+					    		if($name!=""){
+						    		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
+						    		$response = $bot->pushMessage($userId, $textMessageBuilder);
+					    		}
+				    		}
+			    		} 
+					break;
+			}
+			break;
+		default:
+			error_log("Unsupporeted event type: " . $event['type']);  
+			break; 
+	}
 }
