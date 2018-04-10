@@ -119,10 +119,11 @@ foreach ($client->parseEvents() as $event) {
 						}
 					}else if($m_message=="出"){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-				    		$sql = "select location from workPunch where worktype='' and userid='$userId'";
+				    		$sql = "select location,number from workPunch where worktype='' and userid='$userId'";
 				    		$result = $mysqli->query($sql);
 				    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
 					    		$location = $row['location'];
+							$number=$row['number'];
 				    		}	
 				    		if($location!=""){
 					    		$client->replyMessage(array(
@@ -140,7 +141,7 @@ foreach ($client->parseEvents() as $event) {
 						    		),
 					    		));
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					    		$sql = "UPDATE workPunch SET worktype='出' where name='$displayname' and worktype='';";
+					    		$sql = "UPDATE workPunch SET worktype='出' where name='$displayname' and worktype='' and number='$number';";
 					    		$result = $mysqli->query($sql);
 						}else{
 							$client->replyMessage(array(
@@ -207,14 +208,15 @@ foreach ($client->parseEvents() as $event) {
 					if($address!="" && $longitude>=121.5651 && $longitude<=121.5654 && $latitude>=25.0865 && $latitude<=25.0868)
 					{
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-						$sql = "select worktype from workPunch where location='' and longitude='' and latitude='' and userid='$userId'";
+						$sql = "select worktype,number from workPunch where location='' and longitude='' and latitude='' and userid='$userId'";
 				    		$result = $mysqli->query($sql);
 				    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
 					    		$worktype = $row['worktype'] ;
+							$number=$row['number'] ;
 				    		}	
 				    		if($worktype!=""){
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					    		$sql = "UPDATE workPunch SET location='$address',longitude='$longitude',latitude='$latitude' where name='$displayname' and worktype!=''and userid='$userId';";
+					    		$sql = "UPDATE workPunch SET location='$address',longitude='$longitude',latitude='$latitude' where name='$displayname' and worktype!=''and userid='$userId' and number='$number';";
 					    		$result = $mysqli->query($sql);
 					    		$client->replyMessage(array(
 						    		'replyToken' => $event['replyToken'],
