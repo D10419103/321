@@ -116,18 +116,17 @@ foreach ($client->parseEvents() as $event) {
 					    		$a+=1;
 					    		$sql="INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','進','$time')";
 					    		$result = $mysqli->query($sql);
-							for($i=0;$i<100;$i++){
-								sleep(5);
-								$sql = "select name from workPunch where location='' and userid='$userId'";
-								$result = $mysqli->query($sql);
-								while($row = $result->fetch_array(MYSQLI_BOTH)) {
-									$name = $row['name'] ;
-								}	
-								if($name!=""){
-									$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-									$response = $bot->pushMessage($userId, $textMessageBuilder);
-								}
+							sleep(7);
+							$sql = "select name from workPunch where location='' and userid='$userId'";
+							$result = $mysqli->query($sql);
+							while($row = $result->fetch_array(MYSQLI_BOTH)) {
+								$name = $row['name'] ;
+							}	
+							if($name!=""){
+								$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+								$response = $bot->pushMessage($userId, $textMessageBuilder);
 							}
+
 						}
 					}else if($m_message=="出"){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
@@ -184,17 +183,15 @@ foreach ($client->parseEvents() as $event) {
 							$sql="INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','出','$time')";
 							$result = $mysqli->query($sql);
 						}	
-						for($i=0;$i<100;$i++){
-							sleep(5);
-							$sql = "select name from workPunch where location='' and userid='$userId'";
-							$result = $mysqli->query($sql);
-							while($row = $result->fetch_array(MYSQLI_BOTH)) {
-								$name = $row['name'] ;
-							}
-							if($name!=""){
-								$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
-								$response = $bot->pushMessage($userId, $textMessageBuilder);
-							}
+						sleep(7);
+						$sql = "select name from workPunch where location='' and userid='$userId'";
+						$result = $mysqli->query($sql);
+						while($row = $result->fetch_array(MYSQLI_BOTH)) {
+							$name = $row['name'] ;
+						}
+						if($name!=""){
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
+							$response = $bot->pushMessage($userId, $textMessageBuilder);
 						}
 			    		}
 			    		break;
@@ -276,28 +273,16 @@ foreach ($client->parseEvents() as $event) {
 							    		)
 						    		)
 					    		));
-							$num=1;
-							$num2=2;
-							while($num!=$num2){
-								sleep(5);
-								$sql = "select name,worktime from workPunch where worktype='' and userid='$userId'";
-								$result = $mysqli->query($sql);
-								while($row = $result->fetch_array(MYSQLI_BOTH)) {
-									$name = $row['name'] ;
-									$worktime=$row['worktime'];
-								}
-								if($name!=null){
-									$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
-									$response = $bot->pushMessage($userId, $textMessageBuilder);
-									$abc="select name from workPunch where worktype!='' and userid='$userId' and worktime=(select max(worktime) from workPunch)";
-									$result = $mysqli->query($sql);
-									while($row = $result->fetch_array(MYSQLI_BOTH)) {
-										$name = $row['name'] ;
-									}
-									if($name!=""){
-										$num==$num2;
-									}
-								}
+							sleep(7);
+							$sql = "select name,worktime from workPunch where worktype='' and userid='$userId'";
+							$result = $mysqli->query($sql);
+							while($row = $result->fetch_array(MYSQLI_BOTH)) {
+								$name = $row['name'] ;
+								$worktime=$row['worktime'];
+							}
+							if($name!=null){
+								$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
+								$response = $bot->pushMessage($userId, $textMessageBuilder);
 							}
 				    		}
 			    		}else{
