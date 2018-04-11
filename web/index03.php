@@ -250,7 +250,7 @@ foreach ($client->parseEvents() as $event) {
 							    		),
 						    		),
 					    		));
-							$sql="SELECT worktype from mysql where userid='$userId'";
+							$sql="SELECT worktype from workPunch where userid='$userId'";
 							$result = $mysqli->query($sql);
 							while($row = $result->fetch_array(MYSQLI_BOTH)) {
   								$worktype = $row['worktype'] ;
