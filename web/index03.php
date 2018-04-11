@@ -279,9 +279,8 @@ foreach ($client->parseEvents() as $event) {
 								if($name!=""){
 									$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
 									$response = $bot->pushMessage($userId, $textMessageBuilder);
-								}else{
-									$num=2;
 								}
+								if($name=='')break;
 							}
 				    		}
 			    		}else{
