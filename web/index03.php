@@ -86,7 +86,7 @@ foreach ($client->parseEvents() as $event) {
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 					    		$sql = "UPDATE workPunch SET worktype='進' where name='$displayname' and worktype='' and number='$number';";
 					    		$result = $mysqli->query($sql);
-							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." "."進");
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname." "."進");
 		    					$response = $bot->pushMessage('C7f5b8de421baf16de46e01f846f162c7', $textMessageBuilder);
 				    		}else{
 					    		$client->replyMessage(array(
@@ -164,7 +164,7 @@ foreach ($client->parseEvents() as $event) {
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 					    		$sql = "UPDATE workPunch SET worktype='出' where name='$displayname' and worktype='' and number='$number';";
 					    		$result = $mysqli->query($sql);
-							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." "."出");
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname." "."出");
 		    					$response = $bot->pushMessage('C7f5b8de421baf16de46e01f846f162c7', $textMessageBuilder);
 						}else{
 							$client->replyMessage(array(
@@ -255,7 +255,7 @@ foreach ($client->parseEvents() as $event) {
 							while($row = $result->fetch_array(MYSQLI_BOTH)) {
   								$worktype = $row['worktype'] ;
  			 				}
-							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." ".$worktype);
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname." ".$worktype);
 		    					$response = $bot->pushMessage('C7f5b8de421baf16de46e01f846f162c7', $textMessageBuilder);
 						}else{				
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
