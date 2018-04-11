@@ -107,7 +107,7 @@ foreach ($client->parseEvents() as $event) {
 					    		$a+=1;
 					    		$sql="INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','進','$time')";
 					    		$result = $mysqli->query($sql);
-							for(int i=0;i<100;i++){
+							for($i=0;$i<100;$i++){
 								sleep(5);
 								$sql = "select name from workPunch where location='' and userid='$userId'";
 								$result = $mysqli->query($sql);
@@ -175,7 +175,7 @@ foreach ($client->parseEvents() as $event) {
 							$sql="INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','出','$time')";
 							$result = $mysqli->query($sql);
 						}	
-						for(int i=0;i<100;i++){
+						for($i=0;$i<100;$i++){
 							sleep(5);
 							$sql = "select name from workPunch where location='' and userid='$userId'";
 							$result = $mysqli->query($sql);
@@ -267,7 +267,7 @@ foreach ($client->parseEvents() as $event) {
 							    		)
 						    		)
 					    		));
-							for(int i=0;i<100;i++){
+							for($i=0;$i<100;$i++){
 								sleep(5);
 								$sql = "select name from workPunch where worktype='' and userid='$userId'";
 								$result = $mysqli->query($sql);
