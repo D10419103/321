@@ -129,14 +129,12 @@ foreach ($client->parseEvents() as $event) {
 
 						}
 					}
-					$mysqli->close();
 					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 					$sql = "SELECT outside from ininin";
 					$result = $mysqli->query($sql);
 					$row = $result->fetch_array(MYSQLI_BOTH);
 					$outside = $row['outside'] ;
 					else if(preg_match("/$outside/i","$m_message")){
-						$mysqli->close();
 					//else if($m_message=="出"){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				    		$sql = "select location,number from workPunch where worktype='' and userid='$userId'";
