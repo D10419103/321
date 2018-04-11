@@ -58,6 +58,16 @@ foreach ($client->parseEvents() as $event) {
 					$result = $mysqli->query($sql);
 					$row = $result->fetch_array(MYSQLI_BOTH);
 					$inside = $row['inside'] ;
+					if($m_message=="安安"){$client->replyMessage(array(
+								'replyToken' => $event['replyToken'],
+						    		'messages' => array(
+							    		array(
+								    		'type' => 'text',
+								    		'text' => $groupid
+							    		),
+							    		
+						    		),
+					    		));}
 					if(preg_match("/$inside/i","$m_message")){
 						$mysqli->close();
 			    		//if($m_message=="進"){
@@ -87,6 +97,8 @@ foreach ($client->parseEvents() as $event) {
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 					    		$sql = "UPDATE workPunch SET worktype='進' where name='$displayname' and worktype='' and number='$number';";
 					    		$result = $mysqli->query($sql);
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." "."進");
+		    					$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
 				    		}else{
 					    		$client->replyMessage(array(
 						    		'replyToken' => $event['replyToken'],
@@ -163,6 +175,8 @@ foreach ($client->parseEvents() as $event) {
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 					    		$sql = "UPDATE workPunch SET worktype='出' where name='$displayname' and worktype='' and number='$number';";
 					    		$result = $mysqli->query($sql);
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." "."出");
+		    					$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
 						}else{
 							$client->replyMessage(array(
 								'replyToken' => $event['replyToken'],
@@ -247,6 +261,14 @@ foreach ($client->parseEvents() as $event) {
 							    		),
 						    		),
 					    		));
+							$sql="SELECT worktype from mysql where userid='$userId'";
+							$result = $mysqli->query($sql);
+							while($row = $result->fetch_array(MYSQLI_BOTH)) {
+  								$worktype = $row['worktype'] ;
+ 			 				}
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." ".$worktype);
+		    					$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
+							}
 						}else{				
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 					    		$sql = "select number from workPunch";
