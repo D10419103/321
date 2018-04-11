@@ -51,7 +51,16 @@ foreach ($client->parseEvents() as $event) {
 					$displayname=$profile['displayName'];
 			    		date_default_timezone_set('Asia/Taipei');	   
 			    		$time=date("Y-m-d H:i:s");
-			    		if($m_message=="進"){
+					
+					
+					$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
+					$sql = "SELECT inside from inandout";
+					$result = $mysqli->query($sql);
+					$row = $result->fetch_array(MYSQLI_BOTH);
+					$inside = $row['inside'] ;
+					if(preg_match("/$inside/i","$m_message")){
+						$mysqli->close();
+			    		//if($m_message=="進"){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				    		$sql = "select location,number,worktime from workPunch where worktype='' and userid='$userId'";
 				    		$result = $mysqli->query($sql);
