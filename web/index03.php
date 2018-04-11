@@ -53,11 +53,12 @@ foreach ($client->parseEvents() as $event) {
 			    		$time=date("Y-m-d H:i:s");
 			    		if($m_message=="進"){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-				    		$sql = "select location,number from workPunch where worktype='' and userid='$userId'";
+				    		$sql = "select location,number,worktime from workPunch where worktype='' and userid='$userId'";
 				    		$result = $mysqli->query($sql);
 				    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
 					    		$location = $row['location'];
 							$number=$row['number'];
+							$worktime=$row['worktime'];
 				    		}	
 				    		if($location!=""){
 							$client->replyMessage(array(
@@ -75,7 +76,7 @@ foreach ($client->parseEvents() as $event) {
 						    		),
 					    		));
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					    		$sql = "UPDATE workPunch SET worktype='進' where name='$displayname' and worktype='' and number='$number';";
+					    		$sql = "UPDATE workPunch SET worktype='進' where name='$displayname' and worktype='' and number='$number' and worktime=(select max(worktime) from workPunch);";
 					    		$result = $mysqli->query($sql);
 				    		}else{
 					    		$client->replyMessage(array(
@@ -216,7 +217,7 @@ foreach ($client->parseEvents() as $event) {
 				    		}	
 				    		if($worktype!=""){
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					    		$sql = "UPDATE workPunch SET location='$address',longitude='$longitude',latitude='$latitude' where name='$displayname' and worktype!=''and userid='$userId' and number='$number';";
+					    		$sql = "UPDATE workPunch SET location='$address',longitude='$longitude',latitude='$latitude' where name='$displayname' and worktype!=''and userid='$userId' and number='$number' ;";
 					    		$result = $mysqli->query($sql);
 					    		$client->replyMessage(array(
 						    		'replyToken' => $event['replyToken'],
