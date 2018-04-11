@@ -117,7 +117,6 @@ foreach ($client->parseEvents() as $event) {
 								if($name!=""){
 									$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 									$response = $bot->pushMessage($userId, $textMessageBuilder);
-									break;
 								}
 							}
 						}
@@ -186,6 +185,7 @@ foreach ($client->parseEvents() as $event) {
 							if($name!=""){
 								$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 								$response = $bot->pushMessage($userId, $textMessageBuilder);
+							}else{
 								break;
 							}
 						}
@@ -279,7 +279,6 @@ foreach ($client->parseEvents() as $event) {
 								if($name!=""){
 									$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
 									$response = $bot->pushMessage($userId, $textMessageBuilder);
-									break;
 								}
 							}
 				    		}
