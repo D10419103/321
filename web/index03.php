@@ -57,7 +57,7 @@ foreach ($client->parseEvents() as $event) {
 					$result = $mysqli->query($sql);
 					$row = $result->fetch_array(MYSQLI_BOTH);
 					$inside = $row['inside'] ;
-					if(preg_match("/$inside/i","$m_message")){
+					if(preg_match("/$inside/i","$m_message") || preg_match("/$inside/","$m_message"){
 			    		//if($m_message=="進"){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				    		$sql = "select location,number,worktime from workPunch where worktype='' and userid='$userId'";
@@ -134,7 +134,7 @@ foreach ($client->parseEvents() as $event) {
 					$result = $mysqli->query($sql);
 					$row = $result->fetch_array(MYSQLI_BOTH);
 					$outside = $row['outside'] ;
-					if(preg_match("/$outside/i","$m_message")){
+					if(preg_match("/$outside/i","$m_message") || preg_match("/$outside/","$m_message")){
 					//else if($m_message=="出"){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				    		$sql = "select location,number from workPunch where worktype='' and userid='$userId'";
