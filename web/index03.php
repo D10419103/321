@@ -271,14 +271,23 @@ foreach ($client->parseEvents() as $event) {
 							$num2=2;
 							while($num!=$num2){
 								sleep(5);
-								$sql = "select name from workPunch where worktype='' and userid='$userId'";
+								$sql = "select name,worktime from workPunch where worktype='' and userid='$userId'";
 								$result = $mysqli->query($sql);
 								while($row = $result->fetch_array(MYSQLI_BOTH)) {
 									$name = $row['name'] ;
-								}	
+									$worktime=$row['worktime'];
+								}
 								if($name!=null){
 									$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
 									$response = $bot->pushMessage($userId, $textMessageBuilder);
+									$abc="select name from workPunch where worktype!='' and userid='$userId' and worktime=(select max(worktime) from workPunch)";
+									$result = $mysqli->query($sql);
+									while($row = $result->fetch_array(MYSQLI_BOTH)) {
+										$name = $row['name'] ;
+									}
+									if($name!=""){
+										$num==$num2;
+									}
 								}
 							}
 				    		}
