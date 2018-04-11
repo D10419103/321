@@ -76,6 +76,8 @@ foreach ($client->parseEvents() as $event) {
 						    		),
 					    		));
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+							
+							//if()
 					    		$sql = "UPDATE workPunch SET worktype='進' where name='$displayname' and worktype='' and number='$number' and worktime=(select max(worktime) from workPunch);";
 					    		$result = $mysqli->query($sql);
 				    		}else{
