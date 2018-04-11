@@ -52,17 +52,6 @@ foreach ($client->parseEvents() as $event) {
 			    		date_default_timezone_set('Asia/Taipei');	   
 			    		$time=date("Y-m-d H:i:s");
 					
-					if($m_message=="安安"){$client->replyMessage(array(
-								'replyToken' => $event['replyToken'],
-						    		'messages' => array(
-							    		array(
-								    		'type' => 'text',
-								    		'text' => $groupid
-							    		),
-							    		
-						    		),
-					    		));}
-					
 					$mysqli = new mysqli('gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "vu5qzklum1466fvr", "ieewar6pa07471zn", "oqz0qx1hdl6jbtca","3306");
 					$sql = "SELECT inside from inandout";
 					$result = $mysqli->query($sql);
@@ -98,7 +87,7 @@ foreach ($client->parseEvents() as $event) {
 					    		$sql = "UPDATE workPunch SET worktype='進' where name='$displayname' and worktype='' and number='$number';";
 					    		$result = $mysqli->query($sql);
 							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." "."進");
-		    					$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
+		    					$response = $bot->pushMessage('C7f5b8de421baf16de46e01f846f162c7', $textMessageBuilder);
 				    		}else{
 					    		$client->replyMessage(array(
 						    		'replyToken' => $event['replyToken'],
@@ -176,7 +165,7 @@ foreach ($client->parseEvents() as $event) {
 					    		$sql = "UPDATE workPunch SET worktype='出' where name='$displayname' and worktype='' and number='$number';";
 					    		$result = $mysqli->query($sql);
 							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." "."出");
-		    					$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
+		    					$response = $bot->pushMessage('C7f5b8de421baf16de46e01f846f162c7', $textMessageBuilder);
 						}else{
 							$client->replyMessage(array(
 								'replyToken' => $event['replyToken'],
@@ -267,7 +256,7 @@ foreach ($client->parseEvents() as $event) {
   								$worktype = $row['worktype'] ;
  			 				}
 							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayName." ".$worktype);
-		    					$response = $bot->pushMessage('R8466f385da9bd8eac6fb509622c0a892', $textMessageBuilder);
+		    					$response = $bot->pushMessage('C7f5b8de421baf16de46e01f846f162c7', $textMessageBuilder);
 						}else{				
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 					    		$sql = "select number from workPunch";
