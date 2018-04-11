@@ -185,8 +185,6 @@ foreach ($client->parseEvents() as $event) {
 							if($name!=""){
 								$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 								$response = $bot->pushMessage($userId, $textMessageBuilder);
-							}else{
-								break;
 							}
 						}
 			    		}
@@ -269,7 +267,9 @@ foreach ($client->parseEvents() as $event) {
 							    		)
 						    		)
 					    		));
-							for($i=0;$i<100;$i++){
+							$num=1;
+							$num2=2;
+							while($num!=$num2){
 								sleep(5);
 								$sql = "select name from workPunch where worktype='' and userid='$userId'";
 								$result = $mysqli->query($sql);
@@ -279,6 +279,8 @@ foreach ($client->parseEvents() as $event) {
 								if($name!=""){
 									$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
 									$response = $bot->pushMessage($userId, $textMessageBuilder);
+								}else{
+									break;
 								}
 							}
 				    		}
