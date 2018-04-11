@@ -276,11 +276,10 @@ foreach ($client->parseEvents() as $event) {
 								while($row = $result->fetch_array(MYSQLI_BOTH)) {
 									$name = $row['name'] ;
 								}	
-								if($name!=""){
+								if($name!=null){
 									$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
 									$response = $bot->pushMessage($userId, $textMessageBuilder);
 								}
-								if($name=='')break;
 							}
 				    		}
 			    		}else{
