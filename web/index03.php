@@ -241,17 +241,20 @@ foreach ($client->parseEvents() as $event) {
 												$sql="INSERT INTO ininin (inside) VALUES ('$m_message')",
 												$result = $mysqli->query($sql),
 												'type' => 'message', // 類型 (訊息)
-												'label' => 'in', // 標籤 1
+												'label' => '進', // 標籤 1
+												'text' => '設置成功' // 用戶發送文字
+											),
+											array(
+												$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306"),
+												$sql="INSERT INTO ininin (outside) VALUES ('$m_message')",
+												$result = $mysqli->query($sql),
+												'type' => 'message', // 類型 (訊息)
+												'label' => '出', // 標籤 2
 												'text' => '設置成功' // 用戶發送文字
 											),
 											array(
 												'type' => 'message', // 類型 (訊息)
-												'label' => 'out', // 標籤 2
-												'text' => '設置成功' // 用戶發送文字
-											),
-											array(
-												'type' => 'message', // 類型 (訊息)
-												'label' => 'nothing', // 標籤 3
+												'label' => '毫無相關', // 標籤 3
 												'text' => '毫無相關' // 用戶發送文字
 											)
 										)
