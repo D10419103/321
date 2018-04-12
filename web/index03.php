@@ -196,17 +196,24 @@ foreach ($client->parseEvents() as $event) {
 						}
 						for($i=0;$i<100;$i++){
 						sleep(7);
-						$sql = "select location from workPunch where location='' and userid='$userId'";
+						$sql = "select location,worktime from workPunch where location='' and userid='$userId'";
 						$result = $mysqli->query($sql);
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
-							$location = $row['location'] ;
+							$location = $row['location'];
+							$worktime = $row['worktime'];
 						}
 						if($location==""){
 							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 							$response = $bot->pushMessage($userId, $textMessageBuilder);
-						}else{
+						}
+						$sql = "select location from workPunch where worktime='$worktime' and userid='$userId'";
+						$result = $mysqli->query($sql);
+						while($row = $result->fetch_array(MYSQLI_BOTH)) {
+							$location2 = $row['location'];
+						}	
+						
+						if($location2!=""){
 							$i=100;
-							break;
 						}
 						}
 			    		}
