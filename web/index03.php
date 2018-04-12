@@ -52,14 +52,30 @@ foreach ($client->parseEvents() as $event) {
 			    		date_default_timezone_set('Asia/Taipei');	   
 			    		$time=date("Y-m-d H:i:s");
 					
+					
+					
 					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+					$join=false;
+					$unjoin=false;
 					$sql = "SELECT inside from ininin";
 					$result = $mysqli->query($sql);
-					$row = $result->fetch_array(MYSQLI_BOTH);
-					$inside = $row['inside'] ;
-					if(preg_match("/$inside/i","$m_message") || preg_match("/$inside/","$m_message"){
+					while($row = $result->fetch_array(MYSQLI_BOTH)){
+						$inside = $row['inside'] ;
+						if(preg_match("/$inside/i","$m_message")){
+  							$join=true;
+						}
+					}
+					$sql = "SELECT outside from ininin";
+					$result = $mysqli->query($sql);
+					while($row = $result->fetch_array(MYSQLI_BOTH)){
+						$outside = $row['outside'] ;
+						if(preg_match("/$outside/i","$m_message")){
+							$unjoin=true;
+						}
+					}
+					
+					if($join){
 			    		//if($m_message=="進"){
-						 $mysqli->close();
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				    		$sql = "select location,number,worktime from workPunch where worktype='' and userid='$userId'";
 				    		$result = $mysqli->query($sql);
@@ -129,14 +145,7 @@ foreach ($client->parseEvents() as $event) {
 							}
 
 						}
-					}
-					 $mysqli->close();
-					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					$sql = "SELECT outside from ininin";
-					$result = $mysqli->query($sql);
-					$row = $result->fetch_array(MYSQLI_BOTH);
-					$outside = $row['outside'] ;
-					if(preg_match("/$outside/i","$m_message") || preg_match("/$outside/","$m_message")){
+					}else if($unjoin){
 					//else if($m_message=="出"){
 						 $mysqli->close();
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
