@@ -242,7 +242,7 @@ foreach ($client->parseEvents() as $event) {
 												$result = $mysqli->query($sql),
 												'type' => 'message', // 類型 (訊息)
 												'label' => '進', // 標籤 1
-												'text' => '設置成功' // 用戶發送文字
+												'text' => $m_message // 用戶發送文字
 											),
 											array(
 												$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306"),
@@ -250,7 +250,7 @@ foreach ($client->parseEvents() as $event) {
 												$result = $mysqli->query($sql),
 												'type' => 'message', // 類型 (訊息)
 												'label' => '出', // 標籤 2
-												'text' => '設置成功' // 用戶發送文字
+												'text' => $m_message // 用戶發送文字
 											),
 											array(
 												'type' => 'message', // 類型 (訊息)
