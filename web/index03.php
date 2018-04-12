@@ -195,7 +195,7 @@ foreach ($client->parseEvents() as $event) {
 							$result = $mysqli->query($sql);
 						}
 						for($i=0;$i<100;$i++){
-							sleep(7);
+							sleep(3);
 							$sql = "select location,worktime from workPunch where location='' and userid='$userId'";
 							$result = $mysqli->query($sql);
 							while($row = $result->fetch_array(MYSQLI_BOTH)) {
@@ -207,10 +207,7 @@ foreach ($client->parseEvents() as $event) {
 							while($row = $result->fetch_array(MYSQLI_BOTH)) {
 								$location2 = $row['location'];
 							}	
-
-							if($location2!=""){
-								$i=100;
-							}	
+							if($location2!="")break;
 							if($location==""){
 								$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 								$response = $bot->pushMessage($userId, $textMessageBuilder);
