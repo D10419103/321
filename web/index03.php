@@ -128,8 +128,8 @@ foreach ($client->parseEvents() as $event) {
 					    		$a+=1;
 					    		$sql="INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','進','$time')";
 					    		$result = $mysqli->query($sql);
-							$i=0;
-							while($i=0){
+							$z=0;
+							while($z=0){
 								sleep(3);
 								$sql = "select location,worktime from workPunch where location='' and userid='$userId'";
 								$result = $mysqli->query($sql);
@@ -203,8 +203,8 @@ foreach ($client->parseEvents() as $event) {
 							$sql="INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','出','$time')";
 							$result = $mysqli->query($sql);
 						}
-							$i=0;
-							while($i=0){
+							$z=0;
+							while($z=0){
 							sleep(3);
 							$sql = "select location,worktime from workPunch where location='' and userid='$userId'";
 							$result = $mysqli->query($sql);
@@ -347,8 +347,8 @@ foreach ($client->parseEvents() as $event) {
 							    		)
 						    		)
 					    		));
-							$i=0;
-							while($i=0){
+							$z=0;
+							while($z=0){
 								sleep(3);
 								$sql = "select worktype,worktime from workPunch where worktype='' and userid='$userId'";
 								$result = $mysqli->query($sql);
