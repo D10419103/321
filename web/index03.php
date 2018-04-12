@@ -214,7 +214,8 @@ foreach ($client->parseEvents() as $event) {
 							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 							$response = $bot->pushMessage($userId, $textMessageBuilder);
 						}
-			    		}else{
+			    		}
+					if($m_message!='' && $join=true && $unjoin=true){
 						$client->replyMessage(array(
 							'replyToken' => $event['replyToken'],
 							'messages' => array(
@@ -243,10 +244,14 @@ foreach ($client->parseEvents() as $event) {
 											)
 										)
 									)
+									
 								)
+								
 							)
-						);
-								      }
+							
+						)
+								     );
+					}
 			    		break;
 		    
 				case 'location' :
