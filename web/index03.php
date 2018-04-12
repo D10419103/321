@@ -237,8 +237,9 @@ foreach ($client->parseEvents() as $event) {
 										'text' => '請問'.$m_message.'代表什麼', // 文字
 										'actions' => array(
 											array(
+												
 												//$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306"),
-												$sql="INSERT INTO ininin (inside) VALUES ('$m_message')",
+												$sql="INSERT INTO TABLE(inside) SELECT distinct $m_message FROM ininin WHERE not EXISTS (Select * from ininin WHERE inside='$m_message')/*INSERT INTO USERINFO ininin (inside) VALUES ('$m_message')*/",
 												$result = $mysqli->query($sql),
 												$mysqli->close(),
 												'type' => 'message', // 類型 (訊息)
