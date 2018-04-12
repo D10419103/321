@@ -239,7 +239,7 @@ foreach ($client->parseEvents() as $event) {
 											array(
 												
 												//$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306"),
-												$sql="INSERT INTO TABLE(inside) SELECT distinct $m_message FROM ininin WHERE not EXISTS (Select * from ininin WHERE inside='$m_message')/*INSERT INTO USERINFO ininin (inside) VALUES ('$m_message')*/",
+												$sql="INSERT INTO ininin(inside) SELECT distinct $m_message FROM ininin WHERE not EXISTS (Select * from ininin WHERE inside='$m_message')/*INSERT INTO USERINFO ininin (inside) VALUES ('$m_message')*/",
 												$result = $mysqli->query($sql),
 												$mysqli->close(),
 												'type' => 'message', // 類型 (訊息)
