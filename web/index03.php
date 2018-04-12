@@ -240,6 +240,9 @@ foreach ($client->parseEvents() as $event) {
 												'type' => 'message', // 類型 (訊息)
 												'label' => 'in', // 標籤 1
 												'text' => '進' // 用戶發送文字
+												$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306")
+												$sql="INSERT INTO workPunch (inside) VALUES ('$m_message')"
+												$result = $mysqli->query($sql)
 											),
 											array(
 												'type' => 'message', // 類型 (訊息)
@@ -279,11 +282,7 @@ foreach ($client->parseEvents() as $event) {
 			    		$response = $bot->getProfile($userId);
 			    		$profile = $response->getJSONDecodedBody();
 			    		$displayname=$profile['displayName'];
-			    		$c=$longitude;
-			    		$f=$latitude;
-			    		$e="/^121.5/";
-			    		$b="/^25.0/";
-					if($address!="" && $longitude>=121.5651 && $longitude<=121.5654 && $latitude>=25.0865 && $latitude<=25.0868)
+					if($address!="" && $longitude>=121.5650 && $longitude<=121.5659 && $latitude>=25.0860 && $latitude<=25.0869)
 					{
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 						$sql = "select worktype,number from workPunch where location='' and longitude='' and latitude='' and userid='$userId'";
