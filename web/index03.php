@@ -214,7 +214,7 @@ foreach ($client->parseEvents() as $event) {
 							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 							$response = $bot->pushMessage($userId, $textMessageBuilder);
 						}
-			    		}/*else{
+			    		}else{
 						$client->replyMessage(array(
 							'replyToken' => $event['replyToken'],
 							'messages' => array(
@@ -222,31 +222,31 @@ foreach ($client->parseEvents() as $event) {
 									'type' => 'template', // 訊息類型 (模板)
                 							'altText' => 'simple in and out', // 替代文字
                 							'template' => array(
-                    							'type' => 'buttons', // 類型 (按鈕)
-                    							'title' => '選單', // 標題 <不一定需要>
-                    							'text' => '請問'.$m_message.'代表什麼', // 文字
-                    							'actions' => array(
-                        							array(
-                           							'type' => 'message', // 類型 (訊息)
-                            							'label' => 'in', // 標籤 1
-                            							'text' => '進' // 用戶發送文字
-                       							),
-                        							array(
-                            							'type' => 'message', // 類型 (訊息)
-                            							'label' => 'out', // 標籤 2
-                            							'text' => '出' // 用戶發送文字
-                        							),
-                        							array(
-                            							'type' => 'message', // 類型 (訊息)
-                            							'label' => 'nothing', // 標籤 3
-                            							'text' => '毫無相關' // 用戶發送文字
-                        							)
-                    							)
-                							)
-            							)
-        							)
-							}*/
-
+										'type' => 'buttons', // 類型 (按鈕)
+										'title' => '選單', // 標題 <不一定需要>
+										'text' => '請問'.$m_message.'代表什麼', // 文字
+										'actions' => array(
+											array(
+												'type' => 'message', // 類型 (訊息)
+												'label' => 'in', // 標籤 1
+												'text' => '進' // 用戶發送文字
+											),
+											array(
+												'type' => 'message', // 類型 (訊息)
+												'label' => 'out', // 標籤 2
+												'text' => '出' // 用戶發送文字
+											),
+											array(
+												'type' => 'message', // 類型 (訊息)
+												'label' => 'nothing', // 標籤 3
+												'text' => '毫無相關' // 用戶發送文字
+											)
+										)
+									)
+								)
+							)
+						);
+								      }
 			    		break;
 		    
 				case 'location' :
