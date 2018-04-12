@@ -239,9 +239,9 @@ foreach ($client->parseEvents() as $event) {
 											array(
 												'type' => 'message', // 類型 (訊息)
 												'label' => 'in', // 標籤 1
-												'text' => '進' // 用戶發送文字
-												$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306")
-												$sql="INSERT INTO workPunch (inside) VALUES ('$m_message')"
+												'text' => '進', // 用戶發送文字
+												$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306"),
+												$sql="INSERT INTO workPunch (inside) VALUES ('$m_message')",
 												$result = $mysqli->query($sql)
 											),
 											array(
