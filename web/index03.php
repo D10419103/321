@@ -193,7 +193,8 @@ foreach ($client->parseEvents() as $event) {
 							$a+=1;
 							$sql="INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','出','$time')";
 							$result = $mysqli->query($sql);
-						}	
+						}
+						for($i=0;$i<100;$i++){
 						sleep(7);
 						$sql = "select location from workPunch where location='' and userid='$userId'";
 						$result = $mysqli->query($sql);
@@ -203,6 +204,7 @@ foreach ($client->parseEvents() as $event) {
 						if($location==""){
 							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 							$response = $bot->pushMessage($userId, $textMessageBuilder);
+						}
 						}
 			    		}
 					if($m_message!='' && $join=true && $unjoin=true){
