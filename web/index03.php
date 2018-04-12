@@ -117,11 +117,6 @@ foreach ($client->parseEvents() as $event) {
 								    		'text' => "請定位你的位置!!"
 						
 									),
-							    		array(
-								    		'type' => 'sticker',
-								    		'stickerId' => 106,
-								    		'packageId' => 1
-							    		),
 						    		),
 					    		));
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
@@ -187,11 +182,6 @@ foreach ($client->parseEvents() as $event) {
 								    		'type' => 'text',
 								    		'text' => "請定位你的位置!!"
 							    		),
-							    		array(
-								    		'type' => 'sticker',
-								    		'stickerId' => 13,
-								    		'packageId' => 1
-							    		),
 						    		),
 					    		));
 							$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
@@ -205,12 +195,12 @@ foreach ($client->parseEvents() as $event) {
 							$result = $mysqli->query($sql);
 						}	
 						sleep(7);
-						$sql = "select name from workPunch where location='' and userid='$userId'";
+						$sql = "select location from workPunch where location='' and userid='$userId'";
 						$result = $mysqli->query($sql);
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
-							$name = $row['name'] ;
+							$location = $row['location'] ;
 						}
-						if($name!=""){
+						if($location==""){
 							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 							$response = $bot->pushMessage($userId, $textMessageBuilder);
 						}
