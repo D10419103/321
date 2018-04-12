@@ -134,16 +134,16 @@ foreach ($client->parseEvents() as $event) {
 								$sql = "select location,worktime from workPunch where location='' and userid='$userId'";
 								$result = $mysqli->query($sql);
 								while($row = $result->fetch_array(MYSQLI_BOTH)) {
-									$location = $row['location'] ;
-									$worktime = $row['worktime'] ;
-								}	
+									$location = $row['location'];
+									$worktime = $row['worktime'];
+								}
 								$sql = "select location from workPunch where worktime='$worktime' and userid='$userId'";
 								$result = $mysqli->query($sql);
 								while($row = $result->fetch_array(MYSQLI_BOTH)) {
 									$location2 = $row['location'];
 								}	
 								if($location2!="")break;
-								if($name!=""){
+								if($location==""){
 									$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請定位你的位置");
 									$response = $bot->pushMessage($userId, $textMessageBuilder);
 								}
@@ -203,8 +203,8 @@ foreach ($client->parseEvents() as $event) {
 							$sql="INSERT INTO workPunch (number,name,userid,worktype,worktime) VALUES ('$a','$displayname','$userId','出','$time')";
 							$result = $mysqli->query($sql);
 						}
-							$z=0;
-							while($z==0){
+						$z=0;
+						while($z==0){
 							sleep(3);
 							$sql = "select location,worktime from workPunch where location='' and userid='$userId'";
 							$result = $mysqli->query($sql);
@@ -362,7 +362,7 @@ foreach ($client->parseEvents() as $event) {
 									$worktype2 = $row['worktype'];
 								}	
 								if($worktype2!="")break;
-								if($name!=null){
+								if($worktype==""){
 									$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("請按進出按紐");
 									$response = $bot->pushMessage($userId, $textMessageBuilder);
 								}
