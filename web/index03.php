@@ -221,9 +221,7 @@ foreach ($client->parseEvents() as $event) {
 						}
 			    		}
 					if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關'){
-						$template = $message['template'];
-						$actions = $template['actions'];
-						$label = $actions['label'];
+						$label = $message['label'];
 						$client->replyMessage(array(
 							'replyToken' => $event['replyToken'],
 							'messages' => array(
@@ -238,17 +236,17 @@ foreach ($client->parseEvents() as $event) {
 											array(
 												'type' => 'message', // 類型 (訊息)
 												'label' => '進', // 標籤 1
-												'text' => $m_message.$template // 用戶發送文字
+												'text' => $m_message // 用戶發送文字
 											),
 											array(
 												'type' => 'message', // 類型 (訊息)
 												'label' => '出', // 標籤 2
-												'text' => $m_message.$actions // 用戶發送文字
+												'text' => $m_message // 用戶發送文字
 											),
 											array(
 												'type' => 'message', // 類型 (訊息)
 												'label' => '毫無相關', // 標籤 3
-												'text' => '毫無相關'.$label // 用戶發送文字
+												'text' => '毫無相關' // 用戶發送文字
 											)
 										)
 									),
@@ -258,15 +256,6 @@ foreach ($client->parseEvents() as $event) {
 							
 						)
 								     );
-						$client->replyMessage(array(
-						    		'replyToken' => $event['replyToken'],
-						    		'messages' => array(
-							    		array(
-								    		'type' => 'text',
-										'text' => "設置成功!!"
-									),
-						    		),
-					    		));
 						if($label=="進"){
 							$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
 							$sql="INSERT INTO ininin (inside) VALUES ('$m_message')";
