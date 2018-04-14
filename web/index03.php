@@ -221,7 +221,7 @@ foreach ($client->parseEvents() as $event) {
 						}
 			    		}
 					if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關'){
-						$type=$m_message;
+						$type2=$m_message;
 						$client->replyMessage(array(
 							'replyToken' => $event['replyToken'],
 							'messages' => array(
@@ -264,7 +264,7 @@ foreach ($client->parseEvents() as $event) {
 								     );
 						if($m_message=="進"){
 							$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
-							$sql="INSERT INTO ininin (inside) VALUES ('$m_message')";
+							$sql="INSERT INTO ininin (inside) VALUES ('$type2')";
 							$result = $mysqli->query($sql);
 							$client->replyMessage(array(
 						    		'replyToken' => $event['replyToken'],
@@ -277,7 +277,7 @@ foreach ($client->parseEvents() as $event) {
 					    		));
 						}else if($m_message=="出"){
 							$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
-							$sql="INSERT INTO ininin (outside) VALUES ('$m_message')";
+							$sql="INSERT INTO ininin (outside) VALUES ('$type2')";
 							$result = $mysqli->query($sql);
 							$client->replyMessage(array(
 						    		'replyToken' => $event['replyToken'],
