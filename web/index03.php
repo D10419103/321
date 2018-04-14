@@ -220,7 +220,6 @@ foreach ($client->parseEvents() as $event) {
 							}
 						}
 			    		}
-					$b=0;
 					if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關' $$ $m_message!='進' && $m_message!='出'){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
 						$sql = "select number from test";
@@ -229,7 +228,7 @@ foreach ($client->parseEvents() as $event) {
 						    	$b = $row['number'] ;
 					    	}
 						$b+=1;
-						$sql="INSERT INTO test (number,test) VALUES ('$b','$m_message')";
+						$sql="INSERT INTO test (number,type) VALUES ('$b','$m_message')";
 						$result = $mysqli->query($sql);
 						$client->replyMessage(array(
 							'replyToken' => $event['replyToken'],
@@ -273,21 +272,21 @@ foreach ($client->parseEvents() as $event) {
 								     );
 						if($m_message=="進"){
 							$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
-							$sql = "select test from test";
+							$sql = "select type from test";
 							$result = $mysqli->query($sql);
 							while($row = $result->fetch_array(MYSQLI_BOTH)) {
-								$test = $row['test'];
+								$type = $row['type'];
 							}
-							$sql="INSERT INTO ininin (inside,outside) VALUES ('$test','出')";
+							$sql="INSERT INTO ininin (inside,outside) VALUES ('$type','出')";
 							$result = $mysqli->query($sql);
 						}else if($m_message=="出"){
 							$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
-							$sql = "select test from test";
+							$sql = "select type from test";
 							$result = $mysqli->query($sql);
 							while($row = $result->fetch_array(MYSQLI_BOTH)) {
-								$test = $row['test'];
+								$type = $row['type'];
 							}
-							$sql="INSERT INTO ininin (inside,outside) VALUES ('進','$test')";
+							$sql="INSERT INTO ininin (inside,outside) VALUES ('進','$type')";
 							$result = $mysqli->query($sql);
 						}
 					}
