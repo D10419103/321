@@ -51,9 +51,6 @@ foreach ($client->parseEvents() as $event) {
 					$displayname=$profile['displayName'];
 			    		date_default_timezone_set('Asia/Taipei');	   
 			    		$time=date("Y-m-d H:i:s");
-					
-					
-					
 					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 					$join=false;
 					$unjoin=false;
@@ -224,7 +221,7 @@ foreach ($client->parseEvents() as $event) {
 							}
 						}
 			    		}
-					$template = $event['template'];
+					$template = $message['template'];
 					$actions = $template['actions'];
 					$label = $actions['label'];
 					if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關'){
