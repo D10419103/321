@@ -278,10 +278,8 @@ foreach ($client->parseEvents() as $event) {
 							while($row = $result->fetch_array(MYSQLI_BOTH)) {
 								$test = $row['test'];
 							}
-							if($test!="進"){
-								$sql="INSERT INTO ininin (inside) VALUES ('$test')";
-								$result = $mysqli->query($sql);
-							}
+							$sql="INSERT INTO ininin (inside,outside) VALUES ('$test','出')";
+							$result = $mysqli->query($sql);
 						}else if($m_message=="出"){
 							$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
 							$sql = "select test from test";
@@ -289,10 +287,8 @@ foreach ($client->parseEvents() as $event) {
 							while($row = $result->fetch_array(MYSQLI_BOTH)) {
 								$test = $row['test'];
 							}
-							if($test!="出"){
-								$sql="INSERT INTO ininin (outside) VALUES ('$test')";
-								$result = $mysqli->query($sql);
-							}
+							$sql="INSERT INTO ininin (inside,outside) VALUES ('進','$test')";
+							$result = $mysqli->query($sql);
 						}
 					}
 			    		break;
