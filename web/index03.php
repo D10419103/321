@@ -221,7 +221,7 @@ foreach ($client->parseEvents() as $event) {
 						}
 			    		}
 					if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關'){
-						$type2=$m_message;
+						$type2==$m_message;
 						$client->replyMessage(array(
 							'replyToken' => $event['replyToken'],
 							'messages' => array(
