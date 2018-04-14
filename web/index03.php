@@ -228,7 +228,7 @@ foreach ($client->parseEvents() as $event) {
 						    	$b = $row['number'] ;
 					    	}
 						$b+=1;
-						$sql="INSERT INTO test (number,worktest) VALUES ('$b','$m_message')";
+						$sql="INSERT INTO test (number,worktest,worktime1) VALUES ('$b','$m_message','$time')";
 						$result = $mysqli->query($sql);
 						$client->replyMessage(array(
 							'replyToken' => $event['replyToken'],
