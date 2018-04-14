@@ -112,7 +112,6 @@ foreach ($client->parseEvents() as $event) {
 									array(
 								    		'type' => 'text',
 								    		'text' => "請定位你的位置!!"
-						
 									),
 						    		),
 					    		));
@@ -247,17 +246,16 @@ foreach ($client->parseEvents() as $event) {
 												'text' => $m_message // 用戶發送文字
 											),
 											array(
-								    		'type' => 'text',
-										'text' => "設置成功!!" . $template . $actions . $label
-
-									),
-											array(
 												'type' => 'message', // 類型 (訊息)
 												'label' => '毫無相關', // 標籤 3
 												'text' => '毫無相關' // 用戶發送文字
 											)
 										)
-									)
+									),
+									array(
+								    		'type' => 'text',
+										'text' => "設置成功!!"$template . $actions . $label
+									),
 									
 								)
 								
@@ -265,6 +263,15 @@ foreach ($client->parseEvents() as $event) {
 							
 						)
 								     );
+						$client->replyMessage(array(
+						    		'replyToken' => $event['replyToken'],
+						    		'messages' => array(
+							    		array(
+								    		'type' => 'text',
+										'text' => "設置成功!!"
+									),
+						    		),
+					    		));
 						if($label=="進"){
 							$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
 							$sql="INSERT INTO ininin (inside) VALUES ('$m_message')";
