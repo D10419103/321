@@ -220,7 +220,7 @@ foreach ($client->parseEvents() as $event) {
 							}
 						}
 			    		}
-					if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關'/* && $m_message!='進' && $m_message!='出'*/){
+					if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關'){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
 						$sql = "select number from test";
 					    	$result = $mysqli->query($sql);
@@ -228,8 +228,10 @@ foreach ($client->parseEvents() as $event) {
 						    	$b = $row['number'] ;
 					    	}
 						$b+=1;
-						$sql="INSERT INTO test (number,worktest,worktime1) VALUES ('$b','$m_message','$time')";
-						$result = $mysqli->query($sql);
+						if($m_message!='進' && $m_message!='出'){
+							$sql="INSERT INTO test (number,worktest,worktime1) VALUES ('$b','$m_message','$time')";
+							$result = $mysqli->query($sql);
+						}
 						$client->replyMessage(array(
 							'replyToken' => $event['replyToken'],
 							'messages' => array(
