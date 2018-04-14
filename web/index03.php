@@ -100,7 +100,7 @@ foreach ($client->parseEvents() as $event) {
 						    		),
 					    		));
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					    		$sql = "UPDATE workPunch SET worktype='進' where name='$displayname' and worktype='' and number='$number';";
+					    		$sql = "UPDATE workPunch SET worktype='進',worktime2='$time' where name='$displayname' and worktype='' and number='$number';";
 					    		$result = $mysqli->query($sql);
 							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname." "."進");
 		    					$response = $bot->pushMessage('C7f5b8de421baf16de46e01f846f162c7', $textMessageBuilder);
@@ -175,7 +175,7 @@ foreach ($client->parseEvents() as $event) {
 						    		),
 					    		));
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					    		$sql = "UPDATE workPunch SET worktype='出' where name='$displayname' and worktype='' and number='$number';";
+					    		$sql = "UPDATE workPunch SET worktype='出',worktime2='$time' where name='$displayname' and worktype='' and number='$number';";
 					    		$result = $mysqli->query($sql);
 							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname." "."出");
 		    					$response = $bot->pushMessage('C7f5b8de421baf16de46e01f846f162c7', $textMessageBuilder);
@@ -224,7 +224,10 @@ foreach ($client->parseEvents() as $event) {
 							}
 						}
 			    		}
-					if($m_message!='' && $join=true && $unjoin=true){
+					$template = $event['template'];
+					$actions = $template['actions'];
+					$label = $actions['label'];
+					if($m_message!='' && $join=true && $unjoin=true && $m_message=='毫無相關'){
 						$client->replyMessage(array(
 							'replyToken' => $event['replyToken'],
 							'messages' => array(
@@ -239,19 +242,11 @@ foreach ($client->parseEvents() as $event) {
 											array(
 												'type' => 'message', // 類型 (訊息)
 												'label' => '進', // 標籤 1
-												$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306"),
-												$sql="INSERT INTO USERINFO ininin (inside) VALUES ('$m_message')",
-												$result = $mysqli->query($sql),
-												$mysqli->close(),
 												'text' => $m_message // 用戶發送文字
 											),
 											array(
 												'type' => 'message', // 類型 (訊息)
 												'label' => '出', // 標籤 2
-												$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306"),
-												$sql="INSERT INTO USERINFO ininin (outside) VALUES ('$m_message')",
-												$result = $mysqli->query($sql),
-												$mysqli->close(),
 												'text' => $m_message // 用戶發送文字
 											),
 											array(
@@ -268,6 +263,15 @@ foreach ($client->parseEvents() as $event) {
 							
 						)
 								     );
+						if($label=="進"){
+							$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
+							$sql="INSERT INTO ininin (inside) VALUES ('$m_message')";
+							$result = $mysqli->query($sql);
+						}else if($label=="出"){
+							$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
+							$sql="INSERT INTO ininin (outside) VALUES ('$m_message')";
+							$result = $mysqli->query($sql);
+						}
 					}
 			    		break;
 		    
@@ -287,7 +291,7 @@ foreach ($client->parseEvents() as $event) {
 			    		$response = $bot->getProfile($userId);
 			    		$profile = $response->getJSONDecodedBody();
 			    		$displayname=$profile['displayName'];
-					if($address!="" && $longitude>=121.5650 && $longitude<=121.5659 && $latitude>=25.0860 && $latitude<=25.0869)
+					if($address!="")
 					{
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 						$sql = "select worktype,number from workPunch where location='' and longitude='' and latitude='' and userid='$userId'";
@@ -298,7 +302,7 @@ foreach ($client->parseEvents() as $event) {
 				    		}	
 				    		if($worktype!=""){
 					    		$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					    		$sql = "UPDATE workPunch SET location='$address',longitude='$longitude',latitude='$latitude' where name='$displayname' and worktype!=''and userid='$userId' and number='$number' ;";
+					    		$sql = "UPDATE workPunch SET location='$address',longitude='$longitude',latitude='$latitude',worktime2='$time' where name='$displayname' and worktype!=''and userid='$userId' and number='$number' ;";
 					    		$result = $mysqli->query($sql);
 					    		$client->replyMessage(array(
 						    		'replyToken' => $event['replyToken'],
@@ -372,17 +376,7 @@ foreach ($client->parseEvents() as $event) {
 								}
 							}
 				    		}
-			    		}else{
-						$client->replyMessage(array(
-						    		'replyToken' => $event['replyToken'],
-						    		'messages' => array(
-							    		array(
-								    		'type' => 'text',
-								    		'text' => $longitude . "\n" . $latitude
-							    		),
-						    		),
-					    		));
-					}
+			    		}
 					break;
 			}
 			break;
