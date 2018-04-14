@@ -238,25 +238,20 @@ foreach ($client->parseEvents() as $event) {
 											array(
 												'type' => 'message', // 類型 (訊息)
 												'label' => '進', // 標籤 1
-												'text' => $m_message // 用戶發送文字
+												'text' => $m_message.$template // 用戶發送文字
 											),
 											array(
 												'type' => 'message', // 類型 (訊息)
 												'label' => '出', // 標籤 2
-												'text' => $m_message // 用戶發送文字
+												'text' => $m_message.$actions // 用戶發送文字
 											),
 											array(
 												'type' => 'message', // 類型 (訊息)
 												'label' => '毫無相關', // 標籤 3
-												'text' => '毫無相關' // 用戶發送文字
+												'text' => '毫無相關'.$label // 用戶發送文字
 											)
 										)
 									),
-									array(
-								    		'type' => 'text',
-										'text' => "設置成功!!"$template . $actions . $label
-									),
-									
 								)
 								
 							)
