@@ -222,7 +222,13 @@ foreach ($client->parseEvents() as $event) {
 			    		}
 					if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關'){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
-						$sql="INSERT INTO test (test) VALUES ('$m_message')";
+						$sql = "select number from test";
+					    	$result = $mysqli->query($sql);
+					    	while($row = $result->fetch_array(MYSQLI_BOTH)) {
+						    	$b = $row['number'] ;
+					    	}
+						$b+=1;
+						$sql="INSERT INTO workPunch (number,test) VALUES ('$b','$m_message')";
 						$result = $mysqli->query($sql);
 						$client->replyMessage(array(
 							'replyToken' => $event['replyToken'],
