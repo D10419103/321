@@ -233,9 +233,9 @@ foreach ($client->parseEvents() as $event) {
 							$name2 = $row['name'];
 							$worktime2 = $row['worktime'];
 						}
-						$time3=$worktime2-$worktime;
+						$time3=strtotime($worktime2) - strtotime($worktime)
 						    //if($worktime==$date){
-							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name.$worktime.$worktime2.$time3);
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name.$worktime.$worktime2."\n".$time3);
 							$response = $bot->pushMessage($userId, $textMessageBuilder);
 						    //}
 					    }
