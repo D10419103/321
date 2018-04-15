@@ -287,9 +287,12 @@ foreach ($client->parseEvents() as $event) {
 							}*/
 							$sql="INSERT INTO ininin (inside,outside) VALUES ('$worktest','出')";
 							$result = $mysqli->query($sql);
+							$sql="delete from test where worktest!=''";
+							$result = $mysqli->query($sql);
 						}else if($m_message=="出"){
-							
 							$sql="INSERT INTO ininin (inside,outside) VALUES ('進','$worktest')";
+							$result = $mysqli->query($sql);
+							$sql="delete from test where worktest!=''";
 							$result = $mysqli->query($sql);
 						}
 					}
