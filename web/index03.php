@@ -241,14 +241,8 @@ foreach ($client->parseEvents() as $event) {
 					    }*/
 					if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關' && $m_message!='查'){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
-						$sql = "select number from test";
-					    	$result = $mysqli->query($sql);
-					    	while($row = $result->fetch_array(MYSQLI_BOTH)) {
-						    	$b = $row['number'] ;
-					    	}
-						$b+=1;
 						if($m_message!='進' && $m_message!='出' && $m_message!='毫無相關'){
-							$sql="INSERT INTO test (number,worktest,worktime1) VALUES ('$b','$m_message','$time')";
+							$sql="INSERT INTO test (worktest) VALUES ('$m_message')";
 							$result = $mysqli->query($sql);
 						}
 						$client->replyMessage(array(
@@ -292,18 +286,12 @@ foreach ($client->parseEvents() as $event) {
 						)
 								     );
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
-						$sql = "select worktest from test/* where  select id, max(date) from tablename group by id*/";
+						$sql = "select worktest from test";
 						$result = $mysqli->query($sql);
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
 							$worktest = $row['worktest'];
 						}
 						if($m_message=="進"){
-							/*$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
-							$sql = "select worktest from test";
-							$result = $mysqli->query($sql);
-							while($row = $result->fetch_array(MYSQLI_BOTH)) {
-								$worktest = $row['worktest'];
-							}*/
 							$sql="INSERT INTO ininin (inside,outside) VALUES ('$worktest','出')";
 							$result = $mysqli->query($sql);
 							$sql="delete from test where worktest!=''";
