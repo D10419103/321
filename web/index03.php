@@ -227,8 +227,15 @@ foreach ($client->parseEvents() as $event) {
 							$name = $row['name'];
 							$worktime = $row['worktime'];
 						}
+						$sql = "select name,worktime from workPunch where worktype='出'";
+						$result = $mysqli->query($sql);
+						while($row = $result->fetch_array(MYSQLI_BOTH)){ 
+							$name2 = $row['name'];
+							$worktime2 = $row['worktime'];
+						}
+						$time3=$worktime2-$worktime;
 						    //if($worktime==$date){
-							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name.$worktime);
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name.$worktime.$worktime2.$time3);
 							$response = $bot->pushMessage($userId, $textMessageBuilder);
 						    //}
 					    }
