@@ -221,19 +221,19 @@ foreach ($client->parseEvents() as $event) {
 						}
 			    		}else if($m_message=="查"){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");			$sql = "select name,worktime from mysql where worktype='進'";
-						$sql = "select name,worktime from workPunch where worktype='進'";
+						$sql = "select name,number from workPunch where worktype='進'";
 						$result = $mysqli->query($sql);
 						while($row = $result->fetch_array(MYSQLI_BOTH)){ 
 							$name = $row['name'];
-							$worktime = $row['worktime'];
+							$number = $row['number'];
 						}
-						$sql = "select name,worktime from workPunch where worktype='出'";
+						$sql = "select name,number from workPunch where worktype='出'";
 						$result = $mysqli->query($sql);
 						while($row = $result->fetch_array(MYSQLI_BOTH)){ 
 							$name2 = $row['name'];
-							$worktime2 = $row['worktime'];
+							$number2 = $row['number'];
 						}
-						$time3=strtotime($worktime2) - strtotime($worktime)
+						$time3=$number2 - $number
 						    //if($worktime==$date){
 							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name.$worktime.$worktime2.$time3);
 							$response = $bot->pushMessage($userId, $textMessageBuilder);
