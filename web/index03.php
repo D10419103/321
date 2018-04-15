@@ -235,7 +235,7 @@ foreach ($client->parseEvents() as $event) {
 						}
 						$time3=strtotime($worktime2) - strtotime($worktime)
 						    //if($worktime==$date){
-							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name.$worktime.$worktime2."\n".$time3);
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name.$worktime.$worktime2.$time3);
 							$response = $bot->pushMessage($userId, $textMessageBuilder);
 						    //}
 					    }
