@@ -233,11 +233,11 @@ foreach ($client->parseEvents() as $event) {
 							$name2 = $row['name'];
 							$number2 = $row['number'];
 						}
-						$time3=$number2 - $number;
-						    //if($worktime==$date){
-							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name.$worktime.$worktime2.$time3);
+						$number3=$number - $number2;
+						    if($number3>"0"){
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ");
 							$response = $bot->pushMessage($userId, $textMessageBuilder);
-						    //}
+						    }
 					    }
 					else if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關' && $m_message!='查'){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
