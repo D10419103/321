@@ -219,7 +219,19 @@ foreach ($client->parseEvents() as $event) {
 								$response = $bot->pushMessage($userId, $textMessageBuilder);
 							}
 						}
-			    		}
+			    		}else if($m_message=="查"){
+						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");			$sql = "select name,worktime from mysql where worktype='進'";
+						$sql = "select name,worktime from workPunch where worktype='進'";
+						$result = $mysqli->query($sql);
+						while($row = $result->fetch_array(MYSQLI_BOTH)){ 
+							$name = $row['name'];
+							$worktime = $row['worktime'];
+						}
+						    //if($worktime==$date){
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ");
+							$response = $bot->pushMessage($userid, $textMessageBuilder);
+						    //}
+					    }
 					if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關'){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
 						$sql = "select number from test";
@@ -228,7 +240,7 @@ foreach ($client->parseEvents() as $event) {
 						    	$b = $row['number'] ;
 					    	}
 						$b+=1;
-						if($m_message!='進' && $m_message!='出'){
+						if($m_message!='進' && $m_message!='出' && $m_message!='毫無相關'){
 							$sql="INSERT INTO test (number,worktest,worktime1) VALUES ('$b','$m_message','$time')";
 							$result = $mysqli->query($sql);
 						}
