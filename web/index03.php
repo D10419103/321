@@ -232,7 +232,7 @@ foreach ($client->parseEvents() as $event) {
 							$response = $bot->pushMessage($userid, $textMessageBuilder);
 						    //}
 					    }
-					if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關'){
+					else if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關' && $m_message!='查'){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
 						$sql = "select number from test";
 					    	$result = $mysqli->query($sql);
