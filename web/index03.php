@@ -291,12 +291,12 @@ foreach ($client->parseEvents() as $event) {
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
 							$worktest = $row['worktest'];
 						}
-						if($m_message=="進"){
+						if($m_message=="進" && $worktest!=""){
 							$sql="INSERT INTO ininin (inside,outside) VALUES ('$worktest','出')";
 							$result = $mysqli->query($sql);
 							$sql="delete from test where worktest!=''";
 							$result = $mysqli->query($sql);
-						}else if($m_message=="出"){
+						}else if($m_message=="出" && $worktest!=""){
 							$sql="INSERT INTO ininin (inside,outside) VALUES ('進','$worktest')";
 							$result = $mysqli->query($sql);
 							$sql="delete from test where worktest!=''";
