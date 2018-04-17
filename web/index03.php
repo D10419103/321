@@ -1,5 +1,4 @@
  <?php
-
 require_once('./LINEBotTiny.php');
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient.php';
@@ -8,14 +7,12 @@ require_once __DIR__ . '/../scr/LINEBot.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient/CurlHTTPClient.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient/Curl.php';
 require_once __DIR__ . '/../scr/LINEBot/Response.php';
-
 require_once __DIR__ . '/../scr/LINEBot/Constant/MessageType.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TextMessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/StickerMessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/LocationMessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/MultiMessageBuilder.php';
-
 require_once __DIR__ . '/../scr/LINEBot/TemplateActionBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/Constant/ActionType.php';
 require_once __DIR__ . '/../scr/LINEBot/TemplateActionBuilder/PostbackTemplateActionBuilder.php';
@@ -259,17 +256,11 @@ foreach ($client->parseEvents() as $event) {
 											array(
 												'type' => 'message', // 類型 (訊息)
 												'label' => '進', // 標籤 1
-												/*$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306"),
-												$sql="INSERT INTO ininin (inside) VALUES ('$m_message')",
-												$result = $mysqli->query($sql),*/
 												'text' => '進' // 用戶發送文字
 											),
 											array(
 												'type' => 'message', // 類型 (訊息)
 												'label' => '出', // 標籤 2
-												/*$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306"),
-												$sql="INSERT INTO ininin (outside) VALUES ('$m_message')",
-												$result = $mysqli->query($sql),*/
 												'text' => '出' // 用戶發送文字
 											),
 											array(
