@@ -69,7 +69,6 @@ foreach ($client->parseEvents() as $event) {
 					}
 					
 					if($join){
-			    		//if($m_message=="進"){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				    		$sql = "select location,number,worktime from workPunch where worktype='' and userid='$userId'";
 				    		$result = $mysqli->query($sql);
@@ -143,7 +142,6 @@ foreach ($client->parseEvents() as $event) {
 							}
 						}
 					}else if($unjoin){
-					//else if($m_message=="出"){
 						 $mysqli->close();
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 				    		$sql = "select location,number from workPunch where worktype='' and userid='$userId'";
@@ -216,26 +214,7 @@ foreach ($client->parseEvents() as $event) {
 								$response = $bot->pushMessage($userId, $textMessageBuilder);
 							}
 						}
-			    		}/*else if($m_message=="查"){
-						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");			$sql = "select name,worktime from mysql where worktype='進'";
-						$sql = "select name,number from workPunch where worktype='進'";
-						$result = $mysqli->query($sql);
-						while($row = $result->fetch_array(MYSQLI_BOTH)){ 
-							$name = $row['name'];
-							$number = $row['number'];
-						}
-						$sql = "select name,number from workPunch where worktype='出'";
-						$result = $mysqli->query($sql);
-						while($row = $result->fetch_array(MYSQLI_BOTH)){ 
-							$name2 = $row['name'];
-							$number2 = $row['number'];
-						}
-							$number3=$number - $number2;
-							if($number3>"0"){
-								$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($name." ");
-								$response = $bot->pushMessage($userId, $textMessageBuilder);
-							}
-					    }*/
+			    		}
 					if($m_message!='' && $join=true && $unjoin=true && $m_message!='毫無相關' && $m_message!='查'){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy","fu7wm9fyq2nkgeuk","3306");
 						if($m_message!='進' && $m_message!='出' && $m_message!='毫無相關'){
@@ -246,27 +225,27 @@ foreach ($client->parseEvents() as $event) {
 							'replyToken' => $event['replyToken'],
 							'messages' => array(
 								array(
-									'type' => 'template', // 訊息類型 (模板)
-                							'altText' => 'simple in and out', // 替代文字
+									'type' => 'template', 
+                							'altText' => 'simple in and out', 
                 							'template' => array(
-										'type' => 'buttons', // 類型 (按鈕)
-										'title' => '選單', // 標題 <不一定需要>
-										'text' => '請問'.$m_message.'代表什麼', // 文字
+										'type' => 'buttons', 
+										'title' => '選單', 
+										'text' => '請問'.$m_message.'代表什麼', 
 										'actions' => array(
 											array(
-												'type' => 'message', // 類型 (訊息)
-												'label' => '進', // 標籤 1
-												'text' => '進' // 用戶發送文字
+												'type' => 'message', 
+												'label' => '進', 
+												'text' => '進' 
 											),
 											array(
-												'type' => 'message', // 類型 (訊息)
-												'label' => '出', // 標籤 2
-												'text' => '出' // 用戶發送文字
+												'type' => 'message', 
+												'label' => '出',
+												'text' => '出' 
 											),
 											array(
-												'type' => 'message', // 類型 (訊息)
-												'label' => '毫無相關', // 標籤 3
-												'text' => '毫無相關' // 用戶發送文字
+												'type' => 'message', 
+												'label' => '毫無相關', 
+												'text' => '毫無相關' 
 											)
 										)
 									),
@@ -355,21 +334,21 @@ foreach ($client->parseEvents() as $event) {
 						    		'replyToken' => $event['replyToken'],
 						    		'messages' => array(
 							    		array(
-								    		'type' => 'template', // 訊息類型 (模板)
-								    		'altText' => 'Example confirm template', // 替代文字
+								    		'type' => 'template', 
+								    		'altText' => 'Example confirm template', 
 								    		'template' => array(
-									    		'type' => 'confirm', // 類型 (確認)
-									    		'text' => '你現在是要進還是出?', // 文字
+									    		'type' => 'confirm', 
+									    		'text' => '你現在是要進還是出?', 
 									    		'actions' => array(
 										    		array(
-											    		'type' => 'message', // 類型 (訊息)
-											    		'label' => '進', // 標籤 1
-											    		'text' => '進'// 用戶發送文字 1
+											    		'type' => 'message', 
+											    		'label' => '進', 
+											    		'text' => '進'
 										    		),
 										    		array(
-											    		'type' => 'message', // 類型 (訊息)
-											    		'label' => '出', // 標籤 2
-											    		'text' => '出' // 用戶發送文字 2
+											    		'type' => 'message', 
+											    		'label' => '出',
+											    		'text' => '出' 
 										    		)
 									    		)
 								    		)
