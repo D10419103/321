@@ -69,7 +69,7 @@ foreach ($client->parseEvents() as $event) {
 			$address = $message['address'];
 			if($m_message=="安安")
                 	{
-				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($latitude.$longitude.$address);
+				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($m_message.$latitude.$longitude.$address);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                 	}else if($m_message=="123"){
 				
