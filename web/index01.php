@@ -63,11 +63,13 @@ foreach ($client->parseEvents() as $event) {
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
-			date_default_timezone_set('Asia/Taipei');	    
+			date_default_timezone_set('Asia/Taipei');
+			    $latitude=$message['latitude'];
+                   	$longitude=$message['longitude'];
+			$address = $message['address'];
 			if($m_message=="安安")
                 	{
-				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type ."\n" . $m_message ."\n" . $roomid."\n". date('Y-m-d h:i:sa') . "\n" . $userId . "\n" . $groupid. "\n" . $displayname . "\n"
-				    . count($message) . "\n" .count($event). "\n" .count($source) . "\n" .count($replyToken) . "\n" .count($type2) . "\n" .count($timestamp));
+				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($latitude.$longitude.$address);
 $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                 	}else if($m_message=="123"){
 				
@@ -228,12 +230,12 @@ $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 			$title=$message['title'];
                    	$latitude=$message['latitude'];
                    	$longitude=$message['longitude'];
-			$m_message = $message['address'];
+			$address = $message['address'];
 			$type=$message['type'];
 			    $response = $bot->getProfile($userId);
 			    $profile = $response->getJSONDecodedBody();
 			    $displayname=$profile['displayName'];
-                	if($m_message!="")
+                	if($address!="")
                 	{
 				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId . "\n". count($message) . "\n" . $displayname);
 $bot->replyMessage($replyToken,$msg);
