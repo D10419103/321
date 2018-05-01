@@ -65,14 +65,32 @@ foreach ($client->parseEvents() as $event) {
 						}
 					}
 					
-					if($join){
-						$sql="INSERT INTO 304ex (name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$m_message','進','$time')";
-						$result = $mysqli->query($sql);
-					}else if($unjoin){
-						 $sql="INSERT INTO 304ex (name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$m_message','出','$time')";
-						$result = $mysqli->query($sql);
-					}else{
-				$sql="INSERT INTO 304ex (name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$m_message','無','$time')";
+				if($join){
+					$sql = "select number from 304ex";
+							$result = $mysqli->query($sql);
+					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+						    		$a = $row['number'] ;
+					    		}
+					    		$a+=1;
+					$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$m_message','進','$time')";
+					$result = $mysqli->query($sql);
+				}else if($unjoin){
+					$sql = "select number from 304ex";
+							$result = $mysqli->query($sql);
+					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+						    		$a = $row['number'] ;
+					    		}
+					    		$a+=1;
+					$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$m_message','出','$time')";
+					$result = $mysqli->query($sql);
+				}else{
+					$sql = "select number from 304ex";
+							$result = $mysqli->query($sql);
+					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+						    		$a = $row['number'] ;
+					    		}
+					    		$a+=1;
+				$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$m_message','無','$time')";
 				$result = $mysqli->query($sql);
 			}
 			    		break;
