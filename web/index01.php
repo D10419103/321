@@ -72,7 +72,7 @@ foreach ($client->parseEvents() as $event) {
 						    		$a = $row['number'] ;
 					    		}
 					    		$a+=1;
-					$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$m_message','進','$time')";
+					$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$a','$displayname','$userId','$m_message','進','$time')";
 					$result = $mysqli->query($sql);
 				}else if($unjoin){
 					$sql = "select number from 304ex";
@@ -81,7 +81,7 @@ foreach ($client->parseEvents() as $event) {
 						    		$a = $row['number'] ;
 					    		}
 					    		$a+=1;
-					$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$m_message','出','$time')";
+					$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$a','$displayname','$userId','$m_message','出','$time')";
 					$result = $mysqli->query($sql);
 				}else{
 					$sql = "select number from 304ex";
@@ -90,7 +90,7 @@ foreach ($client->parseEvents() as $event) {
 						    		$a = $row['number'] ;
 					    		}
 					    		$a+=1;
-				$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$m_message','無','$time')";
+				$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$a','$displayname','$userId','$m_message','無','$time')";
 				$result = $mysqli->query($sql);
 			}
 			    		break;
