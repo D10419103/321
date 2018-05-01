@@ -66,13 +66,13 @@ foreach ($client->parseEvents() as $event) {
 					}
 					
 					if($join){
-						$sql="INSERT INTO 304ex (name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$userId','$m_message','進','$time')";
+						$sql="INSERT INTO 304ex (name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$m_message','進','$time')";
 						$result = $mysqli->query($sql);
 					}else if($unjoin){
-						 $sql="INSERT INTO 304ex (name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$userId','$m_message','出','$time')";
+						 $sql="INSERT INTO 304ex (name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$m_message','出','$time')";
 						$result = $mysqli->query($sql);
 					}else{
-				$sql="INSERT INTO 304ex (name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$userId','$m_message','無','$time')";
+				$sql="INSERT INTO 304ex (name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$m_message','無','$time')";
 				$result = $mysqli->query($sql);
 			}
 			    		break;
