@@ -1,21 +1,4 @@
 <?php
-
-/**
- * Copyright 2016 LINE Corporation
- *
- * LINE Corporation licenses this file to you under the Apache License,
- * version 2.0 (the "License"); you may not use this file except in compliance
- * with the License. You may obtain a copy of the License at:
- *
- *   https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations
- * under the License.
- */
-
 require_once('./LINEBotTiny.php');
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient.php';
@@ -24,274 +7,80 @@ require_once __DIR__ . '/../scr/LINEBot.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient/CurlHTTPClient.php';
 require_once __DIR__ . '/../scr/LINEBot/HTTPClient/Curl.php';
 require_once __DIR__ . '/../scr/LINEBot/Response.php';
-
 require_once __DIR__ . '/../scr/LINEBot/Constant/MessageType.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TextMessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/StickerMessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/LocationMessageBuilder.php';
 require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/MultiMessageBuilder.php';
-
-
+require_once __DIR__ . '/../scr/LINEBot/TemplateActionBuilder.php';
+require_once __DIR__ . '/../scr/LINEBot/Constant/ActionType.php';
+require_once __DIR__ . '/../scr/LINEBot/TemplateActionBuilder/PostbackTemplateActionBuilder.php';
+require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TemplateBuilder.php';
+require_once __DIR__ . '/../scr/LINEBot/Constant/TemplateType.php';
+require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TemplateBuilder/ConfirmTemplateBuilder.php';
+require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TemplateMessageBuilder.php';
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
-
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
-
-
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
-
-/*$content = $receive->result[0]->content;
-$text = $content->text;*/
-
 foreach ($client->parseEvents() as $event) {
-    switch ($event['type']) {
-        case 'message':
-            $message = $event['message'];		
-            switch ($message['type']) {
-		    case 'text':
-                	$m_message = $message['text'];
-			$type = $message['type'];
-                	$source=$event['source'];
-              	      	$userId=$source['userId'];			
-                  	$roomid=$source['roomId'];
-             	       	$groupid=$source['groupId'];
-			$replyToken=$event['replyToken'];
-			    $type2=$event['type'];
-			    $timestamp=$event['timestamp'];
-			    $response = $bot->getProfile($userId);
-			    $profile = $response->getJSONDecodedBody();
-			    $displayname=$profile['displayName'];
-			date_default_timezone_set('Asia/Taipei');
-			    $latitude=$message['latitude'];
-                   	$longitude=$message['longitude'];
-			$address = $message['address'];
-			if($m_message=="安安")
-                	{
-				 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($m_message.$latitude.$longitude.$address);
-$response = $bot->replyMessage($replyToken, $textMessageBuilder);
-                	}else if($m_message=="123"){
-				
-				$client->replyMessage(array(
-  'replyToken' => $event['replyToken'],
-    'messages' => array(
-            array(
-                'type' => 'template', // 訊息類型 (模板)
-                'altText' => 'Example confirm template', // 替代文字
-                'template' => array(
-                    'type' => 'confirm', // 類型 (確認)
-                    'text' => 'Are you sure?', // 文字
-                    'actions' => array(
-                        array(
-                            'type' => 'message', // 類型 (訊息)
-                            'label' => 'Yes', // 標籤 1
-                            'text' => 'Yes' // 用戶發送文字 1
-                        ),
-                        array(
-                            'type' => 'message', // 類型 (訊息)
-                            'label' => 'No', // 標籤 2
-                            'text' => 'No' // 用戶發送文字 2
-                        )
-                    )
-                )
-            )
-        )
-    ));
-			}else if($m_message=="321"){
-				$client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-            array(
-                'type' => 'template', // 訊息類型 (模板)
-                'altText' => 'Example buttons template', // 替代文字
-                'template' => array(
-                    'type' => 'buttons', // 類型 (按鈕)
-                    'thumbnailImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg', // 圖片網址 <不一定需要>
-                    'title' => 'Example Menu', // 標題 <不一定需要>
-                    'text' => 'Please select', // 文字
-                    'actions' => array(
-                        array(
-                            'type' => 'postback', // 類型 (回傳)
-                            'label' => 'Postback example', // 標籤 1
-                            'data' => 'action=buy&itemid=123' // 資料
-                        ),
-                        array(
-                            'type' => 'message', // 類型 (訊息)
-                            'label' => 'Message example', // 標籤 2
-                            'text' => 'Message example' // 用戶發送文字
-                        ),
-                        array(
-                            'type' => 'uri', // 類型 (連結)
-                            'label' => 'Uri example', // 標籤 3
-                            'uri' => 'https://github.com/GoneTone/line-example-bot-php' // 連結網址
-                        )
-                    )
-                )
-            )
-        )
-                    	));	
-			}else if($m_message=="1"){
-                        $client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'template',
-                                'altText' => 'Example confirm template',
-                                'template' => array(
-                                    'type' => 'confirm',
-                                    'text' => '請選擇日期',
-                                    'actions' => array(
-                                        array(
-                                        'type' => 'datetimepicker',
-                                        'label' => '請選擇',
-                                        'data' => 'storeId=12345',
-                                        'mode' => 'datetime',
-                                        'initial' => '2018-01-01t00:00',
-                                        'max' => '2020-12-30t00:00',
-                                        'min' => '2017-01-01t00:00'
-                                         ),
-                                        array(
-                                        'type' => 'message',
-                                        'label' => '取消',
-                                        'text' => '請使用看看'
-                                        )
-                            ))))));
-                    }
-                    break;
-			  
-		    case "image" :
-			    $source=$event['source'];
-              	      	$userId=$source['userId'];
-			    $response = $bot->getProfile($userId);
-			    $profile = $response->getJSONDecodedBody();
-			    $displayname=$profile['displayName'];
-			$type=$message['type'];
-			    $originalContentUrl='a-' . $message['originalContentUrl'] . 'a-';
-			    $previewImageUrl=$message['previewImageUrl'];
-			    $id=$message['id'];	    	    
-                	if($type!="")
-                	{
-                		$client->replyMessage(array(
-                                    'replyToken' => $event['replyToken'],
-                                    'messages' => array(
-                                       array(
-                                          'type' => 'text',
-                                          'text' => $type . "\n" . $displayname . "\n" . $originalContentUrl
-                                       ),
-				       array(
-					  
-                                          'type' => 'image', // 訊息類型 (圖片)
-                                          'originalContentUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg', // 回復圖片
-                                          'previewImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg' // 回復的預覽圖片
-				       ),
-                                   ),
-                               ));
-                       }
-		       break;
-	
-		    case "video" :
-			$type=$message['type'];
-                	if($type!="")
-                	{
-                		$client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $type
-                            ),
-                        ),
-                    	));
-                	}
-				break;
-				
-		    case "audio" :
-			$type=$message['type'];
-                	if($type!="")
-                	{
-                		$client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => $type
-                            ),
-                        ),
-                    	));
-                	}
-				break;
-                        
-                    case 'location' :
-			    $replyToken=$event['replyToken'];
-			$source=$event['source'];
-              	      	$type = $source['type']; 
-              	      	$userId=$source['userId'];
-			$title=$message['title'];
-                   	$latitude=$message['latitude'];
-                   	$longitude=$message['longitude'];
-			$address = $message['address'];
-			$type=$message['type'];
-			    $response = $bot->getProfile($userId);
-			    $profile = $response->getJSONDecodedBody();
-			    $displayname=$profile['displayName'];
-                	if($address!="")
-                	{
-				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type . "\n" . $m_message . "\n". $longitude . "\n" . $latitude ."\n". $userId . "\n". count($message) . "\n" . $displayname);
-$bot->replyMessage($replyToken,$msg);
-				/*$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($type, $m_message, $latitude, $longitude);
-$bot->replyMessage($replyToken,$msg);*/
-                	}
-                    break;
-			
-		    case 'sticker' :
-			    $replyToken=$event['replyToken'];
-			$m_message = $message['packageId'];
-			$stickerId = $message['stickerId'];
-			$type=$message['type'];
-			    $source=$event['source'];
-              	      	$userId=$source['userId'];
-			    $response = $bot->getProfile($userId);
-			    $profile = $response->getJSONDecodedBody();
-			    $displayname=$profile['displayName'];
-			if($m_message !="")
-                	{
-                	/*$client->replyMessage(array(
-        		'replyToken' => $event['replyToken'],
-     			   'messages' => array(
-       			     array(
-				'type' => 'sticker',
-				'stickerId' => $stickerId,
-				'packageId' => $m_message
-         	   ),
-			     array(
-                                'type' => 'text',
-                                'text' => $type ."\n". count($message) . "\n" . $displayname
-                            ),
- 	       ),
-	    ));*/
-				$msg = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
-for($i=0;$i<2;$i++)
-{
-	if($i==0){
-		$_msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type ."\n". count($message) . "\n" . $displayname);}
-	else {$_msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($m_message,$stickerId);}
-  $msg->add($_msg);
-}
-$bot->replyMessage($replyToken,$msg);
-				/*$msg1 = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($type ."\n". count($message) . "\n" . $displayname);
-//$bot->replyMessage($replyToken,$msg1);
-				$msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($m_message,$stickerId);
-$bot->replyMessage($replyToken,$msg1,$replyToken,$msg);*/
+	switch ($event['type']) {
+		case 'message':
+			$message = $event['message'];		
+			switch ($message['type']) {
+				case 'text':
+					$m_message = $message['text'];
+					$type = $message['type'];
+			    		$source=$event['source'];     	   
+			    		$userId=$source['userId'];			
+			    		$roomid=$source['roomId'];
+			    		$groupid=$source['groupId'];
+			    		$replyToken=$event['replyToken'];
+			    		$type2=$event['type'];
+			    		$timestamp=$event['timestamp'];
+			    		$response = $bot->getProfile($userId);
+			    		$profile = $response->getJSONDecodedBody();
+					$displayname=$profile['displayName'];
+			    		date_default_timezone_set('Asia/Taipei');	   
+			    		$time=date("Y-m-d H:i:s");
+					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+					$join=false;
+					$unjoin=false;
+					$sql = "SELECT inside from ininin";
+					$result = $mysqli->query($sql);
+					while($row = $result->fetch_array(MYSQLI_BOTH)){
+						$inside = $row['inside'] ;
+						if(preg_match("/$inside/i","$m_message")){
+  							$join=true;
+						}
+					}
+					$sql = "SELECT outside from ininin";
+					$result = $mysqli->query($sql);
+					while($row = $result->fetch_array(MYSQLI_BOTH)){
+						$outside = $row['outside'] ;
+						if(preg_match("/$outside/i","$m_message")){
+							$unjoin=true;
+						}
+					}
+					
+					if($join){
+						$sql="INSERT INTO 304ex (name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$userId','$m_message','進','$time')";
+						$result = $mysqli->query($sql);
+						}
+					}else if($unjoin){
+						 $sql="INSERT INTO 304ex (name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$userId','$m_message','出','$time')";
+						$result = $mysqli->query($sql);
+					}else{
+				$sql="INSERT INTO 304ex (name,userid,msg,worktype,worktime) VALUES ('$displayname','$userId','$userId','$m_message','無','$time')";
+				$result = $mysqli->query($sql);
+			}
+			    		break;
+			}
+			break;
+		default:
+			error_log("Unsupporeted event type: " . $event['type']);  
+			break; 
 	}
-                    break;
-
-            }
-		    
-            break;
-        default:
-            error_log("Unsupporeted event type: " . $event['type']);
-            break;
-    }
-};
-?>
+}
