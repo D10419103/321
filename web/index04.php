@@ -71,7 +71,7 @@ foreach ($client->parseEvents() as $event) {
 							$result = $mysqli->query($sql);	
 					
 					}else{
-				msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證失敗");
+				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證失敗");
                         $bot->replyMessage($replyToken,$msg);
 			}
 			    		break;
