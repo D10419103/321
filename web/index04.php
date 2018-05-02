@@ -62,9 +62,11 @@ foreach ($client->parseEvents() as $event) {
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
 							$numbercode = $row['numbercode'];
 						}
-			if($m_message =$numbercode){
+			if($m_message == $numbercode && $numbercode!=""){
 				$sql="INSERT INTO code (msg) VALUES ('ok')";
 							$result = $mysqli->query($sql);
+				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("安安");
+                        $bot->replyMessage($replyToken,$msg);
 							$sql="delete from code where numbercode='$m_message'";
 							$result = $mysqli->query($sql);	
 					
