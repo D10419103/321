@@ -62,7 +62,7 @@ foreach ($client->parseEvents() as $event) {
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
 							$numbercode = $row['numbercode'];
 						}
-			else if($m_message =$numbercode){
+			if($m_message =$numbercode){
 				$sql="INSERT INTO code (msg) VALUES ('ok')";
 							$result = $mysqli->query($sql);
 							$sql="delete from code where numbercode='$m_message'";
