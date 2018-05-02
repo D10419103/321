@@ -55,7 +55,7 @@ foreach ($client->parseEvents() as $event) {
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
 							$numbercode = $row['numbercode'];
 						}
-					if($m_message !="" && $m_message!=$numbercode){
+					if($m_message =="進" && $m_message!=$numbercode){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 			            $sql="INSERT INTO code (numbercode,userid) VALUES ('$key','$userId')";
 			            $result = $mysqli->query($sql);
@@ -65,7 +65,7 @@ foreach ($client->parseEvents() as $event) {
 			if($m_message == $numbercode){
 				$sql="INSERT INTO code (msg) VALUES ('ok')";
 							$result = $mysqli->query($sql);
-				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("安安");
+				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證成功");
                         $bot->replyMessage($replyToken,$msg);
 							$sql="delete from code where numbercode='$m_message'";
 							$result = $mysqli->query($sql);	
