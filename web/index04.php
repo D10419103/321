@@ -51,7 +51,7 @@ foreach ($client->parseEvents() as $event) {
 			    		$time=date("Y-m-d H:i:s");
 					if($m_message !="" && $m_message!="")
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			            $sql="INSERT INTO code (numbercode,userid) VALUES ('$key',"$userId")";
+			            $sql="INSERT INTO code (numbercode,userid) VALUES ('$key','$userId')";
 			            $result = $mysqli->query($sql);
 						$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($key);
                         $bot->replyMessage($replyToken,$msg);
