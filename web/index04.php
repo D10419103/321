@@ -49,7 +49,7 @@ foreach ($client->parseEvents() as $event) {
 			    		date_default_timezone_set('Asia/Taipei');
 					$key=rand(1000,9999);
 			    		$time=date("Y-m-d H:i:s");
-					if($m_message !="" && $m_message!=$key){
+					if($m_message !="" && $m_message!=$numbercode){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 			            $sql="INSERT INTO code (numbercode,userid) VALUES ('$key','$userId')";
 			            $result = $mysqli->query($sql);
