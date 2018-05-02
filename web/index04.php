@@ -28,15 +28,6 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret ]);
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
-
-function randomkeys($length){
-$pattern = "1234567890";
-for($i=0;$i<$length;$i++){
-$key .= $pattern{rand(0,10)};
-}
-return $key;
-}
-
 foreach ($client->parseEvents() as $event) {
 	switch ($event['type']) {
 		case 'message':
@@ -55,34 +46,11 @@ foreach ($client->parseEvents() as $event) {
 			    		$response = $bot->getProfile($userId);
 			    		$profile = $response->getJSONDecodedBody();
 					$displayname=$profile['displayName'];
-			    		date_default_timezone_set('Asia/Taipei');	   
+			    		date_default_timezone_set('Asia/Taipei');
+					$key=rand(1000,9999);
 			    		$time=date("Y-m-d H:i:s");
-					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					$join=false;
-					$unjoin=false;
-					$sql = "SELECT inside from ininin";
-					$result = $mysqli->query($sql);
-					while($row = $result->fetch_array(MYSQLI_BOTH)){
-						$inside = $row['inside'] ;
-						if(preg_match("/$inside/i","$m_message")){
-  							$join=true;
-						}
-					}
-					$sql = "SELECT outside from ininin";
-					$result = $mysqli->query($sql);
-					while($row = $result->fetch_array(MYSQLI_BOTH)){
-						$outside = $row['outside'] ;
-						if(preg_match("/$outside/i","$m_message")){
-							$unjoin=true;
-						}
-					}
-					
-					if($join){
+					if($m_message !=""){
 						$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(randomkeys(4));
-                        $bot->replyMessage($replyToken,$msg);
-						}
-					}else if($unjoin){
-						 $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(randomkeys(4));
                         $bot->replyMessage($replyToken,$msg);
 					}
 			    		break;
