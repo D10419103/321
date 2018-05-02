@@ -61,8 +61,8 @@ foreach ($client->parseEvents() as $event) {
 			            $result = $mysqli->query($sql);
 						$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($key);
                         $bot->replyMessage($replyToken,$msg);
-			}
-			if (preg_match("/$m_message/i", "$numbercode")) {
+			}$standard_A = "/^([0-9]+)$/"; 
+			if ($m_message== $numbercode && checkString($m_message, $standard_A)) {
 				$sql="INSERT INTO code (msg) VALUES ('ok')";
 							$result = $mysqli->query($sql);
 				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證成功");
