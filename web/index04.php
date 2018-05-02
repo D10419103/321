@@ -62,7 +62,7 @@ foreach ($client->parseEvents() as $event) {
 						$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($key);
                         $bot->replyMessage($replyToken,$msg);
 			}$standard_A = "/^([0-9]+)$/"; 
-			if ($m_message== $numbercode && checkString($m_message, $standard_A)) {
+			if ($m_message== $numbercode ) {
 				$sql="INSERT INTO code (msg) VALUES ('ok')";
 							$result = $mysqli->query($sql);
 				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證成功");
@@ -70,7 +70,7 @@ foreach ($client->parseEvents() as $event) {
 							$sql="delete from code where numbercode='$m_message'";
 							$result = $mysqli->query($sql);	
 					
-					}else{
+					}else if (checkString($m_message, $standard_A)){
 				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證失敗");
                         $bot->replyMessage($replyToken,$msg);
 			}
