@@ -49,10 +49,25 @@ foreach ($client->parseEvents() as $event) {
 			    		date_default_timezone_set('Asia/Taipei');
 					$key=rand(1000,9999);
 			    		$time=date("Y-m-d H:i:s");
-					if($m_message !=""){
-						$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(randomkeys(4));
+					if($m_message !="" && $m_message!="")
+						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','$m_message',"$userId")";
+			            $result = $mysqli->query($sql);
+						$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($key);
                         $bot->replyMessage($replyToken,$msg);
 					}
+			mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			            $sql="select numbercode from code where userid='$userId'";
+				$result = $mysqli->query($sql);
+						while($row = $result->fetch_array(MYSQLI_BOTH)) {
+							$numbercode = $row['numbercode'];
+						}
+			else if($m_message =$numbercode){
+				$sql="INSERT INTO code (msg) VALUES ('ok')";
+							$result = $mysqli->query($sql);
+							$sql="delete from code where numbercode='$m_message'";
+							$result = $mysqli->query($sql);
+			}
 			    		break;
 			}
 			break;
