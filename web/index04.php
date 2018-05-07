@@ -55,6 +55,14 @@ foreach ($client->parseEvents() as $event) {
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
 							$numbercode = $row['numbercode'];
 						}
+						if(strlen($m_message)>"5"){
+								$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("安安");
+                        $bot->replyMessage($replyToken,$msg);
+						}
+						if(strlen($m_message)<"5"){
+								$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("你好");
+                        $bot->replyMessage($replyToken,$msg);
+						}	
 					if($m_message =="進" && $m_message!=$numbercode){
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 			            $sql="INSERT INTO code (numbercode,userid) VALUES ('$key','$userId')";
