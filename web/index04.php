@@ -55,11 +55,11 @@ foreach ($client->parseEvents() as $event) {
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
 							$numbercode = $row['numbercode'];
 						}
-						if(strlen($m_message)>"5"){
+						if(strlen($m_message)>"15"){
 								$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("安安");
                         $bot->replyMessage($replyToken,$msg);
 						}
-						if(strlen($m_message)<"5"){
+						if(strlen($m_message)<"15"){
 								$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("你好");
                         $bot->replyMessage($replyToken,$msg);
 						}	
