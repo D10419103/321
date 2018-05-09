@@ -105,7 +105,7 @@ foreach ($client->parseEvents() as $event) {
 									),
 									array(
 								    		'type' => 'text',
-								    		'text' => "請輸入驗證碼!!"
+								    		'text' => $key."請輸入驗證碼!!"
 							    		),
 						    		),
 					    		));
