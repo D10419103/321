@@ -74,7 +74,7 @@ foreach ($client->parseEvents() as $event) {
 							$numbercode = $row['numbercode'];
 						}
             $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			            $sql="INSERT INTO code (numbercode,userid) VALUES ('$key','$userId')";
+			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','進','$userId')";
 			            $result = $mysqli->query($sql);
             $client->replyMessage(array(
 						    		'replyToken' => $event['replyToken'],
@@ -91,13 +91,14 @@ foreach ($client->parseEvents() as $event) {
 					    		));
 					}else if($unjoin && strlen($m_message)<"15" && $m_message!=$numbercode){
 						 $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					  $sql="select numbercode from code where userid='$userId'";
+					  $sql="select numbercode,msg from code where userid='$userId'";
 				$result = $mysqli->query($sql);
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
 							$numbercode = $row['numbercode'];
+							$msg = $row['msg'];
 						}
             $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-			            $sql="INSERT INTO code (numbercode,userid) VALUES ('$key','$userId')";
+			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','出','$userId')";
 			            $result = $mysqli->query($sql);
 							$client->replyMessage(array(
 								'replyToken' => $event['replyToken'],
@@ -114,11 +115,12 @@ foreach ($client->parseEvents() as $event) {
 					    		));
 			    		}
           if ($m_message== $numbercode) {
-				$sql="INSERT INTO code (msg) VALUES ('ok')";
+		  
+				$sql="INSERT INTO ex (worktype,vcode) VALUES ('$msg','$numbercode')";
 							$result = $mysqli->query($sql);
 				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證成功");
                         $bot->replyMessage($replyToken,$msg);
-							$sql="delete from code where numbercode='$m_message'";
+							$sql="delete from code where numbercode='$m_message' and userid='$userId'";
 							$result = $mysqli->query($sql);	
 					
 					}else if(preg_match("/^([0-9]+)$/","$m_message") && $numbercode!=""){
