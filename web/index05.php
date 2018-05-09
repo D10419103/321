@@ -76,7 +76,7 @@ foreach ($client->parseEvents() as $event) {
             $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','進','$userId')";
 			            $result = $mysqli->query($sql);
-						$sql="INSERT INTO ex (name,userid,worktime) VALUES ('$displayname','$userId','$time')";
+						$sql="INSERT INTO ex (name,userid,msg,worktime) VALUES ('$displayname','$userId','$m_message','$time')";
 					    		$result = $mysqli->query($sql);
             $client->replyMessage(array(
 						    		'replyToken' => $event['replyToken'],
@@ -94,7 +94,7 @@ foreach ($client->parseEvents() as $event) {
 					}else if($unjoin && strlen($m_message)<"15" && $m_message!=$numbercode){
 			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','出','$userId')";
 			            $result = $mysqli->query($sql);
-						$sql="INSERT INTO ex (name,userid,worktime) VALUES ('$displayname','$userId','$time')";
+						$sql="INSERT INTO ex (name,userid,msg,worktime) VALUES ('$displayname','$userId','$m_message','$time')";
 					    		$result = $mysqli->query($sql);
 							$client->replyMessage(array(
 								'replyToken' => $event['replyToken'],
@@ -113,7 +113,6 @@ foreach ($client->parseEvents() as $event) {
           if ($m_message== $numbercode) {
 		              $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 		$sql = "UPDATE ex SET worktype='$msg',vcode='$numbercode' where worktype='' and vcode='' and userid='$userId';";		
-		  $sql="UPDATE  INTO ex (worktype,vcode) VALUES ('$msg','$numbercode')";
 							$result = $mysqli->query($sql);
 				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證成功");
                         $bot->replyMessage($replyToken,$msg);
