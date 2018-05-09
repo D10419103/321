@@ -65,14 +65,14 @@ foreach ($client->parseEvents() as $event) {
 							$unjoin=true;
 						}
 					}
-					
-					if($join && strlen($m_message)<"15" && $m_message!=$numbercode){
-						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					  $sql="select numbercode from code where userid='$userId'";
+					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+					  $sql="select numbercode,msg from code where userid='$userId'";
 				$result = $mysqli->query($sql);
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
 							$numbercode = $row['numbercode'];
+							$msg = $row['msg'];
 						}
+					if($join && strlen($m_message)<"15" && $m_message!=$numbercode){
             $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','進','$userId')";
 			            $result = $mysqli->query($sql);
@@ -92,13 +92,6 @@ foreach ($client->parseEvents() as $event) {
 						    		),
 					    		));
 					}else if($unjoin && strlen($m_message)<"15" && $m_message!=$numbercode){
-						 $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					  $sql="select numbercode,msg from code where userid='$userId'";
-				$result = $mysqli->query($sql);
-						while($row = $result->fetch_array(MYSQLI_BOTH)) {
-							$numbercode = $row['numbercode'];
-							$msg = $row['msg'];
-						}
 			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','出','$userId')";
 			            $result = $mysqli->query($sql);
 						$sql="INSERT INTO ex (name,userid,worktime) VALUES ('$displayname','$userId','$time')";
