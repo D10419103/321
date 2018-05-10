@@ -76,7 +76,13 @@ foreach ($client->parseEvents() as $event) {
             $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','進','$userId')";
 			            $result = $mysqli->query($sql);
-						$sql="INSERT INTO ex (name,userid,msg,worktime) VALUES ('$displayname','$userId','$m_message','$time')";
+						$sql = "select number from ex";
+							$result = $mysqli->query($sql);
+					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+						    		$a = $row['number'] ;
+					    		}
+					    		$a+=1;
+						$sql="INSERT INTO ex (number,name,userid,msg,worktime) VALUES ('$a','$displayname','$userId','$m_message','$time')";
 					    		$result = $mysqli->query($sql);
             $client->replyMessage(array(
 						    		'replyToken' => $event['replyToken'],
@@ -94,7 +100,13 @@ foreach ($client->parseEvents() as $event) {
 					}else if($unjoin && strlen($m_message)<"15" && $m_message!=$numbercode){
 			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','出','$userId')";
 			            $result = $mysqli->query($sql);
-						$sql="INSERT INTO ex (name,userid,msg,worktime) VALUES ('$displayname','$userId','$m_message','$time')";
+						$sql = "select number from workPunch";
+							$result = $mysqli->query($sql);
+					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+						    		$a = $row['number'] ;
+					    		}
+					    		$a+=1;
+						$sql="INSERT INTO ex (number,name,userid,msg,worktime) VALUES ('$a','$displayname','$userId','$m_message','$time')";
 					    		$result = $mysqli->query($sql);
 							$client->replyMessage(array(
 								'replyToken' => $event['replyToken'],
