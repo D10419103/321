@@ -65,7 +65,7 @@ foreach ($client->parseEvents() as $event) {
 						}
 					}
 					
-				if($join){
+				if($join && strlen($m_message)<"15"){
 					$sql = "select number from 304ex";
 							$result = $mysqli->query($sql);
 					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
@@ -74,7 +74,7 @@ foreach ($client->parseEvents() as $event) {
 					    		$a+=1;
 					$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$a','$displayname','$userId','$m_message','進','$time')";
 					$result = $mysqli->query($sql);
-				}else if($unjoin){
+				}else if($unjoin && strlen($m_message)<"15"){
 					$sql = "select number from 304ex";
 							$result = $mysqli->query($sql);
 					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
