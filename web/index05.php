@@ -100,7 +100,7 @@ foreach ($client->parseEvents() as $event) {
 					}else if($unjoin && strlen($m_message)<"15" && $m_message!=$numbercode){
 			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','出','$userId')";
 			            $result = $mysqli->query($sql);
-						$sql = "select number from workPunch";
+						$sql = "select number from ex";
 							$result = $mysqli->query($sql);
 					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
 						    		$a = $row['number'] ;
