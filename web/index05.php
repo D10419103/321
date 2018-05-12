@@ -45,7 +45,7 @@ foreach ($client->parseEvents() as $event) {
 					$displayname=$profile['displayName'];
 			    		date_default_timezone_set('Asia/Taipei');	   
 			    		$time=date("Y-m-d H:i:s");
-          $key=rand(1000,9999);
+          				$key=rand(1000,9999);
 					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 					$join=false;
 					$unjoin=false;
@@ -72,7 +72,13 @@ foreach ($client->parseEvents() as $event) {
 							$numbercode = $row['numbercode'];
 							$msg = $row['msg'];
 						}
-					if($join && strlen($m_message)<"15" && $m_message!=$numbercode){
+					$sql="select test from untest";
+				$result = $mysqli->query($sql);
+						while($row = $result->fetch_array(MYSQLI_BOTH)) {
+							$test = $row['test'];
+						}
+				if($m_message!=$test)	{
+					if($join && $m_message!=$numbercode){
             $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','進','$userId')";
 			            $result = $mysqli->query($sql);
@@ -97,7 +103,7 @@ foreach ($client->parseEvents() as $event) {
 									),
 						    		),
 					    		));
-					}else if($unjoin && strlen($m_message)<"15" && $m_message!=$numbercode){
+					}else if($unjoin && $m_message!=$numbercode){
 			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','出','$userId')";
 			            $result = $mysqli->query($sql);
 						$sql = "select number from ex";
@@ -122,6 +128,7 @@ foreach ($client->parseEvents() as $event) {
 						    		),
 					    		));
 			    		}
+				}
           if ($m_message== $numbercode) {
 		              $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 		$sql = "UPDATE ex SET worktype='$msg',vcode='$numbercode' where worktype='' and vcode='' and userid='$userId';";		
