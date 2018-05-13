@@ -104,10 +104,12 @@ foreach ($client->parseEvents() as $event) {
 									),
 									array(
 								    		'type' => 'text',
-								    		'text' => $key."請輸入驗證碼!!"
+								    		'text' => "請輸入驗證碼!!"
 									),
 						    		),
 					    		));
+						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname."的驗證碼是".$key);
+		    					$response = $bot->pushMessage('U79c3bac79098dcbef1f3caf99742c65e', $textMessageBuilder);
 					}else if($unjoin && $m_message!=$numbercode){
 			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','出','$userId')";
 			            $result = $mysqli->query($sql);
@@ -128,10 +130,12 @@ foreach ($client->parseEvents() as $event) {
 									),
 									array(
 								    		'type' => 'text',
-								    		'text' => $key."請輸入驗證碼!!"
+								    		'text' => "請輸入驗證碼!!"
 							    		),
 						    		),
 					    		));
+						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname."的驗證碼是".$key);
+		    					$response = $bot->pushMessage('U79c3bac79098dcbef1f3caf99742c65e', $textMessageBuilder);
 			    		}
 				}
           if ($m_message== $numbercode) {
