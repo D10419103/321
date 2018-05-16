@@ -147,7 +147,7 @@ foreach ($client->parseEvents() as $event) {
 							$sql="delete from code where numbercode='$m_message' and userid='$userId'";
 							$result = $mysqli->query($sql);	
 					
-					}else if(preg_match(("/^([0-9]+)$/","$m_message") && $numbercode!="" && strlen($m_message)<"5"){
+					}else if(preg_match("/^([0-9]+)$/","$m_message") && $numbercode!="" && strlen($m_message)<"5"){
 				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證失敗");
                         $bot->replyMessage($replyToken,$msg);
 			}
