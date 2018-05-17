@@ -1,25 +1,25 @@
 <?php
 require_once('./LINEBotTiny.php');
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../scr/LINEBot/HTTPClient.php';
-require_once __DIR__ . '/../scr/LINEBot/Constant/Meta.php';
-require_once __DIR__ . '/../scr/LINEBot.php';
-require_once __DIR__ . '/../scr/LINEBot/HTTPClient/CurlHTTPClient.php';
-require_once __DIR__ . '/../scr/LINEBot/HTTPClient/Curl.php';
-require_once __DIR__ . '/../scr/LINEBot/Response.php';
-require_once __DIR__ . '/../scr/LINEBot/Constant/MessageType.php';
-require_once __DIR__ . '/../scr/LINEBot/MessageBuilder.php';
-require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TextMessageBuilder.php';
-require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/StickerMessageBuilder.php';
-require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/LocationMessageBuilder.php';
-require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/MultiMessageBuilder.php';
-require_once __DIR__ . '/../scr/LINEBot/TemplateActionBuilder.php';
-require_once __DIR__ . '/../scr/LINEBot/Constant/ActionType.php';
-require_once __DIR__ . '/../scr/LINEBot/TemplateActionBuilder/PostbackTemplateActionBuilder.php';
-require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TemplateBuilder.php';
-require_once __DIR__ . '/../scr/LINEBot/Constant/TemplateType.php';
-require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TemplateBuilder/ConfirmTemplateBuilder.php';
-require_once __DIR__ . '/../scr/LINEBot/MessageBuilder/TemplateMessageBuilder.php';
+require_once __DIR__ . '/../src/LINEBot/HTTPClient.php';
+require_once __DIR__ . '/../src/LINEBot/Constant/Meta.php';
+require_once __DIR__ . '/../src/LINEBot.php';
+require_once __DIR__ . '/../src/LINEBot/HTTPClient/CurlHTTPClient.php';
+require_once __DIR__ . '/../src/LINEBot/HTTPClient/Curl.php';
+require_once __DIR__ . '/../src/LINEBot/Response.php';
+require_once __DIR__ . '/../src/LINEBot/Constant/MessageType.php';
+require_once __DIR__ . '/../src/LINEBot/MessageBuilder.php';
+require_once __DIR__ . '/../src/LINEBot/MessageBuilder/TextMessageBuilder.php';
+require_once __DIR__ . '/../src/LINEBot/MessageBuilder/StickerMessageBuilder.php';
+require_once __DIR__ . '/../src/LINEBot/MessageBuilder/LocationMessageBuilder.php';
+require_once __DIR__ . '/../src/LINEBot/MessageBuilder/MultiMessageBuilder.php';
+require_once __DIR__ . '/../src/LINEBot/TemplateActionBuilder.php';
+require_once __DIR__ . '/../src/LINEBot/Constant/ActionType.php';
+require_once __DIR__ . '/../src/LINEBot/TemplateActionBuilder/PostbackTemplateActionBuilder.php';
+require_once __DIR__ . '/../src/LINEBot/MessageBuilder/TemplateBuilder.php';
+require_once __DIR__ . '/../src/LINEBot/Constant/TemplateType.php';
+require_once __DIR__ . '/../src/LINEBot/MessageBuilder/TemplateBuilder/ConfirmTemplateBuilder.php';
+require_once __DIR__ . '/../src/LINEBot/MessageBuilder/TemplateMessageBuilder.php';
 $channelAccessToken = getenv('LINE_CHANNEL_ACCESSTOKEN');
 $channelSecret = getenv('LINE_CHANNEL_SECRET');
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($channelAccessToken);
@@ -48,6 +48,7 @@ foreach ($client->parseEvents() as $event) {
 					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 					$join=false;
 					$unjoin=false;
+					$untest=true;
 					$sql = "SELECT inside from ininin";
 					$result = $mysqli->query($sql);
 					while($row = $result->fetch_array(MYSQLI_BOTH)){
@@ -64,35 +65,76 @@ foreach ($client->parseEvents() as $event) {
 							$unjoin=true;
 						}
 					}
-					
-				if($join && strlen($m_message)<"15"){
-					$sql = "select number from 304ex";
-							$result = $mysqli->query($sql);
-					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
-						    		$a = $row['number'] ;
-					    		}
-					    		$a+=1;
-					$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$a','$displayname','$userId','$m_message','進','$time')";
+					$sql="select test from untest";
 					$result = $mysqli->query($sql);
-				}else if($unjoin && strlen($m_message)<"15"){
-					$sql = "select number from 304ex";
-							$result = $mysqli->query($sql);
-					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
-						    		$a = $row['number'] ;
-					    		}
-					    		$a+=1;
-					$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$a','$displayname','$userId','$m_message','出','$time')";
+						while($row = $result->fetch_array(MYSQLI_BOTH)) {
+							$test = $row['test'];
+							if(preg_match("/$test/i","$m_message")){
+								$untest=false;
+							}
+						}
+					if($untest)	{
+				if($join){
+					$sql = "SELECT name from 304ex where userid='$userId'";
 					$result = $mysqli->query($sql);
-				}else{
+					while($row = $result->fetch_array(MYSQLI_BOTH)) {
+					    		$name = $row['name'];
+				    		}	
 					$sql = "select number from 304ex";
 							$result = $mysqli->query($sql);
 					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
 						    		$a = $row['number'] ;
 					    		}
 					    		$a+=1;
-				$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$a','$displayname','$userId','$m_message','無','$time')";
+					$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$a','$name','$userId','$m_message','進','$time')";
+					$result = $mysqli->query($sql);
+				}else if($unjoin){
+					$sql = "SELECT name from 304ex where userid='$userId'";
+					$result = $mysqli->query($sql);
+					while($row = $result->fetch_array(MYSQLI_BOTH)) {
+					    		$name = $row['name'];
+				    		}	
+					$sql = "select number from 304ex";
+							$result = $mysqli->query($sql);
+					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+						    		$a = $row['number'] ;
+					    		}
+					    		$a+=1;
+					$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$a','$name','$userId','$m_message','出','$time')";
+					$result = $mysqli->query($sql);
+				
+					}else{
+					$sql = "SELECT name from 304ex where userid='$userId'";
+					$result = $mysqli->query($sql);
+					while($row = $result->fetch_array(MYSQLI_BOTH)) {
+					    		$name = $row['name'];
+				    		}	
+					$sql = "select number from 304ex";
+							$result = $mysqli->query($sql);
+					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+						    		$a = $row['number'] ;
+					    		}
+					    		$a+=1;
+				$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$a','$name','$userId','$m_message','無','$time')";
 				$result = $mysqli->query($sql);
 			}
+					}
+					else{
+					$sql = "SELECT name from 304ex where userid='$userId'";
+					$result = $mysqli->query($sql);
+					while($row = $result->fetch_array(MYSQLI_BOTH)) {
+					    		$name = $row['name'];
+				    		}	
+					$sql = "select number from 304ex";
+							$result = $mysqli->query($sql);
+					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+						    		$a = $row['number'] ;
+					    		}
+					    		$a+=1;
+				$sql="INSERT INTO 304ex (number,name,userid,msg,worktype,worktime) VALUES ('$a','$name','$userId','$m_message','無','$time')";
+				$result = $mysqli->query($sql);
+			}
+					
 			    		break;
 			}
 			break;
