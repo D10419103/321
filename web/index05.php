@@ -118,9 +118,7 @@ foreach ($client->parseEvents() as $event) {
 							$numbercode = $row['numbercode'];
 						}
 						
-						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($numbercode);
-		    					$response = $bot->pushMessage($userId, $textMessageBuilder);
-						if($numbercode==$key){
+						if($key==$numbercode){
 							$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
                         $bot->replyMessage($replyToken,$msg);
 							$sql="delete from code where numbercode='$m_message' and userid='$userId'";
@@ -159,9 +157,7 @@ foreach ($client->parseEvents() as $event) {
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
 							$numbercode = $row['numbercode'];
 						}
-						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($numbercode);
-						$response = $bot->pushMessage($userId, $textMessageBuilder);
-						if($numbercode==$key){
+						if($key==$numbercode){
 							$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
                         $bot->replyMessage($replyToken,$msg);
 							$sql="delete from code where numbercode='$m_message' and userid='$userId'";
