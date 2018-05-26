@@ -74,13 +74,6 @@ foreach ($client->parseEvents() as $event) {
 								$untest=false;
 							}
 						}
-					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					  $sql="select numbercode,msg from code where userid='$userId'";
-				$result = $mysqli->query($sql);
-						while($row = $result->fetch_array(MYSQLI_BOTH)) {
-							$numbercode = $row['numbercode'];
-							$msg = $row['msg'];
-						}
 					
 				if($untest)	{
 					if($join && $m_message!=$numbercode){
@@ -118,7 +111,7 @@ foreach ($client->parseEvents() as $event) {
 							$numbercode = $row['numbercode'];
 						}
 						
-						if($key==$numbercode){
+						if($numbercode != ""){
 							$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
                         $bot->replyMessage($replyToken,$msg);
 							$sql="delete from code where numbercode='$m_message' and userid='$userId'";
@@ -157,7 +150,7 @@ foreach ($client->parseEvents() as $event) {
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
 							$numbercode = $row['numbercode'];
 						}
-						if($key==$numbercode){
+						if($numbercode != ""){
 							$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
                         $bot->replyMessage($replyToken,$msg);
 							$sql="delete from code where numbercode='$m_message' and userid='$userId'";
@@ -166,6 +159,13 @@ foreach ($client->parseEvents() as $event) {
 						
 			    		}
 				}
+					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+					  $sql="select numbercode,msg from code where userid='$userId'";
+				$result = $mysqli->query($sql);
+						while($row = $result->fetch_array(MYSQLI_BOTH)) {
+							$numbercode = $row['numbercode'];
+							$msg = $row['msg'];
+						}
           if ($m_message== $numbercode) {
 		              $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 		$sql = "UPDATE ex SET worktype='$msg',vcode='$numbercode' where worktype='' and vcode='' and userid='$userId';";		
