@@ -105,13 +105,13 @@ foreach ($client->parseEvents() as $event) {
 		    					$response = $bot->pushMessage($userId, $textMessageBuilder);
 					sleep(3);
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					  $sql="select numbercode from code where userid='$userId' msg='進'";
+					  $sql="select msg from code where userid='$userId'";
 				$result = $mysqli->query($sql);
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
-							$numbercode = $row['numbercode'];
+							$msg2 = $row['msg'];
 						}
 						
-						if($numbercode != ""){
+						if($msg2 == "進"){
 							$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
                         $bot->replyMessage($replyToken,$msg);
 							$sql="delete from code where numbercode='$m_message' and userid='$userId'";
@@ -145,12 +145,12 @@ foreach ($client->parseEvents() as $event) {
 		    					$response = $bot->pushMessage($userId, $textMessageBuilder);
 						sleep(3);
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					  $sql="select numbercode from code where userid='$userId' msg='出' ";
+					  $sql="select msg from code where userid='$userId'";
 				$result = $mysqli->query($sql);
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
-							$numbercode = $row['numbercode'];
+							$msg2 = $row['msg'];
 						}
-						if($numbercode != ""){
+						if($msg2 == "出"){
 							$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
                         $bot->replyMessage($replyToken,$msg);
 							$sql="delete from code where numbercode='$m_message' and userid='$userId'";
