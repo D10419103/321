@@ -109,7 +109,7 @@ foreach ($client->parseEvents() as $event) {
 						    		),
 					    		));
 						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname."的驗證碼是".$key);
-		    					$response = $bot->pushMessage('U79c3bac79098dcbef1f3caf99742c65e', $textMessageBuilder);
+		    					$response = $bot->pushMessage($userId, $textMessageBuilder);
 					sleep(3);
 						if($numbercode!=""){
 							$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
@@ -142,7 +142,7 @@ foreach ($client->parseEvents() as $event) {
 						    		),
 					    		));
 						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname."的驗證碼是".$key);
-		    					$response = $bot->pushMessage('U79c3bac79098dcbef1f3caf99742c65e', $textMessageBuilder);
+		    					$response = $bot->pushMessage($userId, $textMessageBuilder);
 						sleep(3);
 						if($numbercode!=""){
 							$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
