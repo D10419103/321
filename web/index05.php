@@ -110,6 +110,13 @@ foreach ($client->parseEvents() as $event) {
 					    		));
 						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname."的驗證碼是".$key);
 		    					$response = $bot->pushMessage('U79c3bac79098dcbef1f3caf99742c65e', $textMessageBuilder);
+					sleep(3);
+						if($numbercode!=""){
+							$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
+                        $bot->replyMessage($replyToken,$msg);
+							$sql="delete from code where numbercode='$m_message' and userid='$userId'";
+							$result = $mysqli->query($sql);
+						}
 					}else if($unjoin && $m_message!=$numbercode){
 			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','出','$userId')";
 			            $result = $mysqli->query($sql);
@@ -136,6 +143,14 @@ foreach ($client->parseEvents() as $event) {
 					    		));
 						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname."的驗證碼是".$key);
 		    					$response = $bot->pushMessage('U79c3bac79098dcbef1f3caf99742c65e', $textMessageBuilder);
+						sleep(3);
+						if($numbercode!=""){
+							$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
+                        $bot->replyMessage($replyToken,$msg);
+							$sql="delete from code where numbercode='$m_message' and userid='$userId'";
+							$result = $mysqli->query($sql);
+						}
+						
 			    		}
 				}
           if ($m_message== $numbercode) {
