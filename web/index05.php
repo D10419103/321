@@ -103,7 +103,7 @@ foreach ($client->parseEvents() as $event) {
 					    		));
 						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname."的驗證碼是".$key);
 		    					$response = $bot->pushMessage($userId, $textMessageBuilder);
-					sleep(3);
+					sleep(5);
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 					  $sql="select * from code where userid='$userId'";
 				$result = $mysqli->query($sql);
@@ -112,8 +112,18 @@ foreach ($client->parseEvents() as $event) {
 						}
 						
 						if($msg2 == "進"){
-							$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
-                        $bot->replyMessage($replyToken,$msg);
+							$result = $mysqli->query($sql);
+            						$client->replyMessage(array(
+						    		'replyToken' => $event['replyToken'],
+						    		'messages' => array(
+							    		array(
+								    		'type' => 'text',
+										'text' => "驗證逾時"
+									),
+						    		),
+					    		));
+							/*$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
+                        				$bot->replyMessage($replyToken,$msg);*/
 							$sql="delete from code where numbercode='$key' and userid='$userId'";
 							$result = $mysqli->query($sql);
 						}
@@ -143,7 +153,7 @@ foreach ($client->parseEvents() as $event) {
 					    		));
 						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname."的驗證碼是".$key);
 		    					$response = $bot->pushMessage($userId, $textMessageBuilder);
-						sleep(3);
+						sleep(5);
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 					  $sql="select * from code where userid='$userId'";
 				$result = $mysqli->query($sql);
