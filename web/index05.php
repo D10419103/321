@@ -157,7 +157,7 @@ foreach ($client->parseEvents() as $event) {
 							$response = $bot->pushMessage($userId, $textMessageBuilder);
 							$sql="delete from code where numbercode='$key' and userid='$userId'";
 							$result = $mysqli->query($sql);
-							$sql="INSERT INTO ex (worktype) VALUES ('逾時')";
+							$sql="UPDATE ex SET worktype='逾時' where worktype='' and vcode='' and userid='$userId';";
 							$result = $mysqli->query($sql);
 						}
 						
