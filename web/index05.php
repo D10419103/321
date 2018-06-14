@@ -112,18 +112,8 @@ foreach ($client->parseEvents() as $event) {
 						}
 						
 						if($msg2 == "進"){
-							$result = $mysqli->query($sql);
-            						$client->replyMessage(array(
-						    		'replyToken' => $event['replyToken'],
-						    		'messages' => array(
-							    		array(
-								    		'type' => 'text',
-										'text' => "驗證逾時"
-									),
-						    		),
-					    		));
-							/*$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
-                        				$bot->replyMessage($replyToken,$msg);*/
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
+							$response = $bot->pushMessage($userId, $textMessageBuilder);
 							$sql="delete from code where numbercode='$key' and userid='$userId'";
 							$result = $mysqli->query($sql);
 						}
@@ -161,8 +151,8 @@ foreach ($client->parseEvents() as $event) {
 							$msg2 = $row['msg'];
 						}
 						if($msg2 == "出"){
-							$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
-                        $bot->replyMessage($replyToken,$msg);
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
+							$response = $bot->pushMessage($userId, $textMessageBuilder);
 							$sql="delete from code where numbercode='$key' and userid='$userId'";
 							$result = $mysqli->query($sql);
 						}
@@ -185,7 +175,7 @@ foreach ($client->parseEvents() as $event) {
 							$sql="delete from code where numbercode='$m_message' and userid='$userId'";
 							$result = $mysqli->query($sql);	
 					
-					}else if(preg_match("/^([0-9]+)$/","$m_message") && $numbercode!=""){
+					}else if(preg_match("/^([0-9]+)$/","$m_message")){
 				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證失敗");
                         $bot->replyMessage($replyToken,$msg);
 			}
