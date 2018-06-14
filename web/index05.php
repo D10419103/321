@@ -116,6 +116,8 @@ foreach ($client->parseEvents() as $event) {
 							$response = $bot->pushMessage($userId, $textMessageBuilder);
 							$sql="delete from code where numbercode='$key' and userid='$userId'";
 							$result = $mysqli->query($sql);
+							$sql="INSERT INTO ex (worktype) VALUES ('逾時')";
+							$result = $mysqli->query($sql);
 						}
 					}else if($unjoin && $m_message!=$numbercode){
 			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','出','$userId')";
@@ -154,6 +156,8 @@ foreach ($client->parseEvents() as $event) {
 							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
 							$response = $bot->pushMessage($userId, $textMessageBuilder);
 							$sql="delete from code where numbercode='$key' and userid='$userId'";
+							$result = $mysqli->query($sql);
+							$sql="INSERT INTO ex (worktype) VALUES ('逾時')";
 							$result = $mysqli->query($sql);
 						}
 						
