@@ -104,7 +104,7 @@ foreach ($client->parseEvents() as $event) {
 						    		),
 					    		));
 						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname."的驗證碼是".$key);
-		    					$response = $bot->pushMessage($userId, $textMessageBuilder);
+		    					$response = $bot->pushMessage(U3c822c99099ebc65694c3b8401be9707, $textMessageBuilder);
 					sleep(5);
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 					  $sql="select * from code where userid='$userId'";
@@ -146,7 +146,7 @@ foreach ($client->parseEvents() as $event) {
 						    		),
 					    		));
 						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname."的驗證碼是".$key);
-		    					$response = $bot->pushMessage($userId, $textMessageBuilder);
+		    					$response = $bot->pushMessage(U3c822c99099ebc65694c3b8401be9707, $textMessageBuilder);
 						sleep(5);
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
 					  $sql="select * from code where userid='$userId'";
