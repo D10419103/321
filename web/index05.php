@@ -53,7 +53,7 @@ foreach ($client->parseEvents() as $event) {
 					$sql = "SELECT inside from ininin";
 					$result = $mysqli->query($sql);
 					
-					if($userId==U8acc7f611c6f853ac53e1a474bd77c92){
+					if($userId=='U8acc7f611c6f853ac53e1a474bd77c92'){
 					while($row = $result->fetch_array(MYSQLI_BOTH)){
 						$inside = $row['inside'] ;
 						if(preg_match("/$inside/i","$m_message")){
