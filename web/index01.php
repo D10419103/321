@@ -51,6 +51,142 @@ foreach ($client->parseEvents() as $event) {
 					$untest=true;
 					$sql = "SELECT inside from ininin";
 					$result = $mysqli->query($sql);
+					if($userId=="U8acc7f611c6f853ac53e1a474bd77c92" || $userId=="U3c822c99099ebc65694c3b8401be9707" || $userId=="U0da0177d489bff17a4d77614a0b23257"){
+					while($row = $result->fetch_array(MYSQLI_BOTH)){
+						$inside = $row['inside'] ;
+						if(preg_match("/$inside/i","$m_message")){
+  							$join=true;
+						}
+					}
+					$sql = "SELECT outside from ininin";
+					$result = $mysqli->query($sql);
+					while($row = $result->fetch_array(MYSQLI_BOTH)){
+						$outside = $row['outside'] ;
+						if(preg_match("/$outside/i","$m_message")){
+							$unjoin=true;
+						}
+					}
+					$sql="select test from untest";
+					$result = $mysqli->query($sql);
+						while($row = $result->fetch_array(MYSQLI_BOTH)) {
+							$test = $row['test'];
+							if(preg_match("/$test/i","$m_message")){
+								$untest=false;
+							}
+						}
+					
+				if($untest)	{
+					if($join && $m_message!=$numbercode){
+            $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','進','$userId')";
+			            $result = $mysqli->query($sql);
+						$sql = "select number from ex";
+							$result = $mysqli->query($sql);
+					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+						    		$a = $row['number'] ;
+					    		}
+					    		$a+=1;
+						$sql="INSERT INTO ex (number,name,userid,msg,worktime) VALUES ('$a','$displayname','$userId','$m_message','$time')";
+					    		$result = $mysqli->query($sql);
+            $client->replyMessage(array(
+						    		'replyToken' => $event['replyToken'],
+						    		'messages' => array(
+							    		array(
+								    		'type' => 'text',
+										'text' => "歡迎你的到來!!" . "\n" . "祝你使用愉快!!"
+									),
+									array(
+								    		'type' => 'text',
+								    		'text' => "請輸入驗證碼!!"
+									),
+						    		),
+					    		));
+						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname."的驗證碼是".$key);
+		    					$response = $bot->pushMessage(U06f44ab74ed972f7a22838ed5e75300e, $textMessageBuilder);
+					sleep(5);
+						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+					  $sql="select * from code where userid='$userId'";
+				$result = $mysqli->query($sql);
+						while($row = $result->fetch_array(MYSQLI_BOTH)) {
+							$msg2 = $row['msg'];
+						}
+						
+						if($msg2 == "進"){
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
+							$response = $bot->pushMessage($userId, $textMessageBuilder);
+							$sql="delete from code where numbercode='$key' and userid='$userId'";
+							$result = $mysqli->query($sql);
+							$sql="UPDATE ex SET worktype='逾時' where worktype='' and vcode='' and userid='$userId';";
+							$result = $mysqli->query($sql);
+						}
+					}else if($unjoin && $m_message!=$numbercode){
+			            $sql="INSERT INTO code (numbercode,msg,userid) VALUES ('$key','出','$userId')";
+			            $result = $mysqli->query($sql);
+						$sql = "select number from ex";
+							$result = $mysqli->query($sql);
+					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
+						    		$a = $row['number'] ;
+					    		}
+					    		$a+=1;
+						$sql="INSERT INTO ex (number,name,userid,msg,worktime) VALUES ('$a','$displayname','$userId','$m_message','$time')";
+					    		$result = $mysqli->query($sql);
+							$client->replyMessage(array(
+								'replyToken' => $event['replyToken'],
+								'messages' => array(
+									array(
+										'type' => 'text',
+										'text' => "謝謝你的使用!!" . "\n" . "歡迎下次再來!!"
+									),
+									array(
+								    		'type' => 'text',
+								    		'text' => "請輸入驗證碼!!"
+							    		),
+						    		),
+					    		));
+						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($displayname."的驗證碼是".$key);
+		    					$response = $bot->pushMessage(U06f44ab74ed972f7a22838ed5e75300e, $textMessageBuilder);
+						sleep(5);
+						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+					  $sql="select * from code where userid='$userId'";
+				$result = $mysqli->query($sql);
+						while($row = $result->fetch_array(MYSQLI_BOTH)) {
+							$msg2 = $row['msg'];
+						}
+						if($msg2 == "出"){
+							$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證逾時");
+							$response = $bot->pushMessage($userId, $textMessageBuilder);
+							$sql="delete from code where numbercode='$key' and userid='$userId'";
+							$result = $mysqli->query($sql);
+							$sql="UPDATE ex SET worktype='逾時' where worktype='' and vcode='' and userid='$userId';";
+							$result = $mysqli->query($sql);
+						}
+						
+			    		}
+				}
+					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+					  $sql="select numbercode,msg from code where userid='$userId'";
+				$result = $mysqli->query($sql);
+						while($row = $result->fetch_array(MYSQLI_BOTH)) {
+							$numbercode = $row['numbercode'];
+							$msg = $row['msg'];
+						}
+          if ($m_message== $numbercode) {
+		              $mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
+		$sql = "UPDATE ex SET worktype='$msg',vcode='$numbercode' where worktype='' and vcode='' and userid='$userId';";		
+							$result = $mysqli->query($sql);
+				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證成功");
+                        $bot->replyMessage($replyToken,$msg);
+							$sql="delete from code where numbercode='$m_message' and userid='$userId'";
+							$result = $mysqli->query($sql);	
+					
+					}else if(preg_match("/^([0-9]+)$/","$m_message")){
+				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證失敗");
+                        $bot->replyMessage($replyToken,$msg);
+			}else{
+			  $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("安安");
+                        $bot->replyMessage($replyToken,$msg);
+	  }
+					else{
 					while($row = $result->fetch_array(MYSQLI_BOTH)){
 						$inside = $row['inside'] ;
 						if(preg_match("/$inside/i","$m_message")){
@@ -153,7 +289,7 @@ foreach ($client->parseEvents() as $event) {
 				$result = $mysqli->query($sql);
 						}
 			}
-					
+					}
 			    		break;
 			}
 			break;
