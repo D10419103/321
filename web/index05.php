@@ -52,6 +52,8 @@ foreach ($client->parseEvents() as $event) {
 					$untest=true;
 					$sql = "SELECT inside from ininin";
 					$result = $mysqli->query($sql);
+					
+					if($userId==U8acc7f611c6f853ac53e1a474bd77c92 && $userId==U0da0177d489bff17a4d77614a0b23257){
 					while($row = $result->fetch_array(MYSQLI_BOTH)){
 						$inside = $row['inside'] ;
 						if(preg_match("/$inside/i","$m_message")){
@@ -182,7 +184,11 @@ foreach ($client->parseEvents() as $event) {
 					}else if(preg_match("/^([0-9]+)$/","$m_message")){
 				$msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("驗證失敗");
                         $bot->replyMessage($replyToken,$msg);
-			}
+			}else{
+			  $msg = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("安安");
+                        $bot->replyMessage($replyToken,$msg);
+	  }
+					}
           break;
 			}
 			break;
