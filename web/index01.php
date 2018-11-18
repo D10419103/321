@@ -103,7 +103,7 @@ foreach ($client->parseEvents() as $event) {
 		    					$response = $bot->pushMessage(U3c822c99099ebc65694c3b8401be9707, $textMessageBuilder);
 						sleep(20);
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					  $sql="select * from code where userid='$userId' and groupid='$groupid'";
+					  $sql="select * from code where userid='$userId'";
 				$result = $mysqli->query($sql);
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
 							$msg2 = $row['msg'];
@@ -141,7 +141,7 @@ foreach ($client->parseEvents() as $event) {
 		    					$response = $bot->pushMessage(U3c822c99099ebc65694c3b8401be9707, $textMessageBuilder);
 						sleep(10);
 						$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					  $sql="select * from code where userid='$userId' and groupid='$groupid'";
+					  $sql="select * from code where userid='$userId'";
 				$result = $mysqli->query($sql);
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
 							$msg2 = $row['msg'];
@@ -158,7 +158,7 @@ foreach ($client->parseEvents() as $event) {
 			    		}
 				}
 					$mysqli = new mysqli('edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', "ia8wipiqgptyg9yb", "ywz5dcdawbeq11cy", "fu7wm9fyq2nkgeuk","3306");
-					  $sql="select numbercode,msg from code where userid='$userId' and groupid='$groupid'";
+					  $sql="select numbercode,msg from code where userid='$userId'";
 				$result = $mysqli->query($sql);
 						while($row = $result->fetch_array(MYSQLI_BOTH)) {
 							$numbercode = $row['numbercode'];
@@ -202,7 +202,7 @@ foreach ($client->parseEvents() as $event) {
 						}
 					if($untest)	{
 				if($join){
-					$sql = "SELECT name from 304ex where userid='$userId' and groupid='$groupid'";
+					$sql = "SELECT name from 304ex where userid='$userId'";
 					$result = $mysqli->query($sql);
 					while($row = $result->fetch_array(MYSQLI_BOTH)) {
 					    		$name = $row['name'];
@@ -221,12 +221,12 @@ foreach ($client->parseEvents() as $event) {
 					$result = $mysqli->query($sql);
 					}
 				}else if($unjoin){
-					$sql = "SELECT name from 304ex where userid='$userId' and groupid='$groupid'";
+					$sql = "SELECT name from 304ex where userid='$userId'";
 					$result = $mysqli->query($sql);
 					while($row = $result->fetch_array(MYSQLI_BOTH)) {
 					    		$name = $row['name'];
 				    		}	
-					$sql = "select number from 304ex where groupid='$groupid'";
+					$sql = "select number from 304ex";
 							$result = $mysqli->query($sql);
 					    		while($row = $result->fetch_array(MYSQLI_BOTH)) {
 						    		$a = $row['number'] ;
@@ -240,7 +240,7 @@ foreach ($client->parseEvents() as $event) {
 					$result = $mysqli->query($sql);
 					}
 					}else{
-					$sql = "SELECT name from 304ex where userid='$userId' and groupid='$groupid'";
+					$sql = "SELECT name from 304ex where userid='$userId'";
 					$result = $mysqli->query($sql);
 					while($row = $result->fetch_array(MYSQLI_BOTH)) {
 					    		$name = $row['name'];
@@ -261,7 +261,7 @@ foreach ($client->parseEvents() as $event) {
 			}
 					}
 					else{
-					$sql = "SELECT name from 304ex where userid='$userId' and groupid='$groupid'";
+					$sql = "SELECT name from 304ex where userid='$userId'";
 					$result = $mysqli->query($sql);
 					while($row = $result->fetch_array(MYSQLI_BOTH)) {
 					    		$name = $row['name'];
